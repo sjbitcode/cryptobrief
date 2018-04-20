@@ -1,17 +1,17 @@
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React from "react";
+import { Link, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class Header extends React.Component {
 	searchInput = React.createRef();
 
 	static propTypes = {
 		match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
+		location: PropTypes.object.isRequired,
+		history: PropTypes.object.isRequired
 	};
 
-	handleSearch = (event) => {
+	handleSearch = event => {
 		console.log(this.props);
 		event.preventDefault();
 		const coinName = this.searchInput.current.value;
@@ -24,14 +24,25 @@ class Header extends React.Component {
 		return (
 			<div>
 				<nav>
-					<h2><Link to='/'>Crypto Brief</Link></h2>
+					<h2>
+						<Link to="/">Crypto Brief</Link>
+					</h2>
 					<ul>
-						<li><Link to='/'>Front Page</Link></li>
-						<li><Link to='/coins'>Popular Coins</Link></li>
+						<li>
+							<Link to="/">Front Page</Link>
+						</li>
+						<li>
+							<Link to="/coins">Popular Coins</Link>
+						</li>
 					</ul>
 
 					<form onSubmit={this.handleSearch}>
-						<input type="text" ref={this.searchInput} required placeholder="Coin Name"/>
+						<input
+							type="text"
+							ref={this.searchInput}
+							required
+							placeholder="Coin Name"
+						/>
 						<button type="submit">Search</button>
 					</form>
 				</nav>
@@ -40,6 +51,6 @@ class Header extends React.Component {
 			</div>
 		);
 	}
-};
+}
 
 export default withRouter(Header);
