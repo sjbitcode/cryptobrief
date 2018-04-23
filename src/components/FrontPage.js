@@ -12,7 +12,11 @@ class FrontPage extends React.Component {
 				<ul>
 					{Object.keys(coins).map(key => (
 						<Link to={`/coin/${key}`} key={key}>
-							<FrontPageCoin key={key} details={coins[key]} name={key} />
+							<FrontPageCoin
+								key={key}
+								details={coins[key]}
+								name={key}
+							/>
 						</Link>
 					))}
 				</ul>
