@@ -8,21 +8,21 @@ import NotFound from "./NotFound";
 
 class Main extends React.Component {
 	render() {
-		const { coins } = this.props;
+		const { coins, updateCoin } = this.props;
 
 		return (
 			<Switch>
 				<Route
 					exact
 					path="/"
-					render={props => <FrontPage {...props} coins={coins} />}
+					render={props => <FrontPage {...props} coins={coins} updateCoin={updateCoin} />}
 				/>
 
 				<Route path="/coins" component={Coins} />
 
 				<Route
 					path="/coin/:coinname"
-					render={props => <DetailNews {...props} coins={coins} />}
+					render={props => <DetailNews {...props} coins={coins} updateCoin={updateCoin} />}
 				/>
 
 				<Route component={NotFound} />

@@ -23,11 +23,53 @@ class App extends Component {
 		}
 	};
 
+	componentDidMount() {
+		const localStorageRef = localStorage.getItem('cryptobrief');
+
+		if (localStorageRef) {
+			this.setState({coins: JSON.parse(localStorageRef)});
+		}
+		//localStorage.setItem('cryptobrief', JSON.stringify(this.state.coins));
+	};
+
+	componentDidUpdate() {
+		localStorage.setItem('cryptobrief', JSON.stringify(this.state.coins));
+	};
+
+	addCoin = (coinData) => {
+		/* {name: 'some-coin', price: 212, news: 'Some news about some-coin'} */
+
+		// if coin doesn't exist, then add. we don't want to overwrite existing coins here.
+		if (!this.state.coins[coinData.name]) {
+			// Take a copy of state
+			const coins = { ...this.state.coins };
+
+			// Construct new coin object and set
+			const data = { price: coinData.price, news: coinData.news };
+			coins[coinData['name']] = data;
+
+			// Update state
+			this.setState({ coins });
+		}
+	};
+
+	updateCoin = (coinData) => {
+		// Take a copy of state
+		const coins = { ...this.state.coins };
+
+		// Construct new coin object and set
+		const data = { price: coinData.price, news: coinData.news };
+		coins[coinData['name']] = data;
+
+		// Update state
+		this.setState({ coins });
+	}
+
 	render() {
 		return (
 			<div>
-				<Header />
-				<Main coins={this.state.coins}/>
+				<Header addCoin={this.addCoin}/>
+				<Main coins={this.state.coins} updateCoin={this.updateCoin}/>
 			</div>
 		);
 	}
