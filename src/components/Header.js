@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from 'react-dom';
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import Autosuggest from 'react-autosuggest';
@@ -82,20 +83,39 @@ class Header extends React.Component {
 	// 	event.currentTarget.reset();
 	// };
 
+	clearInput() {
+		ReactDOM.findDOMNode(this.searchInput.current.input).value = '';
+	}
+
 	handleSearch = event => {
 		event.preventDefault();
 
 		const coinName = this.searchInput.current.input.value
 		console.log(`Searched for ${coinName}`);
 
+		// get id for cryptoname
+		let coinSearchTerm = '';
+		try {
+			const coinObj = coinList.find(obj => obj.name === coinName);
+			coinSearchTerm = coinObj.id;
+		}
+		catch(err) {
+			coinSearchTerm = coinName.trim().toLowerCase();
+		}
+
 		// Add coin
-		const coinData = generateCoinData(coinName);
+		const coinData = generateCoinData(coinSearchTerm);
 		this.props.addCoin(coinData);
 
-		this.props.history.push(`/coin/${coinName}`);
+		// this.props.history.push(`/coin/${coinSearchTerm}`);
+		console.log(event.currentTarget);
+		console.log(this.searchInput.current.input);
+		// this.searchInput.current.input.value='';
+		// this.searchInput.current.input.value = '';
 
 		// Refresh the form
-		event.currentTarget.reset();
+		// event.currentTarget.reset();
+		this.clearInput();
 	};
 
 	render() {

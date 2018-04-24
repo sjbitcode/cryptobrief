@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import coinList from '../coinList';
@@ -12,22 +13,31 @@ class Coins extends React.Component {
 	renderCoinElement = (obj) => {
 		const divStyle = {
 			color: 'white',
-			backgroundColor: 'blue',
-			margin: '10px 0'
+			backgroundColor: 'red',
+			margin: '10px 0',
+			fontWeight: 'bold'
 		};
 
 		if (obj.id in this.props.coins) {
-			return <div key={obj.id} style={divStyle}>{obj.name} ({obj.symbol})</div>
+			return (
+				<Link to={`/coin/${obj.id}`} key={obj.id}>
+					<div key={obj.id} style={divStyle}>{obj.name} ({obj.symbol})</div>
+				</Link>
+			);
 		}
 		else {
-			return <div key={obj.id}>{obj.name} ({obj.symbol})</div>
+			return (
+				<Link to={`/coin/${obj.id}`} key={obj.id}>
+					<div key={obj.id}>{obj.name} ({obj.symbol})</div>
+				</Link>
+			);
 		}
 	};
 
 	render() {
 		return (
 			<React.Fragment>
-				{coinList.map(obj => this.renderCoinElement(obj))}
+					{coinList.map(obj => this.renderCoinElement(obj))}
 			</React.Fragment>
 		);
 	}
