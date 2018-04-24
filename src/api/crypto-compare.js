@@ -12,3 +12,22 @@ export function generateCoinData(coinName) {
     news: `Some new things in store for ${coinName}`
   };
 }
+
+export function initialNews() {
+  return {
+    bitcoin: {
+      price: 8800,
+      news: 'Bitcoin is going really good'
+    },
+
+    ethereum: {
+      price: 580,
+      news: 'Ethereum may take off in 2 days!'
+    },
+
+    ripple: {
+      price: 0.78,
+      news: 'Ripple set to be listed on 10 more exchanges...'
+    }
+  };
+}

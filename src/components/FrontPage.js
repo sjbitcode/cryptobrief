@@ -9,8 +9,15 @@ import RefreshCoin from "./RefreshCoin";
 class FrontPage extends React.Component {
 	static propTypes = {
 		coins: PropTypes.object,
-		updateCoin: PropTypes.func
+		updateCoin: PropTypes.func,
+		removeCoin: PropTypes.func
 	};
+
+	renderRemoveButton = (coinName) => {
+		if (!['bitcoin', 'ethereum', 'ripple'].includes(coinName)) {
+			return <button onClick={() => this.props.removeCoin(coinName)}>Remove coin from list</button>
+		}
+	}
 
 	render() {
 		const { coins, updateCoin } = this.props;
@@ -26,7 +33,8 @@ class FrontPage extends React.Component {
 								details={coins[key]}
 								name={key}
 							/>
-						</Link>
+							</Link>
+							{this.renderRemoveButton(key)}
 						<RefreshCoin updateCoin={updateCoin} coinName={key} />
 						</div>
 					))}

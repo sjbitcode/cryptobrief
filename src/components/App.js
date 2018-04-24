@@ -3,36 +3,23 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Main from './Main';
 
+
 class App extends Component {
 	state = {
-		coins: {
-			bitcoin: {
-				price: 8800,
-				news: 'Bitcoin is going really good'
-			},
-
-			ethereum: {
-				price: 580,
-				news: 'Ethereum may take off in 2 days!'
-			},
-
-			ripple: {
-				price: 0.78,
-				news: 'Ripple set to be listed on 10 more exchanges...'
-			}
-		}
+		coins: {}
 	};
 
 	componentDidMount() {
 		const localStorageRef = localStorage.getItem('cryptobrief');
 
 		if (localStorageRef) {
+			// localstorage -> state
 			this.setState({coins: JSON.parse(localStorageRef)});
-		}
-		//localStorage.setItem('cryptobrief', JSON.stringify(this.state.coins));
+		};
 	};
 
 	componentDidUpdate() {
+		// state -> localstorage
 		localStorage.setItem('cryptobrief', JSON.stringify(this.state.coins));
 	};
 
@@ -65,11 +52,17 @@ class App extends Component {
 		this.setState({ coins });
 	}
 
+	removeCoin = (coinName) => {
+		const coins = {...this.state.coins};
+		delete coins[coinName];
+		this.setState({coins});
+	};
+
 	render() {
 		return (
 			<div>
 				<Header addCoin={this.addCoin}/>
-				<Main coins={this.state.coins} updateCoin={this.updateCoin}/>
+				<Main coins={this.state.coins} updateCoin={this.updateCoin} removeCoin={this.removeCoin} />
 			</div>
 		);
 	}
