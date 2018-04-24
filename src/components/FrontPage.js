@@ -45,7 +45,7 @@ class FrontPage extends React.Component {
 			);
 		}
 		else {
-			console.log('No coins')
+			console.log('No coins');
 			return <div>Looks like you haven't searched for anything yet!</div>
 		}
 	};
