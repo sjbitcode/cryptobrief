@@ -17,28 +17,43 @@ class FrontPage extends React.Component {
 		if (!['bitcoin', 'ethereum', 'ripple'].includes(coinName)) {
 			return <button onClick={() => this.props.removeCoin(coinName)}>Remove coin from list</button>
 		}
-	}
+	};
 
-	render() {
+	renderFrontPageCoins = () => {
 		const { coins, updateCoin } = this.props;
-		return (
-			<div>
+
+		if(Object.keys(coins).length) {
+			return (
+				<React.Fragment>
 				<h1>Here's the news</h1>
 				<ul>
 					{Object.keys(coins).map(key => (
 						<div key={key}>
-						<Link to={`/coin/${key}`}>
-							<FrontPageCoin
-								key={key}
-								details={coins[key]}
-								name={key}
-							/>
+							<Link to={`/coin/${key}`}>
+								<FrontPageCoin
+									key={key}
+									details={coins[key]}
+									name={key}
+								/>
 							</Link>
-							{this.renderRemoveButton(key)}
-						<RefreshCoin updateCoin={updateCoin} coinName={key} />
+							<button onClick={() => this.props.removeCoin(key)}>Remove coin from list</button>
+							<RefreshCoin updateCoin={updateCoin} coinName={key} />
 						</div>
 					))}
 				</ul>
+				</React.Fragment>
+			);
+		}
+		else {
+			console.log('No coins')
+			return <div>Looks like you haven't searched for anything yet!</div>
+		}
+	};
+
+	render() {
+		return (
+			<div>
+				{this.renderFrontPageCoins()}
 			</div>
 		);
 	}

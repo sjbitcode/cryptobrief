@@ -25,7 +25,10 @@ class Main extends React.Component {
 					render={props => <FrontPage {...props} coins={coins} updateCoin={updateCoin} removeCoin={removeCoin} />}
 				/>
 
-				<Route path="/coins" component={Coins} />
+				<Route 
+					path="/coins"
+					render={props => <Coins coins={coins} />} 
+				/>
 
 				<Route
 					path="/coin/:coinname"
