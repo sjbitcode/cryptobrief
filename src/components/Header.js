@@ -68,25 +68,6 @@ class Header extends React.Component {
 		});
 	};
 
-	// handleSearch = event => {
-	// 	console.log(`Searched for ${this.searchInput.current.value}`);
-	// 	event.preventDefault();
-	// 	const coinName = this.searchInput.current.value;
-
-	// 	// Add coin
-	// 	const coinData = generateCoinData(coinName);
-	// 	this.props.addCoin(coinData);
-
-	// 	this.props.history.push(`/coin/${coinName}`);
-
-	// 	// Refresh the form
-	// 	event.currentTarget.reset();
-	// };
-
-	clearInput() {
-		ReactDOM.findDOMNode(this.searchInput.current.input).value = '';
-	}
-
 	handleSearch = event => {
 		event.preventDefault();
 
@@ -107,15 +88,11 @@ class Header extends React.Component {
 		const coinData = generateCoinData(coinSearchTerm);
 		this.props.addCoin(coinData);
 
-		// this.props.history.push(`/coin/${coinSearchTerm}`);
-		console.log(event.currentTarget);
-		console.log(this.searchInput.current.input);
-		// this.searchInput.current.input.value='';
-		// this.searchInput.current.input.value = '';
-
-		// Refresh the form
-		// event.currentTarget.reset();
-		this.clearInput();
+		// Redirect to Detail Coin view
+		this.props.history.push(`/coin/${coinSearchTerm}`);
+		
+		// clear the input field by clearing the value state
+		this.setState({value: ''})
 	};
 
 	render() {
@@ -143,16 +120,6 @@ class Header extends React.Component {
 							<Link to="/coins">Popular Coins</Link>
 						</li>
 					</ul>
-
-					{/* <form onSubmit={this.handleSearch}>
-						<input
-							type="text"
-							ref={this.searchInput}
-							required
-							placeholder="Coin Name"
-						/>
-						<button type="submit">Search</button>
-					</form> */}
 
 					<form onSubmit={this.handleSearch}>
 						<Autosuggest
