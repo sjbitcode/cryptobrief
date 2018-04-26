@@ -14,12 +14,16 @@ class App extends Component {
 
 		if (localStorageRef) {
 			// localstorage -> state
-			this.setState({coins: JSON.parse(localStorageRef)});
+			console.log('APP - going to set state');
+			console.log(JSON.parse(localStorageRef));
+			this.setState({ coins: JSON.parse(localStorageRef) });
 		};
 	};
 
 	componentDidUpdate() {
 		// state -> localstorage
+		console.log('App updated!');
+		console.log(this.state.coins);
 		localStorage.setItem('cryptobrief', JSON.stringify(this.state.coins));
 	};
 
@@ -62,7 +66,7 @@ class App extends Component {
 		return (
 			<div>
 				<Header addCoin={this.addCoin}/>
-				<Main coins={this.state.coins} updateCoin={this.updateCoin} removeCoin={this.removeCoin} />
+				<Main coins={this.state.coins} updateCoin={this.updateCoin} removeCoin={this.removeCoin} addCoin={this.addCoin} />
 			</div>
 		);
 	}

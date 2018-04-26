@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from 'react-dom';
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import Autosuggest from 'react-autosuggest';
@@ -103,6 +102,7 @@ class Header extends React.Component {
 		const inputProps = {
 			placeholder: 'Type a crypto-currency',
 			value,
+			required: true,
 			onChange: this.onChange
 		};
 

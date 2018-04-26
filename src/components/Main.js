@@ -11,11 +11,12 @@ class Main extends React.Component {
 	static propTypes = {
 		coins: PropTypes.object,
 		updateCoin: PropTypes.func,
+		addCoin: PropTypes.func,
 		removeCoin: PropTypes.func
 	};
 
 	render() {
-		const { coins, updateCoin, removeCoin } = this.props;
+		const { coins, updateCoin, addCoin, removeCoin } = this.props;
 
 		return (
 			<Switch>
@@ -32,7 +33,7 @@ class Main extends React.Component {
 
 				<Route
 					path="/coin/:coinname"
-					render={props => <DetailNews {...props} coins={coins} updateCoin={updateCoin} />}
+					render={props => <DetailNews {...props} coins={coins} updateCoin={updateCoin} addCoin={addCoin} />}
 				/>
 
 				<Route component={NotFound} />
