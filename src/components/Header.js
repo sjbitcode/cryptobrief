@@ -1,6 +1,6 @@
-import React from "react";
-import { Link, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
+import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Autosuggest from 'react-autosuggest';
 
 import coinList from '../coinList';
@@ -9,12 +9,12 @@ import { generateCoinData } from '../api/crypto-compare';
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
 const getSuggestions = value => {
-	const inputValue = value.trim().toLowerCase();
-	const inputLength = inputValue.length;
+  const inputValue = value.trim().toLowerCase();
+  const inputLength = inputValue.length;
 
-	return inputLength === 0 ? [] : coinList.filter(coinObj =>
-		coinObj.name.toLowerCase().slice(0, inputLength) === inputValue
-	);
+  return inputLength === 0 ? [] : coinList.filter(coinObj =>
+    coinObj.name.toLowerCase().slice(0, inputLength) === inputValue
+  );
 };
 
 // When suggestion is clicked, Autosuggest needs to populate the input
@@ -24,121 +24,121 @@ const getSuggestionValue = suggestion => suggestion.name;
 
 // Use your imagination to render suggestions.
 const renderSuggestion = suggestion => (
-	<div>
-		{suggestion.name}
-	</div>
+  <div>
+    {suggestion.name}
+  </div>
 );
 
 
 class Header extends React.Component {
-	
-	state = {
-		value: '',
-		suggestions: []
-	};
 
-	searchInput = React.createRef();
+  state = {
+    value: '',
+    suggestions: []
+  };
 
-	static propTypes = {
-		match: PropTypes.object.isRequired,
-		location: PropTypes.object.isRequired,
-		history: PropTypes.object.isRequired,
-		addCoin: PropTypes.func
-	};
+  searchInput = React.createRef();
 
-	onChange = (event, { newValue }) => {
-		this.setState({
-			value: newValue
-		});
-	};
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+    addCoin: PropTypes.func
+  };
 
-	// Autosuggest will call this function every time you need to update suggestions.
-	// You already implemented this logic above, so just use it.
-	onSuggestionsFetchRequested = ({ value }) => {
-		this.setState({
-			suggestions: getSuggestions(value)
-		});
-	};
+  onChange = (event, { newValue }) => {
+    this.setState({
+      value: newValue
+    });
+  };
 
-	// Autosuggest will call this function every time you need to clear suggestions.
-	onSuggestionsClearRequested = () => {
-		this.setState({
-			suggestions: []
-		});
-	};
+  // Autosuggest will call this function every time you need to update suggestions.
+  // You already implemented this logic above, so just use it.
+  onSuggestionsFetchRequested = ({ value }) => {
+    this.setState({
+      suggestions: getSuggestions(value)
+    });
+  };
 
-	handleSearch = event => {
-		event.preventDefault();
+  // Autosuggest will call this function every time you need to clear suggestions.
+  onSuggestionsClearRequested = () => {
+    this.setState({
+      suggestions: []
+    });
+  };
 
-		const coinName = this.searchInput.current.input.value
-		console.log(`Searched for ${coinName}`);
+  handleSearch = event => {
+    event.preventDefault();
 
-		// get id for cryptoname
-		let coinSearchTerm = '';
-		try {
-			const coinObj = coinList.find(obj => obj.name === coinName);
-			coinSearchTerm = coinObj.id;
-		}
-		catch(err) {
-			coinSearchTerm = coinName.trim().toLowerCase();
-		}
+    const coinName = this.searchInput.current.input.value
+    console.log(`Searched for ${coinName}`);
 
-		// Add coin
-		const coinData = generateCoinData(coinSearchTerm);
-		this.props.addCoin(coinData);
+    // get id for cryptoname
+    let coinSearchTerm = '';
+    try {
+      const coinObj = coinList.find(obj => obj.name === coinName);
+      coinSearchTerm = coinObj.id;
+    }
+    catch (err) {
+      coinSearchTerm = coinName.trim().toLowerCase();
+    }
 
-		// Redirect to Detail Coin view
-		this.props.history.push(`/coin/${coinSearchTerm}`);
-		
-		// clear the input field by clearing the value state
-		this.setState({value: ''})
-	};
+    // Add coin
+    const coinData = generateCoinData(coinSearchTerm);
+    this.props.addCoin(coinData);
 
-	render() {
-		const { location } = this.props;
-		const { value, suggestions } = this.state;
+    // Redirect to Detail Coin view
+    this.props.history.push(`/coin/${coinSearchTerm}`);
 
-		// Autosuggest will pass through all these props to the input.
-		const inputProps = {
-			placeholder: 'Type a crypto-currency',
-			value,
-			required: true,
-			onChange: this.onChange
-		};
+    // clear the input field by clearing the value state
+    this.setState({ value: '' })
+  };
 
-		return (
-			<div>
-				<nav>
-					<h2>
-						<Link to="/">Crypto Brief</Link>
-					</h2>
-					<ul>
-						<li>
-							<Link to="/">Front Page</Link>
-						</li>
-						<li>
-							<Link to="/coins">Popular Coins</Link>
-						</li>
-					</ul>
+  render() {
+    const { location } = this.props;
+    const { value, suggestions } = this.state;
 
-					<form onSubmit={this.handleSearch}>
-						<Autosuggest
-							suggestions={suggestions}
-							onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-							onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-							getSuggestionValue={getSuggestionValue}
-							renderSuggestion={renderSuggestion}
-							inputProps={inputProps}
-							ref={this.searchInput}
-						/>
-						<button type="submit">Search</button>
-					</form>
-				</nav>
+    // Autosuggest will pass through all these props to the input.
+    const inputProps = {
+      placeholder: 'Type a crypto-currency',
+      value,
+      required: true,
+      onChange: this.onChange
+    };
 
-				{location.pathname}
-			</div>
-		);
-	}
+    return (
+      <div>
+        <nav>
+          <h2>
+            <Link to="/">Crypto Brief</Link>
+          </h2>
+          <ul>
+            <li>
+              <Link to="/">Front Page</Link>
+            </li>
+            <li>
+              <Link to="/coins">Popular Coins</Link>
+            </li>
+          </ul>
+
+          <form onSubmit={this.handleSearch}>
+            <Autosuggest
+              suggestions={suggestions}
+              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+              getSuggestionValue={getSuggestionValue}
+              renderSuggestion={renderSuggestion}
+              inputProps={inputProps}
+              ref={this.searchInput}
+            />
+            <button type="submit">Search</button>
+          </form>
+        </nav>
+
+        {location.pathname}
+      </div>
+    );
+  }
 }
 
 export default withRouter(Header);
