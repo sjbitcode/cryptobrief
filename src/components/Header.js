@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Autosuggest from 'react-autosuggest';
 
 import coinList from '../coinList';
-import { generateCoinData } from '../api/crypto-compare';
+// import { generateCoinData, fetchCoinMarketCap } from '../api/crypto-compare';
 
 
 // React-Autosuggest
@@ -40,7 +40,8 @@ class Header extends React.Component {
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    addCoin: PropTypes.func
+    // addCoin: PropTypes.func,
+    addOrUpdateCoin: PropTypes.func
   };
 
   // React-Autosuggest
@@ -70,7 +71,7 @@ class Header extends React.Component {
     const coinName = this.searchInput.current.input.value
     console.log(`Searched for ${coinName}`);
 
-    // get id for cryptoname
+    // get id for cryptoname from coinList
     let coinSearchTerm = '';
     try {
       const coinObj = coinList.find(obj => obj.name === coinName);
@@ -81,14 +82,13 @@ class Header extends React.Component {
     }
 
     // Add coin
-    const coinData = generateCoinData(coinSearchTerm);
-    this.props.addCoin(coinData);
+    this.props.addOrUpdateCoin(coinSearchTerm, false);
 
     // Redirect to Detail Coin view
     this.props.history.push(`/coin/${coinSearchTerm}`);
 
     // clear the input field by clearing the value state
-    this.setState({ value: '' })
+    this.setState({ value: '' });
   };
 
   render() {

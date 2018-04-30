@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import RefreshCoin from './RefreshCoin';
-import { generateCoinData } from '../api/crypto-compare';
+// import { generateCoinData } from '../api/crypto-compare';
 
 
 class DetailNews extends React.Component {
@@ -14,7 +14,9 @@ class DetailNews extends React.Component {
     match: PropTypes.object,
     coins: PropTypes.object,
     updateCoin: PropTypes.func,
-    addCoin: PropTypes.func
+    addCoin: PropTypes.func,
+    addOrUpdateCoin: PropTypes.func,
+    coinDisplayName: PropTypes.string
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -22,8 +24,9 @@ class DetailNews extends React.Component {
     const coins = nextProps.coins;
 
     if (!coins[coinName]) {
-      const coinData = generateCoinData(coinName);
-      nextProps.addCoin(coinData);
+      // const coinData = generateCoinData(coinName);
+      // nextProps.addCoin(coinData);
+      nextProps.addOrUpdateCoin(coinName, true);
       return { newCoin: true };
     }
     else {
@@ -36,8 +39,18 @@ class DetailNews extends React.Component {
 
     return (
       <React.Fragment>
-        <p>Price: {this.props.coins[coinName].price}</p>
-        <p>News: {this.props.coins[coinName].news}</p>
+        <p>Price: {
+            this.props.coins[coinName].ticker_data ? (
+            this.props.coins[coinName].ticker_data.price_usd
+            ) : null
+          }
+        </p>
+        <p>News: {
+            this.props.coins[coinName].news_data ? (
+            this.props.coins[coinName].news_data.article_count
+            ) : null
+          }
+        </p>
       </React.Fragment>
     );
   };
