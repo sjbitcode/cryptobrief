@@ -7,14 +7,7 @@ const _getCoins = () => {
 
 export const getCoins = () => {
   return new Promise((resolve, reject) => {
-    // const quotes = fetch('http://nyse/ticker/aapl');
-    // if (quotes) {
-    //   resolve(quotes)
-    // } else {
-    //   reject(quotes)
-    // }
     resolve(_getCoins());
-    // reject({'message': 'omgwtf'})
   });
 }
 
@@ -26,6 +19,5 @@ const _setCoins = (data) => {
 export const setCoins = (data) => {
   return new Promise((resolve, reject) => {
     _setCoins(data);
-    // resolve();
   });
 }
