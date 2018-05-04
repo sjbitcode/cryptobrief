@@ -14,25 +14,26 @@ const getRandomInt = (min, max) => {
 export const generateCoinData = (coinName) => {
   return {
     name: coinName,
-    price: getRandomInt(20, 100),
-    news: `Some new things in store for ${coinName}`
+    price_usd: getRandomInt(20, 100)
   };
 };
 
 export const fetchCoinMarketCap = (coinName) => {
   return new Promise((resolve, reject) => {
-    axios
-    .get(`${COIN_MARKET_CAP}/${coinName}/`)
-    // .then(res => res.json())
-    .then(res => resolve(res))
-    .catch(err => reject(err))
+    // axios
+    // .get(`${COIN_MARKET_CAP}/${coinName}/`)
+    // .then(res => resolve(res))
+    // .catch(err => reject(err))
+    resolve(generateCoinData(coinName));
   });
 }
 
 export const fetchNewsApi = (coinName) => {
+  const article_count = getRandomInt(1, 10);
+
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve({article_count: 5, news_source: 'Google News'});
+      resolve({article_count: article_count, news_source: 'Google News'});
     }, 1500);
   })
 }
