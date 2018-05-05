@@ -75,10 +75,9 @@ class DetailNews extends React.Component {
 
     return (
       <div>
-        {/* <p>Detail page for {params.coinId}</p> */}
         {this.renderCoinInfoWrapper(params.coinId)}
         <RefreshCoin
-          coinName={params.coinId}
+          coinId={params.coinId}
           addOrUpdateCoin={addOrUpdateCoin}
         />
       </div>
