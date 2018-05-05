@@ -65,22 +65,63 @@ class App extends Component {
   setCoinNameProperty = (coinId, update) => {
     const coins = { ...this.state.coins };
 
-    if (!update) {
-      if (!coins[coinId]) {
-        coins[coinId] = {};
+    return new Promise((resolve, reject) => {
+      if (!update) {
+        if (!coins[coinId]) {
+          coins[coinId] = {};
+          console.log('In set coin name property, coin doesnt exist');
+          console.log(this.state.coins);
+          Object.defineProperty(coins[coinId], 'displayName', {
+            value: this.getCoinName(coinId),
+            writable: true,
+            enumerable: true,
+            configurable: true
+          });
+        }
+        else {
+          console.log('coin exists...');
+        }
+      }
 
-        Object.defineProperty(coins[coinId], 'displayName', {
-          value: this.getCoinName(coinId),
-          writable: true,
-          enumerable: true,
-          configurable: true
-        });
-      }
-      else {
-        console.log('coin exists...');
-      }
+      resolve(this.setState({ coins }));
+    });
+  };
+
+  toggleTickerDataLoading = (coinId, loading) => {
+    const coins = { ...this.state.coins };
+
+    if (!coins[coinId].tickerDataIsLoading) {
+      // coins[coinId] = {};
+      // console.log('In toggle tickerData, coin doesnt exist');
+      console.log(this.state.coins);
+      Object.defineProperty(coins[coinId], 'tickerDataIsLoading', {
+        value: false,
+        writable: true,
+        enumerable: true,
+        configurable: true
+      });
     }
 
+    coins[coinId].tickerDataIsLoading = loading;
+    this.setState({ coins });
+  };
+  
+  toggleNewsDataLoading = (coinId, loading) => {
+    const coins = { ...this.state.coins };
+    
+    if (!coins[coinId].newsDataIsLoading) {
+      // coins[coinId] = {};
+      // console.log('In toggle NewsData, coin doesnt exist');
+      console.log(this.state.coins);
+      Object.defineProperty(coins[coinId], 'newsDataIsLoading', {
+        value: false,
+        writable: true,
+        enumerable: true,
+        configurable: true
+      });
+    }
+    
+    coins[coinId].newsDataIsLoading = loading;
     this.setState({ coins });
   };
 
@@ -150,6 +191,7 @@ class App extends Component {
     /*
       Fetch api data and update the state with ticker data.
     */
+    this.toggleTickerDataLoading(coinId, true);
     fetchCoinMarketCap(coinId)
     .then(data => {
       this.addOrUpdateTickerData(coinId, data.data[0], update);
@@ -161,6 +203,7 @@ class App extends Component {
     /*
       Fetch api data and update the state with news data.
     */
+    this.toggleNewsDataLoading(coinId, true);
     fetchNewsApi(coinId)
     .then(data => {
       this.addOrUpdateNewsData(coinId, data, update);
@@ -172,9 +215,13 @@ class App extends Component {
     /*
       Wrapper function for ticker and news api fetch functions.
     */
-    this.setCoinNameProperty(coinId, update);
-    this.fetchTickerData(coinId, update);
-    this.fetchNewsData(coinId, update);
+    this.setCoinNameProperty(coinId, update)
+    .then(res => {
+      this.fetchTickerData(coinId, update);
+      this.fetchNewsData(coinId, update);
+    })
+    .catch(err => console.log(err));
+    
   };
 
   removeCoin = (coinName) => {
