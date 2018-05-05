@@ -27,11 +27,10 @@ class FrontPage extends React.Component {
                   <FrontPageCoin
                     key={key}
                     details={coins[key]}
-                    name={key}
                   />
                 </Link>
                 <button onClick={() => removeCoin(key)}>Remove coin from list</button>
-                <RefreshCoin addOrUpdateCoin={addOrUpdateCoin} coinName={key} />
+                <RefreshCoin addOrUpdateCoin={addOrUpdateCoin} coinId={key} />
               </div>
             ))}
           </ul>

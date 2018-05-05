@@ -16,11 +16,11 @@ class DetailNews extends React.Component {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const coinName = nextProps.match.params.coinname;
+    const coinId = nextProps.match.params.coinId;
     const coins = nextProps.coins;
 
-    if (!coins[coinName]) {
-      nextProps.addOrUpdateCoin(coinName, false);
+    if (!coins[coinId]) {
+      nextProps.addOrUpdateCoin(coinId, false);
       return { newCoin: true };
     }
     else {
@@ -28,26 +28,26 @@ class DetailNews extends React.Component {
     }
   }
 
-  renderCoinInfo = (coinName) => {
-    if (!this.props.coins[coinName]) { return null; }
+  renderCoinInfo = (coinId) => {
+    if (!this.props.coins[coinId]) { return null; }
 
     return (
       <React.Fragment>
         <p>Detail Page for {
-            this.props.coins[coinName].displayName ? (
-            this.props.coins[coinName].displayName
-            ) : this.props.match.params.coinname
+            this.props.coins[coinId].displayName ? (
+            this.props.coins[coinId].displayName
+            ) : this.props.match.params.coinId
           }
         </p>
         <p>Price: {
-            this.props.coins[coinName].ticker_data ? (
-            this.props.coins[coinName].ticker_data.price_usd
+            this.props.coins[coinId].ticker_data ? (
+            this.props.coins[coinId].ticker_data.price_usd
             ) : null
           }
         </p>
         <p>News: {
-            this.props.coins[coinName].news_data ? (
-            this.props.coins[coinName].news_data.article_count
+            this.props.coins[coinId].news_data ? (
+            this.props.coins[coinId].news_data.article_count
             ) : null
           }
         </p>
@@ -55,16 +55,16 @@ class DetailNews extends React.Component {
     );
   };
 
-  renderCoinInfoWrapper = (coinName) => {
+  renderCoinInfoWrapper = (coinId) => {
 
     return (
       <React.Fragment>
         {
           this.state.newCoin ? (
-            <i>Adding {coinName} to your list!</i>
+            <i>Adding {coinId} to your list!</i>
           ) : null
         }
-        {this.renderCoinInfo(coinName)}
+        {this.renderCoinInfo(coinId)}
       </React.Fragment>
     );
   };
@@ -75,10 +75,10 @@ class DetailNews extends React.Component {
 
     return (
       <div>
-        {/* <p>Detail page for {params.coinname}</p> */}
-        {this.renderCoinInfoWrapper(params.coinname)}
+        {/* <p>Detail page for {params.coinId}</p> */}
+        {this.renderCoinInfoWrapper(params.coinId)}
         <RefreshCoin
-          coinName={params.coinname}
+          coinName={params.coinId}
           addOrUpdateCoin={addOrUpdateCoin}
         />
       </div>

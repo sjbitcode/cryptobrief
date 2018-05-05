@@ -20,7 +20,6 @@ export const generateCoinData = (coinName) => {
 
 export const fetchCoinMarketCap = (coinName) => {
   return new Promise((resolve, reject) => {
-    console.log('FETCH COINMARKETCAP');
     axios
     .get(`${COIN_MARKET_CAP}/${coinName}/`)
     .then(res => resolve(res))
@@ -33,7 +32,6 @@ export const fetchNewsApi = (coinName) => {
 
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      console.log('FETCH NEWSAPI');
       resolve({article_count: article_count, news_source: 'Google News'});
     }, 1500);
   })

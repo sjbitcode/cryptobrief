@@ -22,7 +22,7 @@ const Main = ({ coins, addOrUpdateCoin, removeCoin }) => (
     />
 
     <Route
-      path="/coin/:coinname"
+      path="/coin/:coinId"
       render={props => <DetailNews {...props} coins={coins} addOrUpdateCoin={addOrUpdateCoin} />}
     />
 

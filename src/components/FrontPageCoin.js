@@ -9,7 +9,7 @@ class FrontPageCoin extends React.Component {
   };
 
   render() {
-    const { name, details } = this.props;
+    const { details } = this.props;
 
     return (
       <div>

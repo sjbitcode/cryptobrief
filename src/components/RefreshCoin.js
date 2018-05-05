@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 class RefreshCoin extends React.Component {
   static propTypes = {
     addOrUpdateCoin: PropTypes.func.isRequired,
-    coinName: PropTypes.string.isRequired
+    coinId: PropTypes.string.isRequired
   };
 
   refreshData = event => {
     event.preventDefault();
-    this.props.addOrUpdateCoin(this.props.coinName, true);
+    this.props.addOrUpdateCoin(this.props.coinId, true);
   };
 
   render() {

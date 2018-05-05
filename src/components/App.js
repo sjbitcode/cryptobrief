@@ -152,7 +152,6 @@ class App extends Component {
     */
     fetchCoinMarketCap(coinId)
     .then(data => {
-      console.log(data);
       this.addOrUpdateTickerData(coinId, data.data[0], update);
     })
     .catch(err => console.log(err));
@@ -164,7 +163,6 @@ class App extends Component {
     */
     fetchNewsApi(coinId)
     .then(data => {
-      console.log(data);
       this.addOrUpdateNewsData(coinId, data, update);
     })
     .catch(err => console.log(err));
