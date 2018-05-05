@@ -10,29 +10,42 @@ import { fetchCoinMarketCap, fetchNewsApi } from '../api/crypto-compare';
 
 class App extends Component {
   state = {
-    /*
-      {
-        bitcoin: {ticker_data: {}, news_data: {}},
-        ethereum: {ticker_data: {}, news_data: {}},
-        ....
-      }
-    */
    coins: {}
   };
 
+  coinTemplate = {
+    displayName: '',
+    newsDataIsLoading: false,
+    news_data: {},
+    tickerDataIsLoading: false,
+    ticker_data: {},
+  }
+
   componentDidMount() {
+    /* 
+      Set state from localStorage.
+    */
+
     getCoins()
       .then((data) => { this.setState({ coins: data }); })
       .catch((data) => { console.error('!oops err ', data); });
   };
 
   componentDidUpdate() {
-    setCoins(this.state.coins);
+    /*
+      Update localStorage with state.
+    */
+
+   setCoins(this.state.coins);
   };
 
   getCoinId = (coinName) => {
-    let coinId = '';
+    /*
+      Given a coin name, search for the corresponding
+      coin's id from a list of coin objects.
+    */
 
+    let coinId = '';
     try {
       const coinObj = coinList.find(obj => obj.name === coinName);
       coinId = coinObj.id;
@@ -40,13 +53,16 @@ class App extends Component {
     catch (err) {
       coinId = coinName.trim().toLowerCase();
     }
-
     return coinId;
   };
 
   getCoinName = (coinId) => {
-    let coinDisplayName = '';
+    /* 
+      Given a coin id, search for the corresponding
+      coin's name from a list of coin objects.
+    */
 
+    let coinDisplayName = '';
     try {
       const coinObj = coinList.find(obj => obj.id === coinId);
       coinDisplayName = coinObj.name;
@@ -58,139 +74,85 @@ class App extends Component {
                         .split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1))
                         .join(' ');
     }
-
     return coinDisplayName;
   };
 
-  setCoinNameProperty = (coinId, update) => {
-    const coins = { ...this.state.coins };
+  ensureCoinProperty = (coinId, propertyName, propertyValue) => {
+    /*
+      This function ensures that an object exists for a given coin id.
+      It then sets the given property on the coinId object.
+    */
 
-    return new Promise((resolve, reject) => {
-      if (!update) {
-        if (!coins[coinId]) {
-          coins[coinId] = {};
-          console.log('In set coin name property, coin doesnt exist');
-          console.log(this.state.coins);
-          Object.defineProperty(coins[coinId], 'displayName', {
-            value: this.getCoinName(coinId),
-            writable: true,
-            enumerable: true,
-            configurable: true
-          });
-        }
-        else {
-          console.log('coin exists...');
+    let { coins } = this.state;
+    if (!coins[coinId]) {
+      coins[coinId] = { ...this.coinTemplate };
+    }
+
+    this.setState({
+      coins: {
+        ...coins,
+        [coinId]: {
+          ...coins[coinId],
+          [propertyName]: propertyValue,
         }
       }
+    });
+  }
 
-      resolve(this.setState({ coins }));
+  setCoinDisplayName = (coinId, update) => {
+    /*
+      Given a coin id, return a promise that
+      sets the display name if not updating.
+    */
+
+    return new Promise((resolve, reject) => {
+      if (update) {
+        return resolve();
+      }
+      this.ensureCoinProperty(coinId, 'displayName', this.getCoinName(coinId));
+      resolve();
     });
   };
 
   toggleTickerDataLoading = (coinId, loading) => {
-    const coins = { ...this.state.coins };
+    /*
+      Given a coin id, toggle the 'tickerDataIsLoading' property.
+    */
 
-    if (!coins[coinId].tickerDataIsLoading) {
-      // coins[coinId] = {};
-      // console.log('In toggle tickerData, coin doesnt exist');
-      console.log(this.state.coins);
-      Object.defineProperty(coins[coinId], 'tickerDataIsLoading', {
-        value: false,
-        writable: true,
-        enumerable: true,
-        configurable: true
-      });
-    }
-
-    coins[coinId].tickerDataIsLoading = loading;
-    this.setState({ coins });
+    this.ensureCoinProperty(coinId, 'tickerDataIsLoading', loading);
   };
   
   toggleNewsDataLoading = (coinId, loading) => {
-    const coins = { ...this.state.coins };
-    
-    if (!coins[coinId].newsDataIsLoading) {
-      // coins[coinId] = {};
-      // console.log('In toggle NewsData, coin doesnt exist');
-      console.log(this.state.coins);
-      Object.defineProperty(coins[coinId], 'newsDataIsLoading', {
-        value: false,
-        writable: true,
-        enumerable: true,
-        configurable: true
-      });
-    }
-    
-    coins[coinId].newsDataIsLoading = loading;
-    this.setState({ coins });
+    /*
+      Given a coin id, toggle the 'newsDataIsLoading' property.
+    */
+
+    this.ensureCoinProperty(coinId, 'newsDataIsLoading', loading);
   };
 
   addOrUpdateTickerData = (coinId, tickerData, update) => {
     /*
-      Given a coin, some data, and an update flag,
-      add or update the coins state with ticker data
-      for an existing or newly added coin.
+      Given a coin id, update the ticker data information for a specific coin id.
     */
-    const coins = { ...this.state.coins };
 
-    // If we want to add new coin (don't update),
-    // create new property in state and
-    // define new property for ticker data.
-    if (!update) {
-      if (!coins[coinId]) {
-        coins[coinId] = {};
-
-        Object.defineProperty(coins[coinId], 'ticker_data', {
-          value: {},
-          writable: true,
-          enumerable: true,
-          configurable: true
-        });
-      }
-      else {
-        console.log('coin exists...');
-      }
-    }
-    coins[coinId]['ticker_data'] = tickerData;
-    // Update state
-    this.setState({ coins });
+    this.ensureCoinProperty(coinId, 'ticker_data', tickerData);
   };
 
   addOrUpdateNewsData = (coinId, newsData, update) => {
     /*
-      Given a coin, some data, and an update flag,
-      add or update the coins state with news data
-      for an existing or newly added coin.
+      Given a coin id, update the news data information for a specific coin id.
     */
-    const coins = { ...this.state.coins };
 
-    // If we want to add new coin (don't update),
-    // create new property in state and
-    // define new property for news data.
-    if (!update) {
-      if (!coins[coinId]) {
-        coins[coinId] = {};
-
-        Object.defineProperty(coins[coinId], 'news_data', {
-          value: {},
-          writable: true,
-          enumerable: true,
-          configurable: true
-        });
-      }
-      else {
-        console.log('coin exists...');
-      }
-    }
-    coins[coinId]['news_data'] = newsData;
-    // Update coin's news_data property to data passed in.
-    this.setState({ coins });
+    this.ensureCoinProperty(coinId, 'news_data', newsData);
   };
 
   fetchTickerData = (coinId, update) => {
     /*
-      Fetch api data and update the state with ticker data.
+      Given a coin id,
+      toggle loading value and 
+      and add or update coin with ticker data.
     */
+
     this.toggleTickerDataLoading(coinId, true);
     fetchCoinMarketCap(coinId)
     .then(data => {
@@ -201,30 +163,42 @@ class App extends Component {
 
   fetchNewsData = (coinId, update) => {
     /*
-      Fetch api data and update the state with news data.
+      Given a coin id,
+      toggle loading value and
+      and add or update coin with news data.
     */
+
     this.toggleNewsDataLoading(coinId, true);
     fetchNewsApi(coinId)
     .then(data => {
       this.addOrUpdateNewsData(coinId, data, update);
     })
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
   };
 
   addOrUpdateCoin = (coinId, update=true) => {
     /*
-      Wrapper function for ticker and news api fetch functions.
+      Given a coin id,
+      add or update the coin to state.
+
+      Set display name, and fetch and store
+      data from api's.
     */
-    this.setCoinNameProperty(coinId, update)
+
+    this.setCoinDisplayName(coinId, update)
     .then(res => {
       this.fetchTickerData(coinId, update);
       this.fetchNewsData(coinId, update);
     })
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
     
   };
 
   removeCoin = (coinName) => {
+    /*
+      Remove a coin from state.
+    */
+
     const coins = { ...this.state.coins };
     delete coins[coinName];
     this.setState({ coins });

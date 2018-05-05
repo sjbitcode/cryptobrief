@@ -33,6 +33,7 @@ class Header extends React.Component {
     suggestions: []
   };
 
+  // Ref for React-Autosuggest
   searchInput = React.createRef();
 
   static propTypes = {
@@ -43,21 +44,21 @@ class Header extends React.Component {
     addOrUpdateCoin: PropTypes.func.isRequired
   };
 
-  // React-Autosuggest
+  // React-Autosuggest method
   onChange = (event, { newValue }) => {
     this.setState({
       value: newValue
     });
   };
 
-  // React-Autosuggest
+  // React-Autosuggest method
   onSuggestionsFetchRequested = ({ value }) => {
     this.setState({
       suggestions: getSuggestions(value)
     });
   };
 
-  // React-Autosuggest
+  // React-Autosuggest method
   onSuggestionsClearRequested = () => {
     this.setState({
       suggestions: []
@@ -65,6 +66,12 @@ class Header extends React.Component {
   };
 
   handleSearch = event => {
+    /*
+      When form is submitted,
+      redirect to detail coin view and
+      clear input field.
+    */
+
     event.preventDefault();
 
     const coinName = this.searchInput.current.input.value
