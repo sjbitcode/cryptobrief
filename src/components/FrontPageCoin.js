@@ -13,7 +13,7 @@ class FrontPageCoin extends React.Component {
 
     return (
       <div>
-        <h3>{name}</h3>
+        <h3>{details.displayName}</h3>
         <p>{details.price}</p>
         <p>{details.news}</p>
       </div>

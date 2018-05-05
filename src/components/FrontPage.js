@@ -8,20 +8,13 @@ import RefreshCoin from './RefreshCoin';
 
 class FrontPage extends React.Component {
   static propTypes = {
-    coins: PropTypes.object,
-    updateCoin: PropTypes.func,
-    removeCoin: PropTypes.func,
-    addOrUpdateCoin: PropTypes.func
-  };
-
-  renderRemoveButton = (coinName) => {
-    if (!['bitcoin', 'ethereum', 'ripple'].includes(coinName)) {
-      return <button onClick={() => this.props.removeCoin(coinName)}>Remove coin from list</button>
-    }
+    coins: PropTypes.object.isRequired,
+    removeCoin: PropTypes.func.isRequired,
+    addOrUpdateCoin: PropTypes.func.isRequired
   };
 
   renderFrontPageCoins = () => {
-    const { coins, updateCoin, addOrUpdateCoin } = this.props;
+    const { coins, removeCoin, addOrUpdateCoin } = this.props;
 
     if (Object.keys(coins).length) {
       return (
@@ -37,8 +30,8 @@ class FrontPage extends React.Component {
                     name={key}
                   />
                 </Link>
-                <button onClick={() => this.props.removeCoin(key)}>Remove coin from list</button>
-                <RefreshCoin updateCoin={updateCoin} addOrUpdateCoin={addOrUpdateCoin} coinName={key} />
+                <button onClick={() => removeCoin(key)}>Remove coin from list</button>
+                <RefreshCoin addOrUpdateCoin={addOrUpdateCoin} coinName={key} />
               </div>
             ))}
           </ul>

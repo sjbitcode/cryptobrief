@@ -20,12 +20,11 @@ export const generateCoinData = (coinName) => {
 
 export const fetchCoinMarketCap = (coinName) => {
   return new Promise((resolve, reject) => {
-    console.log('CALLING COINMARKETCAP');
+    console.log('FETCH COINMARKETCAP');
     axios
     .get(`${COIN_MARKET_CAP}/${coinName}/`)
     .then(res => resolve(res))
     .catch(err => reject(err))
-    // resolve(generateCoinData(coinName));
   });
 }
 
@@ -33,8 +32,8 @@ export const fetchNewsApi = (coinName) => {
   const article_count = getRandomInt(1, 10);
 
   return new Promise((resolve, reject) => {
-    console.log('CALLING NEWSAPI');
     setTimeout(() => {
+      console.log('FETCH NEWSAPI');
       resolve({article_count: article_count, news_source: 'Google News'});
     }, 1500);
   })

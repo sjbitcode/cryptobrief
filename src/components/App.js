@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Main from './Main';
 
+import coinList from '../coinList';
 import { getCoins, setCoins } from '../helpers/localCoins';
 import { fetchCoinMarketCap, fetchNewsApi } from '../api/crypto-compare';
 
@@ -22,15 +23,65 @@ class App extends Component {
   componentDidMount() {
     getCoins()
       .then((data) => { this.setState({ coins: data }); })
-      // .then(() => console.log('set state with localstorage'))
       .catch((data) => { console.error('!oops err ', data); });
   };
 
   componentDidUpdate() {
-    // console.log('Component Did Update....');
-    // console.log(this.state.coins);
     setCoins(this.state.coins);
-    // localStorage.setItem('coins', JSON.stringify(this.state.coins));
+  };
+
+  getCoinId = (coinName) => {
+    let coinId = '';
+
+    try {
+      const coinObj = coinList.find(obj => obj.name === coinName);
+      coinId = coinObj.id;
+    }
+    catch (err) {
+      coinId = coinName.trim().toLowerCase();
+    }
+
+    return coinId;
+  };
+
+  getCoinName = (coinId) => {
+    let coinDisplayName = '';
+
+    try {
+      const coinObj = coinList.find(obj => obj.id === coinId);
+      coinDisplayName = coinObj.name;
+    }
+    catch (err) {
+      coinDisplayName = coinId
+                        .trim()
+                        .toLowerCase()
+                        .split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(' ');
+    }
+
+    return coinDisplayName;
+  };
+
+  setCoinNameProperty = (coinId, update) => {
+    const coins = { ...this.state.coins };
+
+    if (!update) {
+      if (!coins[coinId]) {
+        coins[coinId] = {};
+
+        Object.defineProperty(coins[coinId], 'displayName', {
+          value: this.getCoinName(coinId),
+          writable: true,
+          enumerable: true,
+          configurable: true
+        });
+      }
+      else {
+        console.log('coin exists...');
+      }
+    }
+
+    this.setState({ coins });
   };
 
   addOrUpdateTickerData = (coinId, tickerData, update) => {
@@ -39,10 +90,7 @@ class App extends Component {
       add or update the coins state with ticker data
       for an existing or newly added coin.
     */
-    // console.log('GOING TO UPDATE TICKER DATA');
-    // console.log(this.state.coins);
-    // Take a copy of state.
-    let coins = { ...this.state.coins };
+    const coins = { ...this.state.coins };
 
     // If we want to add new coin (don't update),
     // create new property in state and
@@ -60,17 +108,9 @@ class App extends Component {
       }
       else {
         console.log('coin exists...');
-        // return;
       }
-      // Object.defineProperty(coins[coinId], 'ticker_data', {
-      //   value: {},
-      //   writable: true,
-      //   enumerable: true,
-      //   configurable: true
-      // });
     }
     coins[coinId]['ticker_data'] = tickerData;
-    // console.log(coins[coinId].ticker_data);
     // Update state
     this.setState({ coins });
   };
@@ -81,11 +121,7 @@ class App extends Component {
       add or update the coins state with news data
       for an existing or newly added coin.
     */
-
-    // Take a copy of state
-    // console.log('GOING TO UPDATE NEWS DATA');
-    // console.log(this.state.coins);
-    let coins = { ...this.state.coins };
+    const coins = { ...this.state.coins };
 
     // If we want to add new coin (don't update),
     // create new property in state and
@@ -103,17 +139,9 @@ class App extends Component {
       }
       else {
         console.log('coin exists...');
-        // return;
       }
-      // Object.defineProperty(coins[coinId], 'news_data', {
-      //   value: {},
-      //   writable: true,
-      //   enumerable: true,
-      //   configurable: true
-      // });
     }
     coins[coinId]['news_data'] = newsData;
-    // console.log(coins[coinId].news_data);
     // Update coin's news_data property to data passed in.
     this.setState({ coins });
   };
@@ -124,8 +152,8 @@ class App extends Component {
     */
     fetchCoinMarketCap(coinId)
     .then(data => {
+      console.log(data);
       this.addOrUpdateTickerData(coinId, data.data[0], update);
-      // this.addOrUpdateTickerData(coinId, data, update);
     })
     .catch(err => console.log(err));
   };
@@ -146,6 +174,7 @@ class App extends Component {
     /*
       Wrapper function for ticker and news api fetch functions.
     */
+    this.setCoinNameProperty(coinId, update);
     this.fetchTickerData(coinId, update);
     this.fetchNewsData(coinId, update);
   };
@@ -156,16 +185,11 @@ class App extends Component {
     this.setState({ coins });
   };
 
-  getEth = () => {
-    this.addOrUpdateCoin('ethereum', false);
-  };
-
   render() {
     return (
       <div>
-        <Header addCoin={this.addCoin} addOrUpdateCoin={this.addOrUpdateCoin}/>
-        <Main coins={this.state.coins} updateCoin={this.updateCoin} removeCoin={this.removeCoin} addCoin={this.addCoin} addOrUpdateCoin={this.addOrUpdateCoin} />
-        <button onClick={this.getEth}>Ethereum data</button>
+        <Header getCoinId={this.getCoinId} addOrUpdateCoin={this.addOrUpdateCoin}/>
+        <Main coins={this.state.coins} removeCoin={this.removeCoin} addOrUpdateCoin={this.addOrUpdateCoin} />
       </div>
     );
   }

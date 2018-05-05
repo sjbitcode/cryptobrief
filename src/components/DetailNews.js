@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import RefreshCoin from './RefreshCoin';
-// import { generateCoinData } from '../api/crypto-compare';
 
 
 class DetailNews extends React.Component {
@@ -13,22 +12,14 @@ class DetailNews extends React.Component {
   static propTypes = {
     match: PropTypes.object,
     coins: PropTypes.object,
-    updateCoin: PropTypes.func,
-    addCoin: PropTypes.func,
-    addOrUpdateCoin: PropTypes.func,
-    coinDisplayName: PropTypes.string
+    addOrUpdateCoin: PropTypes.func
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const coinName = nextProps.match.params.coinname;
     const coins = nextProps.coins;
 
-    console.log('DETAIL NEW COINS');
-    console.log(coins);
-
     if (!coins[coinName]) {
-      // const coinData = generateCoinData(coinName);
-      // nextProps.addCoin(coinData);
       nextProps.addOrUpdateCoin(coinName, false);
       return { newCoin: true };
     }
@@ -42,6 +33,12 @@ class DetailNews extends React.Component {
 
     return (
       <React.Fragment>
+        <p>Detail Page for {
+            this.props.coins[coinName].displayName ? (
+            this.props.coins[coinName].displayName
+            ) : this.props.match.params.coinname
+          }
+        </p>
         <p>Price: {
             this.props.coins[coinName].ticker_data ? (
             this.props.coins[coinName].ticker_data.price_usd
@@ -74,14 +71,13 @@ class DetailNews extends React.Component {
 
   render() {
     const { params } = this.props.match;
-    const { updateCoin, addOrUpdateCoin } = this.props;
+    const { addOrUpdateCoin } = this.props;
 
     return (
       <div>
-        <p>Detail page for {params.coinname}</p>
+        {/* <p>Detail page for {params.coinname}</p> */}
         {this.renderCoinInfoWrapper(params.coinname)}
         <RefreshCoin
-          updateCoin={updateCoin}
           coinName={params.coinname}
           addOrUpdateCoin={addOrUpdateCoin}
         />
