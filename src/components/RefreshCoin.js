@@ -13,8 +13,9 @@ class RefreshCoin extends React.Component {
   refreshData = event => {
     event.preventDefault();
 
-    const coinData = generateCoinData(this.props.coinName);
-    this.props.updateCoin(coinData);
+    // const coinData = generateCoinData(this.props.coinName);
+    // this.props.updateCoin(coinData);
+    this.props.addOrUpdateCoin(this.props.coinName, true);
   };
 
   render() {

@@ -22,14 +22,15 @@ class App extends Component {
   componentDidMount() {
     getCoins()
       .then((data) => { this.setState({ coins: data }); })
+      // .then(() => console.log('set state with localstorage'))
       .catch((data) => { console.error('!oops err ', data); });
   };
 
   componentDidUpdate() {
-    console.log('Component Did Update....');
-    console.log(this.state.coins);
-    // setCoins(this.state.coins);
-    localStorage.setItem('coins', JSON.stringify(this.state.coins));
+    // console.log('Component Did Update....');
+    // console.log(this.state.coins);
+    setCoins(this.state.coins);
+    // localStorage.setItem('coins', JSON.stringify(this.state.coins));
   };
 
   addOrUpdateTickerData = (coinId, tickerData, update) => {
@@ -38,8 +39,8 @@ class App extends Component {
       add or update the coins state with ticker data
       for an existing or newly added coin.
     */
-    console.log('GOING TO UPDATE TICKER DATA');
-    console.log(this.state.coins);
+    // console.log('GOING TO UPDATE TICKER DATA');
+    // console.log(this.state.coins);
     // Take a copy of state.
     let coins = { ...this.state.coins };
 
@@ -49,20 +50,27 @@ class App extends Component {
     if (!update) {
       if (!coins[coinId]) {
         coins[coinId] = {};
+
+        Object.defineProperty(coins[coinId], 'ticker_data', {
+          value: {},
+          writable: true,
+          enumerable: true,
+          configurable: true
+        });
       }
       else {
         console.log('coin exists...');
-        return;
+        // return;
       }
-      Object.defineProperty(coins[coinId], 'ticker_data', {
-        value: {},
-        writable: true,
-        enumerable: true,
-        configurable: true
-      });
+      // Object.defineProperty(coins[coinId], 'ticker_data', {
+      //   value: {},
+      //   writable: true,
+      //   enumerable: true,
+      //   configurable: true
+      // });
     }
     coins[coinId]['ticker_data'] = tickerData;
-    console.log(coins[coinId].ticker_data);
+    // console.log(coins[coinId].ticker_data);
     // Update state
     this.setState({ coins });
   };
@@ -75,8 +83,8 @@ class App extends Component {
     */
 
     // Take a copy of state
-    console.log('GOING TO UPDATE NEWS DATA');
-    console.log(this.state.coins);
+    // console.log('GOING TO UPDATE NEWS DATA');
+    // console.log(this.state.coins);
     let coins = { ...this.state.coins };
 
     // If we want to add new coin (don't update),
@@ -85,20 +93,27 @@ class App extends Component {
     if (!update) {
       if (!coins[coinId]) {
         coins[coinId] = {};
+
+        Object.defineProperty(coins[coinId], 'news_data', {
+          value: {},
+          writable: true,
+          enumerable: true,
+          configurable: true
+        });
       }
       else {
         console.log('coin exists...');
-        return;
+        // return;
       }
-      Object.defineProperty(coins[coinId], 'news_data', {
-        value: {},
-        writable: true,
-        enumerable: true,
-        configurable: true
-      });
+      // Object.defineProperty(coins[coinId], 'news_data', {
+      //   value: {},
+      //   writable: true,
+      //   enumerable: true,
+      //   configurable: true
+      // });
     }
     coins[coinId]['news_data'] = newsData;
-    console.log(coins[coinId].news_data);
+    // console.log(coins[coinId].news_data);
     // Update coin's news_data property to data passed in.
     this.setState({ coins });
   };
@@ -109,8 +124,8 @@ class App extends Component {
     */
     fetchCoinMarketCap(coinId)
     .then(data => {
-      // this.addOrUpdateTickerData(coinId, data.data[0], update);
-      this.addOrUpdateTickerData(coinId, data, update);
+      this.addOrUpdateTickerData(coinId, data.data[0], update);
+      // this.addOrUpdateTickerData(coinId, data, update);
     })
     .catch(err => console.log(err));
   };
@@ -121,6 +136,7 @@ class App extends Component {
     */
     fetchNewsApi(coinId)
     .then(data => {
+      console.log(data);
       this.addOrUpdateNewsData(coinId, data, update);
     })
     .catch(err => console.log(err));

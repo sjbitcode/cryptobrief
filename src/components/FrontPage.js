@@ -10,7 +10,8 @@ class FrontPage extends React.Component {
   static propTypes = {
     coins: PropTypes.object,
     updateCoin: PropTypes.func,
-    removeCoin: PropTypes.func
+    removeCoin: PropTypes.func,
+    addOrUpdateCoin: PropTypes.func
   };
 
   renderRemoveButton = (coinName) => {
@@ -20,7 +21,7 @@ class FrontPage extends React.Component {
   };
 
   renderFrontPageCoins = () => {
-    const { coins, updateCoin } = this.props;
+    const { coins, updateCoin, addOrUpdateCoin } = this.props;
 
     if (Object.keys(coins).length) {
       return (
@@ -37,7 +38,7 @@ class FrontPage extends React.Component {
                   />
                 </Link>
                 <button onClick={() => this.props.removeCoin(key)}>Remove coin from list</button>
-                <RefreshCoin updateCoin={updateCoin} coinName={key} />
+                <RefreshCoin updateCoin={updateCoin} addOrUpdateCoin={addOrUpdateCoin} coinName={key} />
               </div>
             ))}
           </ul>

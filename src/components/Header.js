@@ -82,7 +82,7 @@ class Header extends React.Component {
     }
 
     // Add coin
-    this.props.addOrUpdateCoin(coinSearchTerm, false);
+    // this.props.addOrUpdateCoin(coinSearchTerm, false);
 
     // Redirect to Detail Coin view
     this.props.history.push(`/coin/${coinSearchTerm}`);

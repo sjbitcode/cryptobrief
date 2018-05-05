@@ -20,11 +20,12 @@ export const generateCoinData = (coinName) => {
 
 export const fetchCoinMarketCap = (coinName) => {
   return new Promise((resolve, reject) => {
-    // axios
-    // .get(`${COIN_MARKET_CAP}/${coinName}/`)
-    // .then(res => resolve(res))
-    // .catch(err => reject(err))
-    resolve(generateCoinData(coinName));
+    console.log('CALLING COINMARKETCAP');
+    axios
+    .get(`${COIN_MARKET_CAP}/${coinName}/`)
+    .then(res => resolve(res))
+    .catch(err => reject(err))
+    // resolve(generateCoinData(coinName));
   });
 }
 
@@ -32,6 +33,7 @@ export const fetchNewsApi = (coinName) => {
   const article_count = getRandomInt(1, 10);
 
   return new Promise((resolve, reject) => {
+    console.log('CALLING NEWSAPI');
     setTimeout(() => {
       resolve({article_count: article_count, news_source: 'Google News'});
     }, 1500);

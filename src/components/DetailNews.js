@@ -23,10 +23,13 @@ class DetailNews extends React.Component {
     const coinName = nextProps.match.params.coinname;
     const coins = nextProps.coins;
 
+    console.log('DETAIL NEW COINS');
+    console.log(coins);
+
     if (!coins[coinName]) {
       // const coinData = generateCoinData(coinName);
       // nextProps.addCoin(coinData);
-      nextProps.addOrUpdateCoin(coinName, true);
+      nextProps.addOrUpdateCoin(coinName, false);
       return { newCoin: true };
     }
     else {
@@ -56,6 +59,7 @@ class DetailNews extends React.Component {
   };
 
   renderCoinInfoWrapper = (coinName) => {
+
     return (
       <React.Fragment>
         {
@@ -70,7 +74,7 @@ class DetailNews extends React.Component {
 
   render() {
     const { params } = this.props.match;
-    const { updateCoin } = this.props;
+    const { updateCoin, addOrUpdateCoin } = this.props;
 
     return (
       <div>
@@ -79,6 +83,7 @@ class DetailNews extends React.Component {
         <RefreshCoin
           updateCoin={updateCoin}
           coinName={params.coinname}
+          addOrUpdateCoin={addOrUpdateCoin}
         />
       </div>
     );
