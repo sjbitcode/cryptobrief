@@ -8,7 +8,7 @@ import FrontPage from './FrontPage';
 import NotFound from './NotFound';
 
 
-const Main = ({ coins, addOrUpdateCoin, removeCoin }) => (
+const Main = ({ coins, addOrUpdateCoin, removeCoin, getCoinName }) => (
   <Switch>
     <Route
       exact
@@ -18,12 +18,12 @@ const Main = ({ coins, addOrUpdateCoin, removeCoin }) => (
 
     <Route
       path="/coins"
-      render={props => <Coins coins={coins} />}
+      render={props => <Coins coins={coins} addOrUpdateCoin={addOrUpdateCoin} />}
     />
 
     <Route
       path="/coin/:coinId"
-      render={props => <DetailNews {...props} coins={coins} addOrUpdateCoin={addOrUpdateCoin} />}
+      render={props => <DetailNews {...props} coins={coins} getCoinName={getCoinName} addOrUpdateCoin={addOrUpdateCoin} />}
     />
 
     <Route component={NotFound} />
@@ -32,7 +32,9 @@ const Main = ({ coins, addOrUpdateCoin, removeCoin }) => (
 
 Main.propTypes = {
   coins: PropTypes.object.isRequired,
-  addOrUpdateCoin: PropTypes.func.isRequired
+  addOrUpdateCoin: PropTypes.func.isRequired,
+  removeCoin: PropTypes.func.isRequired,
+  getCoinName: PropTypes.func.isRequired
 };
 
 export default Main;

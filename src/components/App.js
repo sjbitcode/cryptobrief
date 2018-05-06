@@ -207,8 +207,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header getCoinId={this.getCoinId} addOrUpdateCoin={this.addOrUpdateCoin}/>
-        <Main coins={this.state.coins} removeCoin={this.removeCoin} addOrUpdateCoin={this.addOrUpdateCoin} />
+        <Header coins={this.state.coins} getCoinId={this.getCoinId} addOrUpdateCoin={this.addOrUpdateCoin}/>
+        <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
       </div>
     );
   }

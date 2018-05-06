@@ -10,9 +10,10 @@ class DetailNews extends React.Component {
   };
 
   static propTypes = {
-    match: PropTypes.object,
-    coins: PropTypes.object,
-    addOrUpdateCoin: PropTypes.func
+    match: PropTypes.object.isRequired,
+    coins: PropTypes.object.isRequired,
+    getCoinName: PropTypes.func.isRequired,
+    addOrUpdateCoin: PropTypes.func.isRequired
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -20,16 +21,27 @@ class DetailNews extends React.Component {
     const coins = nextProps.coins;
 
     if (!coins[coinId]) {
-      nextProps.addOrUpdateCoin(coinId, false);
       return { newCoin: true };
     }
     else {
-      return null;
+      return { newCoin: false };
     }
-  }
+  };
+
+  handleNewCoinSearch(event, coinId) {
+    /*
+      Add new coin.
+    */
+
+    event.preventDefault();
+    this.props.addOrUpdateCoin(coinId, false);
+    this.setState({ newCoin: false });
+  };
 
   renderCoinInfo = (coinId) => {
-    if (!this.props.coins[coinId]) { return null; }
+    /*
+      Given a coin id, render the coin info.
+    */
 
     return (
       <React.Fragment>
@@ -55,16 +67,40 @@ class DetailNews extends React.Component {
     );
   };
 
+  renderNewCoinSearchPrompt = (coinId) => {
+    /*
+      Render a form to call a search for the given coin id.
+    */
+
+    const coinName = this.props.getCoinName(coinId);
+    const valueText = `Search for ${coinName}`;
+
+    return (
+      <div>
+        Looks like you havent searched for this coin yet.
+        <form onSubmit={(event) => this.handleNewCoinSearch(event, coinId)}>
+          <input type="submit" value={valueText}/>
+        </form>
+      </div>
+    );
+    
+  };
+
   renderCoinInfoWrapper = (coinId) => {
+    /* 
+      Render new coin prompt or coin info
+      depending on if coin already exists.
+    */
+
+    const { newCoin } = this.state;
 
     return (
       <React.Fragment>
         {
-          this.state.newCoin ? (
-            <i>Adding {coinId} to your list!</i>
-          ) : null
+          newCoin ? (
+            this.renderNewCoinSearchPrompt(coinId)
+          ) : this.renderCoinInfo(coinId)
         }
-        {this.renderCoinInfo(coinId)}
       </React.Fragment>
     );
   };
