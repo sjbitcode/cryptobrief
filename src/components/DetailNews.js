@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Article from './Article';
 import RefreshCoin from './RefreshCoin';
 
 
@@ -38,6 +39,14 @@ class DetailNews extends React.Component {
     this.setState({ newCoin: false });
   };
 
+  renderNewsData = (coinObj) => {
+    return(
+      <div>
+        
+      </div>
+    );
+  };
+
   renderCoinInfo = (coinId) => {
     /*
       Given a coin id, render the coin info.
@@ -52,13 +61,13 @@ class DetailNews extends React.Component {
           }
         </p>
         <div>Price: {
-          this.props.coins[coinId].tickerDataIsLoading === true ? (
+          this.props.coins[coinId].tickerDataIsLoading ? (
             <p>LOADING</p>
           ): this.props.coins[coinId].ticker_data.price_usd
         }
         </div>
         <div>News: {
-          this.props.coins[coinId].newsDataIsLoading === true ? (
+          this.props.coins[coinId].newsDataIsLoading ? (
             <p>LOADING</p>
           ): this.props.coins[coinId].news_data.totalResults
         }
