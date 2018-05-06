@@ -132,18 +132,28 @@ class App extends Component {
 
   addOrUpdateTickerData = (coinId, tickerData, update) => {
     /*
-      Given a coin id, update the ticker data information for a specific coin id.
+      Given a coin id, return a promise
+      that updates the ticker data information
+      for a specific coin id.
     */
 
-    this.ensureCoinProperty(coinId, 'ticker_data', tickerData);
+    return new Promise((resolve, reject) => {
+      this.ensureCoinProperty(coinId, 'ticker_data', tickerData);
+      resolve();
+    });
   };
 
   addOrUpdateNewsData = (coinId, newsData, update) => {
     /*
-      Given a coin id, update the news data information for a specific coin id.
+      Given a coin id, return a promise
+      that updates the news data information
+      for a specific coin id.
     */
 
-    this.ensureCoinProperty(coinId, 'news_data', newsData);
+    return new Promise((resolve, reject) => {
+      this.ensureCoinProperty(coinId, 'news_data', newsData);
+      resolve();
+    });
   };
 
   fetchTickerData = (coinId, update) => {
@@ -156,7 +166,11 @@ class App extends Component {
     this.toggleTickerDataLoading(coinId, true);
     fetchCoinMarketCap(coinId)
     .then(data => {
-      this.addOrUpdateTickerData(coinId, data.data[0], update);
+      // this.addOrUpdateTickerData(coinId, data.data[0], update);
+      this.addOrUpdateTickerData(coinId, data, update);
+    })
+    .then(res => {
+      this.toggleTickerDataLoading(coinId, false)
     })
     .catch(err => console.log(err));
   };
@@ -172,6 +186,9 @@ class App extends Component {
     fetchNewsApi(coinId)
     .then(data => {
       this.addOrUpdateNewsData(coinId, data, update);
+    })
+    .then(res => {
+      this.toggleNewsDataLoading(coinId, false);
     })
     .catch(err => console.error(err));
   };
@@ -191,7 +208,6 @@ class App extends Component {
       this.fetchNewsData(coinId, update);
     })
     .catch(err => console.error(err));
-    
   };
 
   removeCoin = (coinName) => {
