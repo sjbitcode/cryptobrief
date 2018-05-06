@@ -77,7 +77,7 @@ class DetailNews extends React.Component {
 
     return (
       <div>
-        Looks like you haven't searched for this coin yet.
+        Looks like you havent searched for this coin yet.
         <form onSubmit={(event) => this.handleNewCoinSearch(event, coinId)}>
           <input type="submit" value={valueText}/>
         </form>
