@@ -47,10 +47,20 @@ const newsApiQueryStringData = {
 };
 
 export const fetchNewsApi = (coinName) => {
+  /*
+    Returns a promise that resolves the data
+    fetched from News API.
+  */
+
+  // Take a copy of newsApiQueryStringData object.
   const newsApiData = newsApiQueryStringData;
+
+  // Customize to, from, q query string parameters.
   newsApiData.to = getDate();
   newsApiData.from = getDate(-7);
   newsApiData.q = encodeURICoinName(coinName);
+
+  // Construct complete url used to fetch data.
   const url = NEWS_API_URL + '?' + generateQueryString(newsApiData);
 
   return new Promise((resolve, reject) => {

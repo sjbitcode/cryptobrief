@@ -6,6 +6,8 @@ const getRandomInt = (min, max) => {
 };
 
 export const generateCoinData = (coinName) => {
+  // Mock ticker data
+
   return {
     name: coinName,
     price_usd: getRandomInt(20, 100)
@@ -13,6 +15,8 @@ export const generateCoinData = (coinName) => {
 };
 
 export const generateNewsData = () => {
+  // Mock news data
+
   return {
     article_count: getRandomInt(1, 10),
     news_source: 'Google News'

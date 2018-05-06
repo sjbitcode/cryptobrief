@@ -183,7 +183,11 @@ class App extends Component {
     */
 
     this.toggleNewsDataLoading(coinId, true);
-    fetchNewsApi(coinId)
+
+    // fetchNewsApi requires coin name, not coin id.
+    const coinName = this.getCoinName(coinId);
+
+    fetchNewsApi(coinName)
     .then(data => {
       this.addOrUpdateNewsData(coinId, data.data, update);
     })
