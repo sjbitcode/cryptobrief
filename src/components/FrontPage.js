@@ -26,7 +26,7 @@ class FrontPage extends React.Component {
                 <Link to={`/coin/${key}`}>
                   <FrontPageCoin
                     key={key}
-                    details={coins[key]}
+                    coin={coins[key]}
                   />
                 </Link>
                 <button onClick={() => removeCoin(key)}>Remove coin from list</button>
