@@ -1,9 +1,10 @@
 import axios from 'axios';
 
 import { encodeURICoinName, generateQueryString, getDate } from './helpers';
+import { NEWS_API_KEY as apiKey } from './keys/newsApiKey';
 
 
-const NEWS_API_KEY = '2a9d72d89d8f41c29edb4fa7964982eb';
+const NEWS_API_KEY = apiKey;
 
 const NEWS_API_URL = 'https://newsapi.org/v2/everything'
 
