@@ -51,18 +51,18 @@ class DetailNews extends React.Component {
             ) : this.props.match.params.coinId
           }
         </p>
-        <p>Price: {
-            this.props.coins[coinId].ticker_data ? (
-            this.props.coins[coinId].ticker_data.price_usd
-            ) : null
-          }
-        </p>
-        <p>News: {
-            this.props.coins[coinId].news_data ? (
-            this.props.coins[coinId].news_data.article_count
-            ) : null
-          }
-        </p>
+        <div>Price: {
+          this.props.coins[coinId].tickerDataIsLoading === true ? (
+            <p>LOADING</p>
+          ): this.props.coins[coinId].ticker_data.price_usd
+        }
+        </div>
+        <div>News: {
+          this.props.coins[coinId].newsDataIsLoading === true ? (
+            <p>LOADING</p>
+          ): this.props.coins[coinId].news_data.article_count
+        }
+        </div>
       </React.Fragment>
     );
   };
