@@ -1,7 +1,7 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 
-const COIN_MARKET_CAP = 'https://api.coinmarketcap.com/v1/ticker/';
+// const COIN_MARKET_CAP = 'https://api.coinmarketcap.com/v1/ticker/';
 // const NEWS_API_KEY = '2a9d72d89d8f41c29edb4fa7964982eb';
 
 const getRandomInt = (min, max) => {
@@ -20,10 +20,14 @@ export const generateCoinData = (coinName) => {
 
 export const fetchCoinMarketCap = (coinName) => {
   return new Promise((resolve, reject) => {
-    axios
-    .get(`${COIN_MARKET_CAP}/${coinName}/`)
-    .then(res => resolve(res))
-    .catch(err => reject(err))
+    // axios
+    // .get(`${COIN_MARKET_CAP}/${coinName}/`)
+    // .then(res => resolve(res))
+    // .catch(err => reject(err))
+
+    setTimeout(() => {
+      resolve(generateCoinData(coinName));
+    }, 1200);
   });
 }
 
