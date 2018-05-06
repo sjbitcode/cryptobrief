@@ -7,6 +7,9 @@ import coinList from '../coinList';
 
 class Coins extends React.Component {
   static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
     coins: PropTypes.object.isRequired,
     addOrUpdateCoin: PropTypes.func.isRequired
   };
@@ -18,12 +21,9 @@ class Coins extends React.Component {
     */
 
     event.preventDefault();
-
     if (!exists) {
       this.props.addOrUpdateCoin(coinId, false);
     }
-
-    // Redirect to Detail Coin view
     this.props.history.push(`/coin/${coinId}`);
   };
 
@@ -33,6 +33,7 @@ class Coins extends React.Component {
       If a coin exists in state, apply a special style.
     */
 
+    // special style for button that represent an existing coin.
     const divStyle = {
       color: 'white',
       backgroundColor: 'red',
