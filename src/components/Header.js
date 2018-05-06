@@ -40,6 +40,7 @@ class Header extends React.Component {
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
+    coins: PropTypes.object.isRequired,
     getCoinId: PropTypes.func.isRequired,
     addOrUpdateCoin: PropTypes.func.isRequired
   };
@@ -79,6 +80,15 @@ class Header extends React.Component {
 
     // get id for cryptoname from coinList
     let coinSearchTerm = this.props.getCoinId(coinName);
+    const coins = this.props.coins;
+
+    // Add coin
+    if(coins[coinSearchTerm]) {
+      void(0);
+    }
+    else {
+      this.props.addOrUpdateCoin(coinSearchTerm, false);
+    }
 
     // Redirect to Detail Coin view
     this.props.history.push(`/coin/${coinSearchTerm}`);

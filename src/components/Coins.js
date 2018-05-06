@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import coinList from '../coinList';
@@ -7,10 +7,32 @@ import coinList from '../coinList';
 
 class Coins extends React.Component {
   static propTypes = {
-    coins: PropTypes.object
+    coins: PropTypes.object.isRequired,
+    addOrUpdateCoin: PropTypes.func.isRequired
+  };
+
+  handleClick = (coinId, exists=false, event) => {
+    /*
+      Given a coin id, add coin depending
+      on if it exists and redirect to Detail view.
+    */
+
+    event.preventDefault();
+
+    if (!exists) {
+      this.props.addOrUpdateCoin(coinId, false);
+    }
+
+    // Redirect to Detail Coin view
+    this.props.history.push(`/coin/${coinId}`);
   };
 
   renderCoinElement = (obj) => {
+    /*
+      Render all coins from coin list.
+      If a coin exists in state, apply a special style.
+    */
+
     const divStyle = {
       color: 'white',
       backgroundColor: 'red',
@@ -20,16 +42,16 @@ class Coins extends React.Component {
 
     if (obj.id in this.props.coins) {
       return (
-        <Link to={`/coin/${obj.id}`} key={obj.id}>
-          <div key={obj.id} style={divStyle}>{obj.name} ({obj.symbol})</div>
-        </Link>
+        <button onClick={(event) => this.handleClick(obj.id, true, event)} key={obj.id} style={divStyle}>
+          <div>{obj.name} ({obj.symbol})</div>
+        </button>
       );
     }
     else {
       return (
-        <Link to={`/coin/${obj.id}`} key={obj.id}>
-          <div key={obj.id}>{obj.name} ({obj.symbol})</div>
-        </Link>
+        <button onClick={(event) => this.handleClick(obj.id, false, event)} key={obj.id}>
+          <div>{obj.name} ({obj.symbol})</div>
+        </button>
       );
     }
   };
@@ -43,4 +65,4 @@ class Coins extends React.Component {
   }
 };
 
-export default Coins;
+export default withRouter(Coins);
