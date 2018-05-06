@@ -1,9 +1,3 @@
-// import axios from 'axios';
-
-
-// const COIN_MARKET_CAP = 'https://api.coinmarketcap.com/v1/ticker/';
-// const NEWS_API_KEY = '2a9d72d89d8f41c29edb4fa7964982eb';
-
 const getRandomInt = (min, max) => {
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
   min = Math.ceil(min);
@@ -12,31 +6,35 @@ const getRandomInt = (min, max) => {
 };
 
 export const generateCoinData = (coinName) => {
+  // Mock ticker data
+
   return {
     name: coinName,
     price_usd: getRandomInt(20, 100)
   };
 };
 
-export const fetchCoinMarketCap = (coinName) => {
-  return new Promise((resolve, reject) => {
-    // axios
-    // .get(`${COIN_MARKET_CAP}/${coinName}/`)
-    // .then(res => resolve(res))
-    // .catch(err => reject(err))
+export const generateNewsData = () => {
+  // Mock news data
 
+  return {
+    article_count: getRandomInt(1, 10),
+    news_source: 'Google News'
+  }
+};
+
+export const fetchCoinMarketCapMock = (coinName) => {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(generateCoinData(coinName));
     }, 1200);
   });
-}
+};
 
-export const fetchNewsApi = (coinName) => {
-  const article_count = getRandomInt(1, 10);
-
+export const fetchNewsApiMock = (coinName) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve({article_count: article_count, news_source: 'Google News'});
+      resolve(generateNewsData());
     }, 1500);
   })
-}
+};

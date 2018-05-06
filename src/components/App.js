@@ -5,7 +5,8 @@ import Main from './Main';
 
 import coinList from '../coinList';
 import { getCoins, setCoins } from '../helpers/localCoins';
-import { fetchCoinMarketCap, fetchNewsApi } from '../api/crypto-compare';
+import { fetchCoinMarketCap } from '../api/coin-market-cap';
+import { fetchNewsApi } from '../api/news-api';
 
 
 class App extends Component {
@@ -166,8 +167,7 @@ class App extends Component {
     this.toggleTickerDataLoading(coinId, true);
     fetchCoinMarketCap(coinId)
     .then(data => {
-      // this.addOrUpdateTickerData(coinId, data.data[0], update);
-      this.addOrUpdateTickerData(coinId, data, update);
+      this.addOrUpdateTickerData(coinId, data.data[0], update);
     })
     .then(res => {
       this.toggleTickerDataLoading(coinId, false)
@@ -183,9 +183,13 @@ class App extends Component {
     */
 
     this.toggleNewsDataLoading(coinId, true);
-    fetchNewsApi(coinId)
+
+    // fetchNewsApi requires coin name, not coin id.
+    const coinName = this.getCoinName(coinId);
+
+    fetchNewsApi(coinName)
     .then(data => {
-      this.addOrUpdateNewsData(coinId, data, update);
+      this.addOrUpdateNewsData(coinId, data.data, update);
     })
     .then(res => {
       this.toggleNewsDataLoading(coinId, false);

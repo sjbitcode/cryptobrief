@@ -60,7 +60,7 @@ class DetailNews extends React.Component {
         <div>News: {
           this.props.coins[coinId].newsDataIsLoading === true ? (
             <p>LOADING</p>
-          ): this.props.coins[coinId].news_data.article_count
+          ): this.props.coins[coinId].news_data.totalResults
         }
         </div>
       </React.Fragment>
