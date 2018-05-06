@@ -8,22 +8,47 @@ import FrontPage from './FrontPage';
 import NotFound from './NotFound';
 
 
-const Main = ({ coins, addOrUpdateCoin, removeCoin, getCoinName }) => (
+const Main = ({ 
+  coins,
+  addOrUpdateCoin,
+  removeCoin,
+  getCoinName 
+}) => 
+(
   <Switch>
     <Route
       exact
       path="/"
-      render={props => <FrontPage {...props} coins={coins} removeCoin={removeCoin} addOrUpdateCoin={addOrUpdateCoin} />}
+      render={props =>
+        <FrontPage 
+          {...props}
+          coins={coins}
+          removeCoin={removeCoin}
+          addOrUpdateCoin={addOrUpdateCoin} 
+        />
+      }
     />
 
     <Route
       path="/coins"
-      render={props => <Coins coins={coins} addOrUpdateCoin={addOrUpdateCoin} />}
+      render={props =>
+        <Coins
+          coins={coins}
+          addOrUpdateCoin={addOrUpdateCoin}
+        />
+      }
     />
 
     <Route
       path="/coin/:coinId"
-      render={props => <DetailNews {...props} coins={coins} getCoinName={getCoinName} addOrUpdateCoin={addOrUpdateCoin} />}
+      render={props =>
+        <DetailNews
+          {...props}
+          coins={coins}
+          getCoinName={getCoinName}
+          addOrUpdateCoin={addOrUpdateCoin}
+        />
+      }
     />
 
     <Route component={NotFound} />
