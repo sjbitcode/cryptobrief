@@ -27,7 +27,7 @@ class Article extends React.Component {
         <p>{article.source.name}</p>
         <em>{article.description}</em>
         <p>{article.url}</p>
-        <img src={article.urlToImage} style={imgStyle} />
+        <img src={article.urlToImage} style={imgStyle} alt={article.urlToImage}/>
         <p>{formatISODate(article.publishedAt)}</p>
       </div>
     );
