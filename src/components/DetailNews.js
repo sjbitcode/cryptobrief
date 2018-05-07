@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Article from './Article';
 import RefreshCoin from './RefreshCoin';
+import TickerDetail from './TickerDetail';
 
 
 class DetailNews extends React.Component {
@@ -39,10 +40,30 @@ class DetailNews extends React.Component {
     this.setState({ newCoin: false });
   };
 
-  renderNewsData = (coinObj) => {
+  renderNewsData = (coinObj, coinId, loading) => {
+    const { articles } = coinObj.news_data;
+
     return(
       <div>
-        
+      {
+        loading ?
+        <p>LOADING</p> :
+        articles.map((article, index) => <Article key={index} article={article} />)
+      }
+      </div>
+    );
+  };
+
+  renderTickerData = (coinObj, loading) => {
+    const { ticker_data } = coinObj;
+
+    return (
+      <div>
+        {
+          loading ?
+          <p>LOADING</p> :
+          <TickerDetail tickerData={ticker_data} />
+        }
       </div>
     );
   };
@@ -60,16 +81,14 @@ class DetailNews extends React.Component {
             ) : this.props.match.params.coinId
           }
         </p>
-        <div>Price: {
-          this.props.coins[coinId].tickerDataIsLoading ? (
-            <p>LOADING</p>
-          ): this.props.coins[coinId].ticker_data.price_usd
+
+        <div>PRICE INFO: {
+          this.renderTickerData(this.props.coins[coinId], this.props.coins[coinId].tickerDataIsLoading)
         }
         </div>
-        <div>News: {
-          this.props.coins[coinId].newsDataIsLoading ? (
-            <p>LOADING</p>
-          ): this.props.coins[coinId].news_data.totalResults
+
+        <div>NEWS INFO: {
+          this.renderNewsData(this.props.coins[coinId], coinId, this.props.coins[coinId].newsDataIsLoading)
         }
         </div>
       </React.Fragment>

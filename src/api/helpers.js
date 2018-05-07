@@ -28,3 +28,56 @@ export const getDate = (daysOffset = 0) => {
   date = date.toISOString().split('.')[0];
   return date;
 };
+
+export const formatISODate = (ISOdate, time=false) => {
+  /*
+    Format ISO date to YYYY-MM-DD
+  */
+
+  const date = new Date(ISOdate);
+
+  const year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  let day = date.getDate();
+
+  if (month < 10) {
+    month = '0' + month;
+  }
+  if (day < 10) {
+    day = '0' + day;
+  }
+
+  if (!time) {
+    return `${month}/${day}/${year}`;
+  }
+  else {
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+
+    if (hours < 10) {
+      hours = '0' + hours;
+    }
+    if (minutes < 10) {
+      minutes = '0' + minutes;
+    }
+    if (seconds < 10) {
+      seconds = '0' + seconds;
+    }
+
+    return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}`;
+  }
+};
+
+export const epochToDate = (epoch) => {
+  /*
+    Converts epoch time to localtime.
+  */
+
+  const date = new Date(epoch * 1000);
+
+  const localOffset = date.getTimezoneOffset();
+  const localTime = date.getTime();
+
+  return new Date(localTime + localOffset);
+};
