@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { epochToDate, formatISODate } from '../api/helpers';
+
 
 class FrontPageCoin extends React.Component {
   static propTypes = {
@@ -18,7 +20,7 @@ class FrontPageCoin extends React.Component {
         <p>price_usd: {ticker_data.price_usd}</p>
         <p>price_btc: {ticker_data.price_btc}</p>
         <p>percent_change_24h: {ticker_data.percent_change_24h}</p>
-        <p>last_updated: {ticker_data.last_updated}</p>
+        <p>last_updated: {formatISODate(epochToDate(ticker_data.last_updated), true)}</p>
       </div>
     );
   };
