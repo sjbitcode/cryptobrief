@@ -40,7 +40,12 @@ class DetailNews extends React.Component {
     this.setState({ newCoin: false });
   };
 
-  renderNewsData = (coinObj, coinId, loading) => {
+  renderNewsData = (coinObj, loading) => {
+    /*
+      If articles exist and is a non-empty object, show articles, 
+      else show 'No articles...' message.
+    */
+   
     const { articles } = coinObj.news_data;
 
     return(
@@ -48,7 +53,14 @@ class DetailNews extends React.Component {
       {
         loading ?
         <p>LOADING</p> :
-        articles.map((article, index) => <Article key={index} article={article} />)
+        ( 
+          (articles) ? 
+          (
+            Object.keys(articles).length !== 0 ?
+            articles.map((article, index) => <Article key={index} article={article} />) :
+            <p>No articles at the moment!</p>
+          ) : null
+        )
       }
       </div>
     );
@@ -88,7 +100,7 @@ class DetailNews extends React.Component {
         </div>
 
         <div>NEWS INFO: {
-          this.renderNewsData(this.props.coins[coinId], coinId, this.props.coins[coinId].newsDataIsLoading)
+          this.renderNewsData(this.props.coins[coinId], this.props.coins[coinId].newsDataIsLoading)
         }
         </div>
       </React.Fragment>

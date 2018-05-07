@@ -25,13 +25,22 @@ class FrontPageCoin extends React.Component {
 
   renderNewsData = (coinObj) => {
     const { news_data } = coinObj;
-    const first_article = news_data.articles[0];
+    const first_article = news_data.articles[0] || null;
 
     return (
       <div>
-        <p>{news_data.articles.length} articles found</p>
-        <strong>{first_article.title}</strong>
-        <i>{first_article.source.name}</i>
+        {
+          first_article ?
+          (
+            <React.Fragment>
+            <p>{news_data.articles.length} articles found</p>
+            <strong>{first_article.title}</strong>
+            <i>{first_article.source.name}</i>
+            </React.Fragment>
+          ) :
+          <p>No articles at this moment!</p>
+        }
+        
       </div>
     );
   };
