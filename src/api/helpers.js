@@ -51,21 +51,13 @@ export const formatISODate = (ISOdate, time=false) => {
     return `${month}/${day}/${year}`;
   }
   else {
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
+    let hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+    const am_pm = date.getHours >= 12 ? 'AM' : 'PM';
+    hours = hours < 10 ? '0' + hours : hours; 
+    let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+    let seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
 
-    if (hours < 10) {
-      hours = '0' + hours;
-    }
-    if (minutes < 10) {
-      minutes = '0' + minutes;
-    }
-    if (seconds < 10) {
-      seconds = '0' + seconds;
-    }
-
-    return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}`;
+    return `${month}/${day}/${year} ${hours}:${minutes}:${seconds} ${am_pm}`;
   }
 };
 
