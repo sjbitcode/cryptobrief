@@ -19,6 +19,7 @@ class FrontPage extends React.Component {
     if (Object.keys(coins).length) {
       return (
         <React.Fragment>
+          <strong>Your crypto brief: {Object.keys(coins).length}</strong>
           <h1>Here's the news</h1>
           <ul>
             {Object.keys(coins).map(key => (
