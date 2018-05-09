@@ -1,69 +1,27 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import About from './About';
-import Coins from './Coins';
-import DetailNews from './DetailNews';
-import FrontPage from './FrontPage';
-import NotFound from './NotFound';
+import Search from './Search';
+import MainView from './MainView';
 
 
-const Main = ({ 
-  coins,
-  addOrUpdateCoin,
-  removeCoin,
-  getCoinName 
-}) => 
-(
-  <Switch>
-    <Route
-      exact
-      path="/"
-      render={props =>
-        <FrontPage 
-          {...props}
-          coins={coins}
-          removeCoin={removeCoin}
-          addOrUpdateCoin={addOrUpdateCoin} 
-        />
-      }
-    />
+class Main extends React.Component {
+  static propTypes = {
+    coins: PropTypes.object.isRequired,
+    addOrUpdateCoin: PropTypes.func.isRequired,
+    removeCoin: PropTypes.func.isRequired,
+    getCoinName: PropTypes.func.isRequired,
+    getCoinId: PropTypes.func.isRequired
+  };
 
-    <Route
-      path="/coins"
-      render={props =>
-        <Coins
-          coins={coins}
-          addOrUpdateCoin={addOrUpdateCoin}
-        />
-      }
-    />
-
-    <Route
-      path="/coin/:coinId"
-      render={props =>
-        <DetailNews
-          {...props}
-          coins={coins}
-          getCoinName={getCoinName}
-          addOrUpdateCoin={addOrUpdateCoin}
-        />
-      }
-    />
-
-
-    <Route path="/about" component={About}></Route>
-
-    <Route component={NotFound} />
-  </Switch>
-);
-
-Main.propTypes = {
-  coins: PropTypes.object.isRequired,
-  addOrUpdateCoin: PropTypes.func.isRequired,
-  removeCoin: PropTypes.func.isRequired,
-  getCoinName: PropTypes.func.isRequired
+  render() {
+    return (
+      <React.Fragment>
+        <Search coins={this.props.coins} getCoinId={this.props.getCoinId} addOrUpdateCoin={this.props.addOrUpdateCoin} />
+        <MainView coins={this.props.coins} addOrUpdateCoin={this.props.addOrUpdateCoin} removeCoin={this.props.removeCoin} getCoinName={this.props.getCoinName} />
+      </React.Fragment>
+    );
+  }
 };
 
 export default Main;

@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 import Brand from './Brand';
 import Footer from './Footer';
 import Nav from './Nav';
 
 
-class Sidebar extends React.Component {
+class SidebarContainer extends React.Component {
   static propTypes = {
     coins: PropTypes.object.isRequired
   };
@@ -22,4 +23,4 @@ class Sidebar extends React.Component {
   }
 }
 
-export default Sidebar;
+export default SidebarContainer;

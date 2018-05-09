@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 
-import Header from './Header';
 import Main from './Main';
+import SidebarContainer from './SidebarContainer';
 
 import coinList from '../coinList';
 import { getCoins, setCoins } from '../helpers/localCoins';
 import { fetchCoinMarketCap } from '../api/coin-market-cap';
 import { fetchNewsApi } from '../api/news-api';
 
-// New design
-import Sidebar from './Sidebar';
-import MainOuter from './MainOuter';
 
 
 class App extends Component {
@@ -228,24 +225,13 @@ class App extends Component {
     this.setState({ coins });
   };
 
-  renderNew = () => {
-    return (
-      <React.Fragment>
-        <Sidebar coins={this.state.coins} />
-        <MainOuter coins={this.state.coins} removeCoin={this.removeCoin} getCoinId={this.getCoinId} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
-      </React.Fragment>
-    )
-  };
-
   render() {
 
     return (
-      
-      <div>
-        {this.renderNew()}
-        {/* <Header coins={this.state.coins} getCoinId={this.getCoinId} addOrUpdateCoin={this.addOrUpdateCoin} />
-        <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} /> */}
-      </div>
+      <React.Fragment>
+        <SidebarContainer coins={this.state.coins} />
+        <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinId={this.getCoinId} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
+      </React.Fragment>
     );
   }
 }
