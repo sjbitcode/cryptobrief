@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import About from './About';
 import Coins from './Coins';
 import DetailNews from './DetailNews';
 import FrontPage from './FrontPage';
@@ -50,6 +51,9 @@ const Main = ({
         />
       }
     />
+
+
+    <Route path="/about" component={About}></Route>
 
     <Route component={NotFound} />
   </Switch>
