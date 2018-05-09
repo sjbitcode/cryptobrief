@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Main from './Main';
-import SidebarContainer from './SidebarContainer';
+import Sidebar from './Sidebar';
 
 import coinList from '../coinList';
 import { getCoins, setCoins } from '../helpers/localCoins';
@@ -229,7 +229,7 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <SidebarContainer coins={this.state.coins} />
+        <Sidebar coins={this.state.coins} />
         <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinId={this.getCoinId} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
       </React.Fragment>
     );
