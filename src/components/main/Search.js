@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Autosuggest from 'react-autosuggest';
 
-// import coinList from '../coinList';
 import coinList from '../../coinList';
 
 
