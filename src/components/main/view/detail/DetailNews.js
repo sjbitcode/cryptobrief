@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Article from './Article';
-import RefreshCoin from './RefreshCoin';
+import RefreshCoin from '../RefreshCoin';
 import TickerDetail from './TickerDetail';
 
 

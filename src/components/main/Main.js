@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Search from './Search';
-import MainView from './MainView';
+import MainView from './view/MainView';
 
 
 class Main extends React.Component {

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { epochToDate, formatISODate } from '../api/helpers';
+// import { epochToDate, formatISODate } from '../api/helpers';
+import { epochToDate, formatISODate } from '../../../../api/helpers';
 
 
 class FrontPageCoin extends React.Component {

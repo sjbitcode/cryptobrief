@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { formatISODate} from '../api/helpers';
+import { formatISODate } from '../../../../api/helpers';
 
 
 class Article extends React.Component {

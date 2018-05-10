@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 import About from './About';
 import Coins from './Coins';
-import DetailNews from './DetailNews';
-import FrontPage from './FrontPage';
+import DetailNews from './detail/DetailNews';
+import FrontPage from './frontpage/FrontPage';
 import NotFound from './NotFound';
 
 

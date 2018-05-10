@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import coinList from '../coinList';
+import coinList from '../../../coinList';
 
 
 class Coins extends React.Component {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Main from './Main';
-import Sidebar from './Sidebar';
+import { Main } from './main';
+import { Sidebar } from './sidebar';
 
 import coinList from '../coinList';
 import { getCoins, setCoins } from '../helpers/localCoins';

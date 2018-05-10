@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import FrontPageCoin from './FrontPageCoin';
-import RefreshCoin from './RefreshCoin';
+import RefreshCoin from '../RefreshCoin';
 
 
 class FrontPage extends React.Component {
