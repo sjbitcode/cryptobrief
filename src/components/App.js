@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import { Main } from './main';
 import { Sidebar } from './sidebar';
-
 import coinList from '../coinList';
 import { getCoins, setCoins } from '../helpers/localCoins';
 import { fetchCoinMarketCap } from '../api/coin-market-cap';
@@ -227,10 +226,30 @@ class App extends Component {
 
   render() {
 
+    const layoutStyles = {
+      sidebar: {
+        position: 'fixed',
+        top: '0px',
+        bottom: '0px',
+        left: '0px',
+        width: '280px',
+        // overflowY: 'scroll',
+        paddingBottom: '1em'
+      },
+
+      main: {
+        marginLeft: '280px'
+      }
+    }
+
     return (
       <React.Fragment>
-        <Sidebar coins={this.state.coins} />
-        <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinId={this.getCoinId} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
+        <div style={layoutStyles.sidebar}>
+          <Sidebar coins={this.state.coins} />
+        </div>
+        <div style={layoutStyles.main}>
+          <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinId={this.getCoinId} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
+        </div>
       </React.Fragment>
     );
   }

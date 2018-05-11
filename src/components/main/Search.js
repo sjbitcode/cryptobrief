@@ -2,34 +2,52 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Autosuggest from 'react-autosuggest';
+import _ from 'lodash';
+import { Input, Header, Label } from 'semantic-ui-react';
 
 import coinList from '../../coinList';
+import './style.css';
 
+
+// https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
+const escapeRegexCharacters = (str) => {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+};
 
 // React-Autosuggest
 const getSuggestions = value => {
-  const inputValue = value.trim().toLowerCase();
-  const inputLength = inputValue.length;
+  const escapedValue = escapeRegexCharacters(value.trim().toLowerCase());
 
-  return inputLength === 0 ? [] : coinList.filter(coinObj =>
-    coinObj.name.toLowerCase().slice(0, inputLength) === inputValue
+  if (escapedValue === '') {
+    return [];
+  }
+
+  const regex = new RegExp('^' + escapedValue, 'i');
+  const isMatch = result => regex.test(result.name)
+
+  return _.filter(coinList, isMatch);
+};
+
+// React-Autosuggest
+const renderSuggestion = suggestion => {
+  return (
+    // <span>{suggestion.name}</span>
+    <Header as='h4' key={suggestion.id}>
+      {suggestion.name}
+      <Label circular content={suggestion.symbol} />
+    </Header>
   );
 };
 
 // React-Autosuggest
 const getSuggestionValue = suggestion => suggestion.name;
 
-// React-Autosuggest
-const renderSuggestion = suggestion => (
-  <div>
-    {suggestion.name}
-  </div>
-);
 
 class Search extends React.Component {
   state = {
     value: '',
-    suggestions: []
+    suggestions: [],
+    selectedCoin: {}
   };
 
   // Ref for React-Autosuggest
@@ -44,7 +62,8 @@ class Search extends React.Component {
   // React-Autosuggest method
   onChange = (event, { newValue }) => {
     this.setState({
-      value: newValue
+      value: newValue,
+      selectedCoin: _.find(coinList, {name: newValue})
     });
   };
 
@@ -62,6 +81,16 @@ class Search extends React.Component {
     });
   };
 
+  renderInput = (inputProps) => {
+    return <Input icon='search' {...inputProps} />
+  };
+
+  onKeyPress = (e) => {
+    if(e.key === 'Enter') {
+      this.handleSearch(e);
+    }
+  }
+
   handleSearch = event => {
     /*
       When form is submitted,
@@ -71,11 +100,14 @@ class Search extends React.Component {
 
     event.preventDefault();
 
-    const coinName = this.searchInput.current.input.value
+    // const coinName = this.searchInput.current.input.value
+    // const coinName = this.state.value;
+    const coinName = this.state.selectedCoin.name;
     console.log(`Searched for ${coinName}`);
 
     // get id for cryptoname from coinList
-    let coinSearchTerm = this.props.getCoinId(coinName);
+    // let coinSearchTerm = this.props.getCoinId(coinName);
+    let coinSearchTerm = this.state.selectedCoin.id;
     const coins = this.props.coins;
 
     // Add coin
@@ -90,7 +122,7 @@ class Search extends React.Component {
     this.props.history.push(`/coin/${coinSearchTerm}`);
 
     // clear the input field by clearing the value state
-    this.setState({ value: '' });
+    this.setState({ value: '', selectedCoin: {} });
   };
 
   render() {
@@ -98,28 +130,26 @@ class Search extends React.Component {
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
-      placeholder: 'Type a crypto-currency',
+      placeholder: 'Search crypto',
       value,
       required: true,
-      onChange: this.onChange
+      onChange: this.onChange,
+      onKeyPress: this.onKeyPress
     };
 
     return (
       <div>
-      <p>Search component</p>
-      
-        <form onSubmit={this.handleSearch}>
-          <Autosuggest
-            suggestions={suggestions}
-            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-            getSuggestionValue={getSuggestionValue}
-            renderSuggestion={renderSuggestion}
-            inputProps={inputProps}
-            ref={this.searchInput}
+        <p>Search component</p>
+        <Autosuggest
+          suggestions={suggestions}
+          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+          getSuggestionValue={getSuggestionValue}
+          renderSuggestion={renderSuggestion}
+          renderInputComponent={this.renderInput}
+          inputProps={inputProps}
+          ref={this.searchInput}
           />
-          <button type="submit">Search</button>
-        </form>
       </div>
     );
   }
