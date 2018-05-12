@@ -1,8 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { Header, Segment, Container, Grid, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import coinList from '../../../coinList';
+import Floating from '../../svg/Floating';
 
 
 class Coins extends React.Component {
@@ -34,34 +36,80 @@ class Coins extends React.Component {
     */
 
     // special style for button that represent an existing coin.
-    const divStyle = {
-      color: 'white',
-      backgroundColor: 'red',
-      margin: '10px 0',
-      fontWeight: 'bold'
+    const button = {
+      margin: '12px'
     };
 
     if (obj.id in this.props.coins) {
       return (
-        <button onClick={(event) => this.handleClick(obj.id, true, event)} key={obj.id} style={divStyle}>
+        <Button onClick={(event) => this.handleClick(obj.id, true, event)} key={obj.id} color='orange' style={button}>
           <div>{obj.name} ({obj.symbol})</div>
-        </button>
+        </Button>
       );
     }
     else {
       return (
-        <button onClick={(event) => this.handleClick(obj.id, false, event)} key={obj.id}>
+        <Button onClick={(event) => this.handleClick(obj.id, false, event)} color='green' inverted key={obj.id} style={button}>
           <div>{obj.name} ({obj.symbol})</div>
-        </button>
+        </Button>
       );
     }
   };
 
+  renderCoins = () => {
+    return (
+      <Container>
+        {coinList.map(obj => this.renderCoinElement(obj))}
+      </Container>
+    );
+  };
+
+  renderTitle = () => {
+    const styles = {
+      svg: {
+        margin: '0 auto',
+        maxWidth: '300px',
+        paddingTop: '30px'
+      },
+
+      container: {
+        paddingTop: '0px',
+        paddingBottom: '30px'
+      },
+
+      description: {
+        padding: '100px'
+      }
+    };
+
+    return (
+      <Container textAlign='center' style={styles.container}>
+        <Grid columns={2}>
+          <Grid.Column style={styles.description}>
+            <Header as='h1'>
+              Coin List
+            </Header>
+            <p>
+              We support {coinList.length} coins through the Coin Market Cap API.
+            </p>
+          </Grid.Column>
+
+          <Grid.Column>
+            <div style={styles.svg}>
+              <Floating />
+            </div>
+          </Grid.Column>
+        </Grid>
+      </Container>
+    )
+  };
+
   render() {
     return (
-      <React.Fragment>
-        {coinList.map(obj => this.renderCoinElement(obj))}
-      </React.Fragment>
+      <Segment>
+        {this.renderTitle()}
+        {this.renderCoins()}
+      </Segment>
     );
   }
 };

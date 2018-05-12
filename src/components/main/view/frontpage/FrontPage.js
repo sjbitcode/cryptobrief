@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import Initial from './Initial';
 import FrontPageCoin from './FrontPageCoin';
 import RefreshCoin from '../RefreshCoin';
 
@@ -39,8 +40,9 @@ class FrontPage extends React.Component {
       );
     }
     else {
-      console.log('No coins');
-      return <div>Looks like you haven't searched for anything yet!</div>
+      // console.log('No coins');
+      // return <div>Looks like you haven't searched for anything yet!</div>
+      return <Initial/>
     }
   };
 

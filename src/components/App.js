@@ -234,7 +234,7 @@ class App extends Component {
         left: '0px',
         width: '280px',
         // overflowY: 'scroll',
-        paddingBottom: '1em'
+        // paddingBottom: '1em'
       },
 
       main: {

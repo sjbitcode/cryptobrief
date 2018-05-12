@@ -82,7 +82,7 @@ class Search extends React.Component {
   };
 
   renderInput = (inputProps) => {
-    return <Input icon='search' {...inputProps} />
+    return <Input fluid icon='search' {...inputProps} />
   };
 
   onKeyPress = (e) => {
@@ -139,7 +139,6 @@ class Search extends React.Component {
 
     return (
       <div>
-        <p>Search component</p>
         <Autosuggest
           suggestions={suggestions}
           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}

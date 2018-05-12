@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Icon, Menu, Label } from 'semantic-ui-react';
+import { Icon, Menu, Label, Segment } from 'semantic-ui-react';
 
 import Brand from './Brand';
 import Footer from './Footer';
@@ -20,7 +20,11 @@ class Sidebar extends React.Component {
     const coinsLength = Object.keys(coins).length;
 
     const styles = {
-      mainMenu: {width: 'inherit'},
+      mainMenu: {
+        width: 'inherit',
+        minHeight: '100 %',
+        position: 'relative'
+      },
       frontPageCoins: {
         marginTop: '15px',
         active: {
@@ -28,10 +32,16 @@ class Sidebar extends React.Component {
         }
       },
       logoSection: {
-        background: 'white'
+        background: '#d4d4d5'
       },
       activeLink: {
         background: 'red'
+      },
+      footer: {
+        position: 'absolute',
+        bottom: '0',
+        width: '100%',
+        // height: '60px'
       }
     };
 
@@ -75,9 +85,10 @@ class Sidebar extends React.Component {
           <Menu.Header>About</Menu.Header>
         </Menu.Item>
 
-        <Menu.Item>
+        <Menu.Item style={styles.footer}>
           <Footer />
         </Menu.Item>
+        
       </Menu>
     );
   }
