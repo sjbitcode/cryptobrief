@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Image, Container, Segment, Header, Button } from 'semantic-ui-react';
+import { Grid, Container, Header } from 'semantic-ui-react';
 
 import Finance from '../../../svg/Finance';
 import Ethereum from '../../../svg/Ethereum';
@@ -28,48 +28,45 @@ class Initial extends React.Component {
     return (
       <Container>
       
-      <Container>
-          <Grid columns={2}>
-            <Grid.Column style={styles.description}>
-            <Header as='h1'>
-              Keep track of your favorite cryptocurrencies
-            </Header>
-            <p>
-              Have a coffee, then monitor the crypto that you invested
-              a large chunk of your birthday money in.
-            </p>
-          </Grid.Column>
-
-            <Grid.Column>
-            <div style={styles.svg.finance}>
-              <Finance />
-            </div>
-          </Grid.Column>
-        </Grid>
-      </Container>
-
-      <Container>
-          <Grid columns={2}>
-            <Grid.Column floated='left' >
-              <div style={styles.svg.ethereum}>
-                <Ethereum/>
-              </div>
+        <Container>
+            <Grid columns={2}>
+              <Grid.Column style={styles.description}>
+              <Header as='h1'>
+                Keep track of your favorite cryptocurrencies
+              </Header>
+              <p>
+                Have a coffee, then monitor the crypto that you invested
+                a large chunk of your birthday money in.
+              </p>
             </Grid.Column>
 
-            <Grid.Column floated='right' style={styles.description}>
-            <Header as='h1'>
-              Read the latest headlines and articles
-            </Header>
-            <p>
-              The news brought to you has been aggregated from over 20 financial news sources. Read more over <Link to='/about'>here</Link>.
-            </p>
-          </Grid.Column>
-        </Grid>
-      </Container>
+              <Grid.Column>
+              <div style={styles.svg.finance}>
+                <Finance />
+              </div>
+            </Grid.Column>
+          </Grid>
+        </Container>
 
-      {/* <Container color='green'>
-        <Header as='h1'>Get started now</Header>
-      </Container> */}
+        <Container>
+            <Grid columns={2}>
+              <Grid.Column floated='left' >
+                <div style={styles.svg.ethereum}>
+                  <Ethereum/>
+                </div>
+              </Grid.Column>
+
+              <Grid.Column floated='right' style={styles.description}>
+              <Header as='h1'>
+                Read the latest headlines and articles
+              </Header>
+              <p>
+                The news brought to you has been aggregated from over 20 financial news sources. Read more over <Link to='/about'>here</Link>.
+              </p>
+            </Grid.Column>
+          </Grid>
+        </Container>
+
       </Container>
     );
   }

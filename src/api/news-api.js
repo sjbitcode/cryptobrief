@@ -26,7 +26,6 @@ const NEWS_API_SOURCES = [
   'wired',
   'the-huffington-post',
   'techradar',
-  'techcrunch',
   'the-economist',
   'reuters',
   'newsweek',

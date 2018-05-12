@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Segment, Button, Container, Header } from 'semantic-ui-react';
+import { Grid, Button, Container } from 'semantic-ui-react';
 
 import Search from './Search';
 import MainView from './view/MainView';
@@ -41,7 +41,7 @@ class Main extends React.Component {
       getStarted: {
         margin: '0 auto',
         padding: '50px',
-        background: 'green',
+        background: '#2b9f77',
         color: 'white',
         textAlign: 'center'
       }

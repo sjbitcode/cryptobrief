@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Icon, Menu, Label, Segment } from 'semantic-ui-react';
+import { Icon, Menu, Label } from 'semantic-ui-react';
 
 import Brand from './Brand';
 import Footer from './Footer';

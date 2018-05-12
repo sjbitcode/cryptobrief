@@ -46,8 +46,7 @@ const getSuggestionValue = suggestion => suggestion.name;
 class Search extends React.Component {
   state = {
     value: '',
-    suggestions: [],
-    selectedCoin: {}
+    suggestions: []
   };
 
   // Ref for React-Autosuggest
@@ -62,8 +61,7 @@ class Search extends React.Component {
   // React-Autosuggest method
   onChange = (event, { newValue }) => {
     this.setState({
-      value: newValue,
-      selectedCoin: _.find(coinList, {name: newValue})
+      value: newValue
     });
   };
 
@@ -100,29 +98,43 @@ class Search extends React.Component {
 
     event.preventDefault();
 
-    // const coinName = this.searchInput.current.input.value
-    // const coinName = this.state.value;
-    const coinName = this.state.selectedCoin.name;
-    console.log(`Searched for ${coinName}`);
+    const selectedCoin = _.find(coinList, { name: this.state.value }) || _.find(coinList, { id: this.state.value });
 
-    // get id for cryptoname from coinList
-    // let coinSearchTerm = this.props.getCoinId(coinName);
-    let coinSearchTerm = this.state.selectedCoin.id;
-    const coins = this.props.coins;
+    if (!selectedCoin) {
+      console.log('Could not find name');
 
-    // Add coin
-    if (coins[coinSearchTerm]) {
-      void (0);
+      // Show modal
+
+
+      // clear the input field by clearing the value state
+      this.setState({ value: '' });
+
+      return;
     }
     else {
-      this.props.addOrUpdateCoin(coinSearchTerm, false);
+      // const selectedCoin = _.find(coinList, { name: this.state.value });
+      const coinName = selectedCoin.name;
+      console.log(`Searched for ${coinName}`);
+
+      // get id for cryptoname from coinList
+      // let coinSearchTerm = this.props.getCoinId(coinName);
+      let coinSearchTerm = selectedCoin.id;
+      const coins = this.props.coins;
+
+      // Add coin
+      if (coins[coinSearchTerm]) {
+        void (0);
+      }
+      else {
+        this.props.addOrUpdateCoin(coinSearchTerm, false);
+      }
+
+      // Redirect to Detail Coin view
+      this.props.history.push(`/coin/${coinSearchTerm}`);
+
+      // clear the input field by clearing the value state
+      this.setState({ value: '' });
     }
-
-    // Redirect to Detail Coin view
-    this.props.history.push(`/coin/${coinSearchTerm}`);
-
-    // clear the input field by clearing the value state
-    this.setState({ value: '', selectedCoin: {} });
   };
 
   render() {
