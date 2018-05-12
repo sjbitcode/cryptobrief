@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Autosuggest from 'react-autosuggest';
 import _ from 'lodash';
-import { Input, Header, Label } from 'semantic-ui-react';
+import { Input, Header, Label, Button, Modal } from 'semantic-ui-react';
 
 import coinList from '../../coinList';
 import './style.css';
@@ -46,7 +46,8 @@ const getSuggestionValue = suggestion => suggestion.name;
 class Search extends React.Component {
   state = {
     value: '',
-    suggestions: []
+    suggestions: [],
+    modalOpen: false
   };
 
   // Ref for React-Autosuggest
@@ -104,12 +105,11 @@ class Search extends React.Component {
       console.log('Could not find name');
 
       // Show modal
-
+      this.show();
+      this.renderNotFoundModal();
 
       // clear the input field by clearing the value state
       this.setState({ value: '' });
-
-      return;
     }
     else {
       // const selectedCoin = _.find(coinList, { name: this.state.value });
@@ -137,6 +137,46 @@ class Search extends React.Component {
     }
   };
 
+  // Modal functions
+  show = () => this.setState({ modalOpen: true });
+  close = () => this.setState({ modalOpen: false });
+
+  renderNotFoundModal = () => {
+    const { modalOpen } = this.state;
+    console.log('Modal func');
+
+    const inlineStyle = {
+      modal: {
+        marginTop: '0px !important',
+        marginLeft: 'auto',
+        marginRight: 'auto'
+      }
+    };
+  
+    return (
+      <Modal
+        open={modalOpen}
+        onClose={this.close}
+        basic
+        size='small'
+        style={inlineStyle.modal}
+      >
+        <Header icon='meh' content='Search Not Found' />
+        <Modal.Content>
+          <h3>
+            We could not find what you searched for.
+            Maybe try searching again!
+          </h3>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button color='green' onClick={this.close} inverted>
+            Okay
+          </Button>
+        </Modal.Actions>
+      </Modal>
+    );
+  };
+
   render() {
     const { value, suggestions } = this.state;
 
@@ -161,6 +201,7 @@ class Search extends React.Component {
           inputProps={inputProps}
           ref={this.searchInput}
           />
+          {this.renderNotFoundModal()}
       </div>
     );
   }
