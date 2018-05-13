@@ -151,7 +151,6 @@ class DetailNews extends React.Component {
 
     return (
       <div>
-        <strong> Your crypto brief: {Object.keys(this.props.coins).length} coins</strong>
         {this.renderCoinInfoWrapper(params.coinId)}
         <RefreshCoin
           coinId={params.coinId}

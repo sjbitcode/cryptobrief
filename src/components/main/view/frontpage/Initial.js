@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Container, Header } from 'semantic-ui-react';
+import { Grid, Container, Header, Segment } from 'semantic-ui-react';
 
 import Finance from '../../../svg/Finance';
 import Ethereum from '../../../svg/Ethereum';
@@ -26,7 +26,7 @@ class Initial extends React.Component {
     };
 
     return (
-      <Container>
+      <Segment>
       
         <Container>
             <Grid columns={2}>
@@ -67,7 +67,7 @@ class Initial extends React.Component {
           </Grid>
         </Container>
 
-      </Container>
+      </Segment>
     );
   }
 };
