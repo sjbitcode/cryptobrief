@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Grid } from 'semantic-ui-react';
 
 import { Main } from './main';
 import { Sidebar } from './sidebar';
@@ -244,12 +245,41 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <div style={layoutStyles.sidebar}>
-          <Sidebar coins={this.state.coins} />
-        </div>
-        <div style={layoutStyles.main}>
-          <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinId={this.getCoinId} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
-        </div>
+        
+        <Grid>
+          <Grid.Row>
+            <Grid.Column only="mobile" width={16}>
+              <Sidebar coins={this.state.coins} fluid={true} vertical={false} width={16}/>
+            </Grid.Column>
+
+            <Grid.Column only="mobile" width={16}>
+              <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinId={this.getCoinId} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
+            </Grid.Column>
+          </Grid.Row>
+
+          <Grid container>
+          <Grid.Row>
+            <Grid.Column only="tablet" width={3}>
+              <Sidebar coins={this.state.coins} vertical={true} fixed='left' width={3}/>
+            </Grid.Column>
+
+            <Grid.Column only="tablet" width={13}>
+              <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinId={this.getCoinId} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
+            </Grid.Column>
+          </Grid.Row>
+
+          <Grid.Row>
+            <Grid.Column only="computer" width={3}>
+              <Sidebar coins={this.state.coins} vertical={true} fixed='left' width={3}/>
+            </Grid.Column>
+
+            <Grid.Column only="computer" width={13}>
+              <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinId={this.getCoinId} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
+            </Grid.Column>
+          </Grid.Row>
+          </Grid>
+        </Grid>
+        
       </React.Fragment>
     );
   }

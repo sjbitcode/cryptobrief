@@ -5,6 +5,7 @@ import { Icon, Menu, Label } from 'semantic-ui-react';
 
 import Brand from './Brand';
 import Footer from './Footer';
+import './style.css';
 
 
 class Sidebar extends React.Component {
@@ -16,7 +17,7 @@ class Sidebar extends React.Component {
   };
 
   render() {
-    const { coins } = this.props;
+    const { coins, vertical, fixed, width, fluid } = this.props;
     const coinsLength = Object.keys(coins).length;
 
     const styles = {
@@ -46,9 +47,10 @@ class Sidebar extends React.Component {
     };
 
     return (
-      <Menu inverted vertical fixed='left' style={styles.mainMenu}>
+      // <Menu inverted vertical fixed='left' style={styles.mainMenu}>
+      <Menu fluid={fluid} inverted vertical={vertical} fixed={fixed} width={width}>
 
-        <Menu.Item as={NavLink} to='/' exact style={styles.logoSection} activeStyle={styles.logoSection}>
+        <Menu.Item as={NavLink} to='/' exact style={styles.logoSection} activeStyle={styles.logoSection} className="mobile hidden">
           <Brand />
         </Menu.Item>
 
@@ -59,7 +61,7 @@ class Sidebar extends React.Component {
           <Label color='blue'>{Object.keys(coins).length}</Label>
           {
             coinsLength !== 0 ?
-              <Menu.Menu style={styles.frontPageCoins}>
+              <Menu.Menu className="mobile hidden" style={styles.frontPageCoins}>
                 {Object.keys(coins).map(key =>
                   <Menu.Item
                     as={ NavLink }
@@ -85,7 +87,7 @@ class Sidebar extends React.Component {
           <Menu.Header>About</Menu.Header>
         </Menu.Item>
 
-        <Menu.Item style={styles.footer}>
+        <Menu.Item style={styles.footer} className="mobile hidden">
           <Footer />
         </Menu.Item>
         

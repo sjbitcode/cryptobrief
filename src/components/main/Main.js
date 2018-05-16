@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Button, Container } from 'semantic-ui-react';
+import { Grid, Button, Container, Segment } from 'semantic-ui-react';
 
 import Search from './Search';
 import MainView from './view/MainView';
@@ -19,30 +19,16 @@ class Main extends React.Component {
 
     const styles = {
 
-      footer: {
-        // position: 'absolute',
-        // position: 'absolute',
-        // left: '0px',
-        bottom: '0px',
-        // height: '50px',
-        width: '100%,'
-      },
-
       mainGrid: {
-        margin: '0 auto',
-        padding: '50px'
+        margin: '0 auto'
       },
 
       searchGrid: {
-        margin: '0 auto',
-        padding: '50px 50px 0 50px'
+        margin: '0 auto'
       },
 
       getStarted: {
         margin: '0 auto',
-        padding: '50px',
-        background: '#2b9f77',
-        color: 'white',
         textAlign: 'center'
       }
     };
@@ -76,17 +62,21 @@ class Main extends React.Component {
       </Grid>
       </Container>
 
-      <Container style={styles.footer}>
+      <Grid>
+      <Grid.Row>
+      <Grid.Column>
       {
         totalCoins === 0 ?
           <Container style={styles.getStarted}>
-            <Button inverted size='big' onClick={() => window.scrollTo(0, 0)}>Get started now</Button>
+            <Button fluid color='green' size='big' onClick={() => window.scrollTo(0, 0)}>Get started now</Button>
           </Container> : 
           <Container style={styles.getStarted}>
-            <Button inverted size='big' onClick={() => window.scrollTo(0, 0)}>Search for another coin</Button>
+            <Button fluid color='green' size='big' onClick={() => window.scrollTo(0, 0)}>Search for another coin</Button>
           </Container>
       }
-      </Container>
+      </Grid.Column>
+      </Grid.Row>
+      </Grid>
       </Container>
     );
   }

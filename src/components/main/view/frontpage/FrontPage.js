@@ -64,7 +64,6 @@ class FrontPage extends React.Component {
           {this.renderTitle()}
           {Object.keys(coins).map(key => (
             <div key={key}>
-              {/* <Link to={`/coin/${key}`}> */}
                 <FrontPageCoin
                   key={key}
                   coinId={key}
@@ -72,17 +71,12 @@ class FrontPage extends React.Component {
                   removeCoin={this.props.removeCoin}
                   addOrUpdateCoin={addOrUpdateCoin}
                 />
-              {/* </Link> */}
-              {/* <button onClick={() => removeCoin(key)}>Remove coin from list</button> */}
-              {/* <RefreshCoin addOrUpdateCoin={addOrUpdateCoin} coinId={key} /> */}
             </div>
           ))}
         </Segment>
       );
     }
     else {
-      // console.log('No coins');
-      // return <div>Looks like you haven't searched for anything yet!</div>
       return <Initial/>
     }
   };

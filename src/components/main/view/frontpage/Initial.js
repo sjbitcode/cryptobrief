@@ -29,7 +29,7 @@ class Initial extends React.Component {
       <Segment>
       
         <Container>
-            <Grid columns={2}>
+            <Grid columns={2} stackable>
               <Grid.Column style={styles.description}>
               <Header as='h1'>
                 Keep track of your favorite cryptocurrencies
@@ -40,7 +40,7 @@ class Initial extends React.Component {
               </p>
             </Grid.Column>
 
-              <Grid.Column>
+            <Grid.Column>
               <div style={styles.svg.finance}>
                 <Finance />
               </div>
@@ -49,7 +49,7 @@ class Initial extends React.Component {
         </Container>
 
         <Container>
-            <Grid columns={2}>
+            <Grid columns={2} stackable>
               <Grid.Column floated='left' >
                 <div style={styles.svg.ethereum}>
                   <Ethereum/>
@@ -57,13 +57,13 @@ class Initial extends React.Component {
               </Grid.Column>
 
               <Grid.Column floated='right' style={styles.description}>
-              <Header as='h1'>
-                Read the latest headlines and articles
-              </Header>
-              <p>
-                The news brought to you has been aggregated from over 20 financial news sources. Read more over <Link to='/about'>here</Link>.
-              </p>
-            </Grid.Column>
+                <Header as='h1'>
+                  Read the latest headlines and articles
+                </Header>
+                <p>
+                  The news brought to you has been aggregated from over 20 financial news sources. Read more over <Link to='/about'>here</Link>.
+                </p>
+              </Grid.Column>
           </Grid>
         </Container>
 

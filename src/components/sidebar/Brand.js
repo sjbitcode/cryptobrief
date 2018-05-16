@@ -1,6 +1,7 @@
 import React from 'react';
 import { Header } from 'semantic-ui-react';
 
+
 class Brand extends React.Component {
   render() {
     const logo = {
@@ -9,7 +10,9 @@ class Brand extends React.Component {
     };
 
     return (
-      <Header as='h2' style={logo}>Brand Component</Header>
+      <React.Fragment>
+        <Header as='h2' style={logo}>Brand Component</Header>
+      </React.Fragment>
     );
   }
 }
