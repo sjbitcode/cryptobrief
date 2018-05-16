@@ -22,9 +22,7 @@ class Sidebar extends React.Component {
 
     const styles = {
       mainMenu: {
-        width: 'inherit',
-        minHeight: '100 %',
-        position: 'relative'
+        borderRadius: '0'
       },
       frontPageCoins: {
         marginTop: '15px',
@@ -48,7 +46,7 @@ class Sidebar extends React.Component {
 
     return (
       // <Menu inverted vertical fixed='left' style={styles.mainMenu}>
-      <Menu fluid={fluid} inverted vertical={vertical} fixed={fixed} width={width}>
+      <Menu fluid={fluid} inverted vertical={vertical} fixed={fixed} width={width} style={styles.mainMenu}>
 
         <Menu.Item as={NavLink} to='/' exact style={styles.logoSection} activeStyle={styles.logoSection} className="mobile hidden">
           <Brand />
