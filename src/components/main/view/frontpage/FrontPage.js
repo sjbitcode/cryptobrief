@@ -19,9 +19,14 @@ class FrontPage extends React.Component {
   renderTitle = () => {
     const styles = {
       svg: {
-        margin: '0 auto',
-        maxWidth: '300px',
-        paddingTop: '30px'
+        default: {
+          padding: '50px'
+        },
+
+        mobile: {
+          maxWidth: '400px',
+          margin: '0 auto'
+        }
       },
 
       container: {
@@ -29,29 +34,43 @@ class FrontPage extends React.Component {
         paddingBottom: '30px'
       },
 
+      gridContainer: {
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center'
+      },
+
       description: {
-        padding: '100px 80px 100px 80px'
+        padding: '50px'
       }
     };
 
     return (
-        <Container textAlign='center'>
-          <Grid columns={2}>
-            <Grid.Column>
-              <div style={styles.svg}>
-                <News />
-              </div>
-            </Grid.Column>
-            <Grid.Column style={styles.description}>
-              <Header as='h1'>
-                Your Front Page
-                <Header.Subheader>
-                  Check the latest below from your curated list of cryptos.
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
-          </Grid>
-        </Container>
+      <Container textAlign='center' style={styles.container}>
+        <Grid columns={2} stackable style={styles.gridContainer}>
+
+          {/* Computer & Tablet Screen */}
+          <Grid.Column only="computer tablet" computer={8} tablet={8}>
+            <div style={styles.svg.default}>
+              <News />
+            </div>
+          </Grid.Column>
+          <Grid.Column only="computer tablet" computer={8} tablet={8} style={styles.description}>
+            <Header as='h1' content='Your Front Page' subheader='Check the latest below from your curated list of cryptos.'/>
+          </Grid.Column>
+
+          {/* Mobile Screen */}
+          <Grid.Column textAlign="center" only="mobile" mobile={16} style={{ order: 1 }}>
+            <div style={{...styles.svg.default, ...styles.svg.mobile}}>
+              <News />
+            </div>
+          </Grid.Column>
+          <Grid.Column textAlign="center" only="mobile" mobile={16} style={styles.description}>
+            <Header as='h1' content='Your Front Page' subheader='Check the latest below from your curated list of cryptos.' />
+          </Grid.Column>
+
+        </Grid>
+      </Container>
     );
   }
 
