@@ -21,22 +21,18 @@ class Initial extends React.Component {
       },
 
       svg: {
-        finance: {
+        default: {
           padding: '50px'
         },
 
-        ethereum: {
-          padding: '50px'
+        mobile: {
+          maxWidth: '400px',
+          margin: '0 auto'
         }
-        
       },
-      description_ethereum: {
+
+      description: {
         padding: '50px',
-      },
-
-      description_finance: {
-
-        padding: '50px'
       }
 
     };
@@ -49,7 +45,7 @@ class Initial extends React.Component {
           <Grid columns={2} stackable style={styles.gridContainer}>
 
             {/* Computer Screen */}
-            <Grid.Column only="computer"  computer={8} style={styles.description_finance}>
+            <Grid.Column only="computer"  computer={8} style={styles.description}>
               <Header as='h1'>
                 Keep track of your favorite cryptocurrencies
                 <Header.Subheader>
@@ -59,13 +55,13 @@ class Initial extends React.Component {
               </Header>
             </Grid.Column>
             <Grid.Column only="computer" computer={8} >
-              <div style={styles.svg.finance}>
+              <div style={styles.svg.default}>
                 <Finance />
               </div>
             </Grid.Column>
 
             {/* Tablet Screen */}
-            <Grid.Column only="tablet" tablet={16} style={styles.description_finance}>
+            <Grid.Column only="tablet" tablet={16} style={styles.description}>
               <Header as='h1'>
                 Keep track of your favorite cryptocurrencies
                 <Header.Subheader>
@@ -75,13 +71,13 @@ class Initial extends React.Component {
               </Header>
             </Grid.Column>
             <Grid.Column only="tablet" tablet={16} >
-              <div style={styles.svg.finance}>
+              <div style={styles.svg.default}>
                 <Finance />
               </div>
             </Grid.Column>
 
             {/* Mobile Screen */}
-            <Grid.Column textAlign="center" only="mobile" mobile={16} style={styles.description_finance}>
+            <Grid.Column textAlign="center" only="mobile" mobile={16} style={styles.description}>
               <Header as='h1' textAlign="center">
                 Keep track of your favorite cryptocurrencies
                 <Header.Subheader>
@@ -91,7 +87,7 @@ class Initial extends React.Component {
               </Header>
             </Grid.Column>
             <Grid.Column textAlign="center" only="mobile" mobile={16} >
-              <div style={styles.svg.finance}>
+              <div style={{ ...styles.svg.default, ...styles.svg.mobile}}>
                 <Finance />
               </div>
             </Grid.Column>
@@ -104,11 +100,11 @@ class Initial extends React.Component {
 
             {/* Computer Screen */}
             <Grid.Column only="computer" computer={8} floated='left' >
-              <div style={styles.svg.ethereum}>
+              <div style={styles.svg.default}>
                 <Ethereum/>
               </div>
             </Grid.Column>
-            <Grid.Column only="computer" computer={8} floated='right' style={styles.description_ethereum}>
+            <Grid.Column only="computer" computer={8} floated='right' style={styles.description}>
               <Header as='h1'>
                 Read the latest headlines and articles
                 <Header.Subheader>
@@ -119,11 +115,11 @@ class Initial extends React.Component {
 
             {/* Tablet Screen */}
             <Grid.Column only="tablet" tablet={16} floated='left' style={{ order: 1 }}>
-              <div style={styles.svg.ethereum}>
+              <div style={styles.svg.default}>
                 <Ethereum />
               </div>
             </Grid.Column>
-            <Grid.Column only="tablet" tablet={16} floated='right' style={styles.description_ethereum}>
+            <Grid.Column only="tablet" tablet={16} floated='right' style={styles.description}>
               <Header as='h1'>
                 Read the latest headlines and articles
                 <Header.Subheader>
@@ -134,11 +130,11 @@ class Initial extends React.Component {
 
             {/* Mobile Screen */}
             <Grid.Column textAlign="center" only="mobile" mobile={16} floated='left' style={{ order: 1 }}>
-              <div style={styles.svg.ethereum}>
+              <div style={{ ...styles.svg.default, ...styles.svg.mobile }}>
                 <Ethereum />
               </div>
             </Grid.Column>
-            <Grid.Column textAlign="center" only="mobile" mobile={16} floated='right' style={styles.description_ethereum}>
+            <Grid.Column textAlign="center" only="mobile" mobile={16} floated='right' style={styles.description}>
               <Header as='h1' textAlign="center">
                 Read the latest headlines and articles
                 <Header.Subheader>

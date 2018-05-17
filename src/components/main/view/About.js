@@ -10,12 +10,14 @@ class About extends React.Component {
   renderTitle = () => {
     const styles = {
       svg: {
-        padding: '50px'
-      },
+        default: {
+          padding: '50px'
+        },
 
-      mobileSvg: {
-        maxWidth: '400px',
-        margin: '0 auto'
+        mobile: {
+          maxWidth: '400px',
+          margin: '0 auto'
+        }
       },
 
       gridContainer: {
@@ -43,7 +45,7 @@ class About extends React.Component {
             <Header as='h1' content='About Crypto Brief' subheader="Learn all about what powers Crypto Brief! It's exciting, I promise!"/>
           </Grid.Column>
           <Grid.Column only="computer" computer={8}>
-            <div style={styles.svg}>
+            <div style={styles.svg.default}>
               <Hello />
             </div>
           </Grid.Column>
@@ -53,7 +55,7 @@ class About extends React.Component {
             <Header as='h1' content='About Crypto Brief' subheader="Learn all about what powers Crypto Brief! It's exciting, I promise!" />
           </Grid.Column>
           <Grid.Column only="tablet" tablet={8}>
-            <div style={styles.svg}>
+            <div style={styles.svg.default}>
               <Hello />
             </div>
           </Grid.Column>
@@ -63,7 +65,7 @@ class About extends React.Component {
             <Header as='h1' content='About Crypto Brief' subheader="Learn all about what powers Crypto Brief! It's exciting, I promise!" />
           </Grid.Column>
           <Grid.Column textAlign="center" only="mobile" mobile={16}>
-            <div style={{ ...styles.svg, ...styles.mobileSvg}}>
+            <div style={{ ...styles.svg.default, ...styles.svg.mobile}}>
               <Hello />
             </div>
           </Grid.Column>
