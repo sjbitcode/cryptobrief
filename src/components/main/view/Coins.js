@@ -29,7 +29,7 @@ class Coins extends React.Component {
     this.props.history.push(`/coin/${coinId}`);
   };
 
-  renderCoinElement = (obj) => {
+  renderCoinElement = (obj, size='medium') => {
     /*
       Render all coins from coin list.
       If a coin exists in state, apply a special style.
@@ -42,14 +42,14 @@ class Coins extends React.Component {
 
     if (obj.id in this.props.coins) {
       return (
-        <Button onClick={(event) => this.handleClick(obj.id, true, event)} key={obj.id} color='orange' style={button}>
+        <Button onClick={(event) => this.handleClick(obj.id, true, event)} key={obj.id} size={size} color='orange' style={button}>
           <div>{obj.name} ({obj.symbol})</div>
         </Button>
       );
     }
     else {
       return (
-        <Button onClick={(event) => this.handleClick(obj.id, false, event)} color='green' inverted key={obj.id} style={button}>
+        <Button onClick={(event) => this.handleClick(obj.id, false, event)} size={size} color='green' inverted key={obj.id} style={button}>
           <div>{obj.name} ({obj.symbol})</div>
         </Button>
       );
@@ -59,7 +59,16 @@ class Coins extends React.Component {
   renderCoins = () => {
     return (
       <Container>
-        {coinList.map(obj => this.renderCoinElement(obj))}
+        <Grid textAlign='center' columns={1} stackable>
+          <Grid.Column only="computer tablet" computer={16} tablet={16}>
+            {coinList.map(obj => this.renderCoinElement(obj))}
+          </Grid.Column>
+
+          <Grid.Column only="mobile" mobile={16}>
+            {coinList.map(obj => this.renderCoinElement(obj, 'mini'))}
+          </Grid.Column>
+        </Grid>
+
       </Container>
     );
   };
@@ -67,9 +76,14 @@ class Coins extends React.Component {
   renderTitle = () => {
     const styles = {
       svg: {
-        margin: '0 auto',
-        maxWidth: '300px',
-        paddingTop: '30px'
+        default: {
+          padding: '50px'
+        },
+
+        mobile: {
+          maxWidth: '400px',
+          margin: '0 auto'
+        }
       },
 
       container: {
@@ -77,25 +91,47 @@ class Coins extends React.Component {
         paddingBottom: '30px'
       },
 
+      gridContainer: {
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center'
+      },
+
       description: {
-        padding: '100px'
+        padding: '50px'
       }
     };
 
     return (
       <Container textAlign='center' style={styles.container}>
-        <Grid columns={2}>
-          <Grid.Column style={styles.description}>
-            <Header as='h1'>
-              Coin List
-            </Header>
-            <p>
-              We support {coinList.length} coins through the Coin Market Cap API.
-            </p>
+        <Grid columns={2} stackable style={styles.gridContainer}>
+
+          {/* Computer Screen */}
+          <Grid.Column only="computer" computer={8} style={styles.description}>
+            <Header as='h1' content='Coin List' subheader={`We support ${coinList.length} coins through the Coin Market Cap API.`}/>
+          </Grid.Column>
+          <Grid.Column only="computer" computer={8}>
+            <div style={styles.svg.default}>
+              <Floating />
+            </div>
           </Grid.Column>
 
-          <Grid.Column>
-            <div style={styles.svg}>
+          {/* Tablet Screen */}
+          <Grid.Column only="tablet" tablet={8} style={styles.description}>
+            <Header as='h1' content='Coin List' subheader={`We support ${coinList.length} coins through the Coin Market Cap API.`} />
+          </Grid.Column>
+          <Grid.Column only="tablet" tablet={8}>
+            <div style={styles.svg.default}>
+              <Floating />
+            </div>
+          </Grid.Column>
+
+          {/* Mobile Screen */}
+          <Grid.Column textAlign="center" only="mobile" mobile={16} style={styles.description}>
+            <Header as='h1' content='Coin List' subheader={`We support ${coinList.length} coins through the Coin Market Cap API.`} />
+          </Grid.Column>
+          <Grid.Column textAlign="center" only="mobile" mobile={16}>
+            <div style={{...styles.svg.default, ...styles.svg.mobile}}>
               <Floating />
             </div>
           </Grid.Column>

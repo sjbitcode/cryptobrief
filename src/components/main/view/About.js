@@ -20,15 +20,15 @@ class About extends React.Component {
         }
       },
 
+      container: {
+        paddingTop: '0px',
+        paddingBottom: '30px'
+      },
+
       gridContainer: {
         display: 'flex',
         justifyContent: 'space-around',
         alignItems: 'center'
-      },
-
-      container: {
-        paddingTop: '0px',
-        paddingBottom: '30px'
       },
 
       description: {
