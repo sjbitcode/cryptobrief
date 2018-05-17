@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header, Segment, Container, Grid } from 'semantic-ui-react';
 
-import Floating from '../../svg/Hello';
+import Hello from '../../svg/Hello';
 import NewsApiModal from './NewsApiModal';
 
 
@@ -10,9 +10,18 @@ class About extends React.Component {
   renderTitle = () => {
     const styles = {
       svg: {
-        margin: '0 auto',
-        maxWidth: '300px',
-        paddingTop: '30px'
+        padding: '50px'
+      },
+
+      mobileSvg: {
+        maxWidth: '400px',
+        margin: '0 auto'
+      },
+
+      gridContainer: {
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center'
       },
 
       container: {
@@ -21,26 +30,47 @@ class About extends React.Component {
       },
 
       description: {
-        padding: '100px 80px 100px 80px'
+        padding: '50px'
       }
     };
 
     return (
       <Container textAlign='center' style={styles.container}>
-        <Grid columns={2}>
-          <Grid.Column style={styles.description}>
-            <Header as='h1' content='About Crypto Brief'/>
-            <p>Learn all about what powers Crypto Brief! It's exciting, I promise!</p>
-          </Grid.Column>
+        <Grid columns={2} stackable style={styles.gridContainer}>
 
-          <Grid.Column>
+          {/* Computer Screen */}
+          <Grid.Column only="computer" computer={8} style={styles.description}>
+            <Header as='h1' content='About Crypto Brief' subheader="Learn all about what powers Crypto Brief! It's exciting, I promise!"/>
+          </Grid.Column>
+          <Grid.Column only="computer" computer={8}>
             <div style={styles.svg}>
-              <Floating />
+              <Hello />
             </div>
           </Grid.Column>
+
+          {/* Tablet Screen */}
+          <Grid.Column only="tablet" tablet={8} style={styles.description}>
+            <Header as='h1' content='About Crypto Brief' subheader="Learn all about what powers Crypto Brief! It's exciting, I promise!" />
+          </Grid.Column>
+          <Grid.Column only="tablet" tablet={8}>
+            <div style={styles.svg}>
+              <Hello />
+            </div>
+          </Grid.Column>
+
+          {/* Mobile Screen */}
+          <Grid.Column textAlign="center" only="mobile" mobile={16} style={styles.description}>
+            <Header as='h1' content='About Crypto Brief' subheader="Learn all about what powers Crypto Brief! It's exciting, I promise!" />
+          </Grid.Column>
+          <Grid.Column textAlign="center" only="mobile" mobile={16}>
+            <div style={{ ...styles.svg, ...styles.mobileSvg}}>
+              <Hello />
+            </div>
+          </Grid.Column>
+
         </Grid>
 
-        <Container text textAlign='left' style={{ marginTop: '60px' }}>
+        <Container text textAlign='left' fluid style={{ marginTop: '60px' }}>
           <Header as='h3' content='What exactly is Crypto Brief?' />
           <p>
             Simply put, Crypto Brief answers the question of "How is [cryptocurrency] doing right now?"
@@ -53,7 +83,7 @@ class About extends React.Component {
           </p>
         </Container>
 
-        <Container text textAlign='left' style={{ marginTop: '60px' }}>
+        <Container text textAlign='left' fluid style={{ marginTop: '60px' }}>
           <Header as='h3' content='Coin Market Cap API'/>
           <p>
             Crypto Brief uses the <a href="https://coinmarketcap.com/api/documentation/v1/" target='_blank' rel="noopener noreferrer">Coin Market Cap API v1</a> to gather price data on a specific
@@ -62,7 +92,7 @@ class About extends React.Component {
           </p>
         </Container>
 
-        <Container text textAlign='left' style={{ marginTop: '60px' }}>
+        <Container text textAlign='left' fluid style={{ marginTop: '60px' }}>
           <Header as='h3' content='News API' />
           <p>
             Crypto Brief uses <a href="https://newsapi.org/docs/endpoints/everything" target='_blank' rel="noopener noreferrer">News API v2</a> to gather news articles on a specific
@@ -72,7 +102,7 @@ class About extends React.Component {
           </p>
         </Container>
 
-        <Container text textAlign='left' style={{ marginTop: '60px' }}>
+        <Container text textAlign='left' fluid style={{ marginTop: '60px' }}>
           <Header as='h3' content='The Tech Behind Crypto Brief' />
           <p>
             Crypto Brief is a React app using  
