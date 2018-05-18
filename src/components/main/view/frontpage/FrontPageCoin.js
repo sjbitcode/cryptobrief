@@ -49,6 +49,8 @@ class FrontPageCoin extends React.Component {
   renderFancy = () => {
     const { coin, coinId, removeCoin, addOrUpdateCoin } = this.props;
 
+    const { newsDataIsLoading, tickerDataIsLoading } = coin;
+
     const { news_data } = coin;
     const first_article = news_data.articles[0] || null;
     const { ticker_data } = coin;
@@ -104,7 +106,7 @@ class FrontPageCoin extends React.Component {
     }
 
     return (
-      <Segment style={styles.mainSegment}>
+      <Segment style={styles.mainSegment} loading={newsDataIsLoading || tickerDataIsLoading}>
         <Grid stackable columns={2}>
 
           {/* Heading and Delete button */}
