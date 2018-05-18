@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Article from './Article';
 import RefreshCoin from '../RefreshCoin';
 import TickerDetail from './TickerDetail';
+import placeholderImage from '../../../../images/pattern.png';
 
 
 class DetailNews extends React.Component {

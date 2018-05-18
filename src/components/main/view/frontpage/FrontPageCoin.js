@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid, Image, Label, Segment, Icon, Header } from 'semantic-ui-react';
 
 // import { epochToDate, formatISODate } from '../../../../api/helpers';
+import placeholderImage from '../../../../images/pattern.png';
 import RefreshCoin from '../RefreshCoin';
 import './style.css';
 
@@ -284,7 +285,20 @@ class FrontPageCoin extends React.Component {
                         <Image src={first_article.urlToImage} size='small' floated='left' />
                       </Grid.Column>
                       </React.Fragment>
-                      : null
+                      : 
+                      <React.Fragment>
+                        <Grid.Column only="computer" computer={8}>
+                          <Image src={placeholderImage} size='medium' floated='left' />
+                        </Grid.Column>
+
+                        <Grid.Column only="tablet" tablet={16}>
+                          <Image src={placeholderImage} size='medium' floated='left' />
+                        </Grid.Column>
+
+                        <Grid.Column textAlign="center" only="mobile" mobile={8} style={styles.mobile.flexItem} id="flexItem">
+                          <Image src={placeholderImage} size='small' floated='left' />
+                        </Grid.Column>
+                      </React.Fragment>
                     }
                     <Grid.Column only="computer" computer={8}>
                       <Header as='h4' textAlign='left'>
