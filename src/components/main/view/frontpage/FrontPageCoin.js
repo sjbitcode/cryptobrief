@@ -262,8 +262,6 @@ class FrontPageCoin extends React.Component {
               {
                 first_article ?
                   (
-                    // <div style={styles.news.mobiles}>
-                    <div>
                     <Grid columns={2} container padded style={styles.mobile.flexContainer}>
                     {
                       first_article.urlToImage ? 
@@ -310,10 +308,9 @@ class FrontPageCoin extends React.Component {
                     </Grid.Column>
 
                     </Grid>
-                    {/* <Label attached='bottom right'>+ {news_data.articles.length - 1} more articles</Label> */}
-                    </div>
                   ) :
-                  <Header as='h4' textAlign='left'>
+                  <Header as='h3' textAlign='center' icon color="grey">
+                    <Icon name="newspaper" />
                     No articles at this moment!
                   </Header>
               }
@@ -327,7 +324,17 @@ class FrontPageCoin extends React.Component {
             </Grid.Column>
 
             <Grid.Column>
-              <Label attached='bottom right'>+ {news_data.articles.length - 1} more articles</Label>
+              <Label attached='bottom right'>
+                { 
+                  (news_data.articles.length > 0) ?
+                  (
+                    (news_data.articles.length === 2) ?
+                    <span>+ {news_data.articles.length - 1} more article</span> :
+                    <span>+ {news_data.articles.length - 1} more articles</span>
+                  ) :
+                  <span>+ 0 more articles</span>
+                }
+              </Label>
             </Grid.Column>
           </Grid.Row>
         </Grid>
