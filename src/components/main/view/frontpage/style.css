@@ -1,0 +1,7 @@
+
+
+@media only screen and (max-width: 767px) and (min-width: 320px) {
+#flexItem {
+    width: 200px !important;
+}
+}

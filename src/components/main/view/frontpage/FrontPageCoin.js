@@ -4,6 +4,7 @@ import { Grid, Image, Label, Segment, Icon, Header } from 'semantic-ui-react';
 
 import { epochToDate, formatISODate } from '../../../../api/helpers';
 import RefreshCoin from '../RefreshCoin';
+import './style.css';
 
 
 class FrontPageCoin extends React.Component {
@@ -13,43 +14,6 @@ class FrontPageCoin extends React.Component {
     removeCoin: PropTypes.func.isRequired,
     addOrUpdateCoin: PropTypes.func.isRequired
   };
-
-  // renderTickerData = (coinObj) => {
-  //   const { ticker_data } = coinObj;
-
-  //   return (
-  //     <div>
-  //       <p>symbol: {ticker_data.symbol}</p>
-  //       <p>rank: {ticker_data.rank}</p>
-  //       <p>price_usd: {ticker_data.price_usd}</p>
-  //       <p>price_btc: {ticker_data.price_btc}</p>
-  //       <p>percent_change_24h: {ticker_data.percent_change_24h}</p>
-  //       <p>last_updated: {formatISODate(epochToDate(ticker_data.last_updated), true)}</p>
-  //     </div>
-  //   );
-  // };
-
-  // renderNewsData = (coinObj) => {
-  //   const { news_data } = coinObj;
-  //   const first_article = news_data.articles[0] || null;
-
-  //   return (
-  //     <div>
-  //       {
-  //         first_article ?
-  //         (
-  //           <React.Fragment>
-  //           <p>{news_data.articles.length} articles found</p>
-  //           <strong>{first_article.title}</strong>
-  //           <i>{first_article.source.name}</i>
-  //           </React.Fragment>
-  //         ) :
-  //         <p>No articles at this moment!</p>
-  //       }
-        
-  //     </div>
-  //   );
-  // };
 
   getRankColor = (rank) => {
     rank = parseInt(rank, 10);
@@ -101,79 +65,252 @@ class FrontPageCoin extends React.Component {
 
       ribbon: {
         marginTop: '15px'
+      },
+
+      deleteButton: {
+        default: {
+          float: 'right'
+        }
+      },
+
+      mobile: {
+        flexContainer: {
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-around'
+        },
+
+        flexItem: {
+          width: '200px !important',
+          textAlign: 'center'
+        }
+      },
+
+      news: {
+        mobile: {
+          display: 'flex',
+          flexDirection: 'column',
+          paddingBottom: '30px',
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }
       }
     }
 
     return (
       <Segment style={styles.mainSegment}>
-        <Grid columns={2}>
+        <Grid stackable columns={2}>
 
-          <Grid.Column width={8}>
-            <Header as='h1' textAlign='left'>
-              {coin.displayName}
-              <Label>{symbol}</Label>
-              <RefreshCoin addOrUpdateCoin={addOrUpdateCoin} coinId={coinId}/>
-            </Header>
+          {/* Heading and Delete button */}
+          <Grid.Row>
+            <Grid.Column>
+              <Header as='h1' textAlign='left'>
+                {coin.displayName}
+                <Label>{symbol}</Label>
+                <RefreshCoin addOrUpdateCoin={addOrUpdateCoin} coinId={coinId} />
+              </Header>
+            </Grid.Column>
 
-            <Grid columns={2}>
-              <Grid.Column textAlign='center'>
-                <Grid.Row>
-                  <Header as='h3' color='grey'>
-                    ${price_usd}
-                  </Header>
-                </Grid.Row>
-                <Grid.Row>
-                  <Header as='h3' color='grey'>
-                    {price_btc} BTC
-                  </Header>
-                </Grid.Row>
-              </Grid.Column>
-              <Grid.Column textAlign='center'>
-                <Grid.Row>
-                  <Header as='h3' color={this.getPercentColor(percent_change_1h)}>
-                    {(parseFloat(percent_change_1h) >= 0) ? '+' : null}{percent_change_1h}% (1 hr)
-                  </Header>
-                </Grid.Row>
-                <Grid.Row>
-                  <Header as='h3' color={this.getPercentColor(percent_change_24h)}>
-                    {(parseFloat(percent_change_24h) >= 0) ? '+' : null}{percent_change_24h}% (24 hr)
-                  </Header>
-                </Grid.Row>
-              </Grid.Column>
-            </Grid>
+            <Grid.Column>
+              <Label color='red' circular onClick={() => removeCoin(coinId)} style={styles.deleteButton.default}>
+                <Icon name='delete' style={styles.icon} />
+              </Label>
+            </Grid.Column>
+          </Grid.Row>
 
-            <Label color={this.getRankColor(rank)} ribbon style={styles.ribbon}>Rank #{rank}</Label>
-          </Grid.Column>
+          {/* Price and News */}
+          <Grid.Row>
+            <Grid.Column only="computer tablet" width={8}>
+              <Grid padded stackable columns={2} container>
 
-          <Grid.Column width={8}>
-            <Label color='red' circular floating onClick={() => removeCoin(coinId)}>
-              <Icon name='delete' style={styles.icon}/>
-            </Label>
+                <Grid.Column only="computer tablet" computer={8} tablet={16} textAlign='left'>
+                  <Grid.Row>
+                    <Header as='h4' color='grey'>
+                      Price
+                    </Header>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Header as='h3' color='black'>
+                      {price_usd} (USD)
+                    </Header>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Header as='h3' color='black'>
+                      {price_btc} (BTC)
+                    </Header>
+                  </Grid.Row>
+                </Grid.Column>
 
-            {
-              first_article ?
-                (
-                  <div>
-                  {
-                    first_article.urlToImage ? 
-                    <Image src={first_article.urlToImage} size='small' floated='left' />
-                    : null
-                  }
+                <Grid.Column only="computer tablet" computer={8} tablet={16} textAlign='left' float="right">
+                  <Grid.Row>
+                    <Header as='h4' color='grey'>
+                      Percent Change
+                    </Header>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Header as='h3' color={this.getPercentColor(percent_change_1h)}>
+                      {(parseFloat(percent_change_1h) >= 0) ? '+' : null}{percent_change_1h}% (1 hr)
+                    </Header>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Header as='h3' color={this.getPercentColor(percent_change_24h)}>
+                      {(parseFloat(percent_change_24h) >= 0) ? '+' : null}{percent_change_24h}% (24 hr)
+                    </Header>
+                  </Grid.Row>
+                </Grid.Column>
 
+                <Grid.Column only="mobile" mobile={8} textAlign='left'>
+                  <Grid.Row>
+                    <Header as='h4' color='grey'>
+                      Price
+                    </Header>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Header as='h3' color='black'>
+                      {price_usd} (USD)
+                    </Header>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Header as='h3' color='black'>
+                      {price_btc} (BTC)
+                    </Header>
+                  </Grid.Row>
+                </Grid.Column>
+
+                <Grid.Column only="mobile" mobile={8} textAlign='left'>
+                  <Grid.Row>
+                    <Header as='h4' color='grey'>
+                      Percent Change
+                    </Header>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Header as='h3' color={this.getPercentColor(percent_change_1h)}>
+                      {(parseFloat(percent_change_1h) >= 0) ? '+' : null}{percent_change_1h}% (1 hr)
+                    </Header>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Header as='h3' color={this.getPercentColor(percent_change_24h)}>
+                      {(parseFloat(percent_change_24h) >= 0) ? '+' : null}{percent_change_24h}% (24 hr)
+                    </Header>
+                  </Grid.Row>
+                </Grid.Column>
+
+              </Grid>
+
+            </Grid.Column>
+
+            <Grid.Column only="mobile" width={8}>
+              <Grid padded container columns={2} style={styles.mobile.flexContainer} className="flexWrapper">
+                <Grid.Column only="mobile" mobile={8} style={styles.mobile.flexItem} id="flexItem">
+                  <Grid.Row>
+                    <Header as='h4' color='grey'>
+                      Price
+                    </Header>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Header as='h3' color='black'>
+                      {price_usd} (USD)
+                    </Header>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Header as='h3' color='black'>
+                      {price_btc} (BTC)
+                    </Header>
+                  </Grid.Row>
+                </Grid.Column>
+
+                <Grid.Column only="mobile" mobile={8} style={styles.mobile.flexItem} id="flexItem">
+                  <Grid.Row>
+                    <Header as='h4' color='grey'>
+                      Percent Change
+                    </Header>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Header as='h3' color={this.getPercentColor(percent_change_1h)}>
+                      {(parseFloat(percent_change_1h) >= 0) ? '+' : null}{percent_change_1h}% (1 hr)
+                    </Header>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Header as='h3' color={this.getPercentColor(percent_change_24h)}>
+                      {(parseFloat(percent_change_24h) >= 0) ? '+' : null}{percent_change_24h}% (24 hr)
+                    </Header>
+                  </Grid.Row>
+                  </Grid.Column>
+              </Grid>
+            </Grid.Column>
+
+            <Grid.Column width={8}>
+              {
+                first_article ?
+                  (
+                    // <div style={styles.news.mobiles}>
+                    <div>
+                    <Grid columns={2} container padded style={styles.mobile.flexContainer}>
+                    {
+                      first_article.urlToImage ? 
+                      <React.Fragment>
+                      <Grid.Column only="computer" computer={8}>
+                        <Image src={first_article.urlToImage} size='small' floated='left' />
+                      </Grid.Column>
+
+                      <Grid.Column only="tablet" tablet={16}>
+                        <Image src={first_article.urlToImage} size='small' floated='left' />
+                      </Grid.Column>
+
+                              <Grid.Column textAlign="center" only="mobile" mobile={8} style={styles.mobile.flexItem} id="flexItem">
+                        <Image src={first_article.urlToImage} size='small' floated='left' />
+                      </Grid.Column>
+                      </React.Fragment>
+                      : null
+                    }
+                    <Grid.Column only="computer" computer={8}>
+                      <Header as='h4' textAlign='left'>
+                        {first_article.title}
+                        <Header.Subheader>
+                          {first_article.source.name}
+                        </Header.Subheader>
+                      </Header>
+                    </Grid.Column>
+
+                    <Grid.Column only="tablet" tablet={16}>
+                      <Header as='h4' textAlign='left'>
+                        {first_article.title}
+                        <Header.Subheader>
+                          {first_article.source.name}
+                        </Header.Subheader>
+                      </Header>
+                    </Grid.Column>
+
+                    <Grid.Column textAlign="center" only="mobile" mobile={8} style={styles.mobile.flexItem} id="flexItem">
+                      <Header as='h4' textAlign='left'>
+                        {first_article.title}
+                        <Header.Subheader>
+                          {first_article.source.name}
+                        </Header.Subheader>
+                      </Header>
+                    </Grid.Column>
+
+                    </Grid>
+                    {/* <Label attached='bottom right'>+ {news_data.articles.length - 1} more articles</Label> */}
+                    </div>
+                  ) :
                   <Header as='h4' textAlign='left'>
-                    {first_article.title}
-                    <Header.Subheader>
-                      {first_article.source.name}
-                    </Header.Subheader>
+                    No articles at this moment!
                   </Header>
-                  <Label attached='bottom right'>+ {news_data.articles.length - 1} more articles</Label>
-                  </div>
-                ) :
-                <Header as='h4' textAlign='left'>
-                  No articles at this moment!
-                </Header>
-            }
-          </Grid.Column>
+              }
+            </Grid.Column>
+          </Grid.Row>
+
+          {/* Rank and more articles */}
+          <Grid.Row>
+            <Grid.Column>
+              <Label color={this.getRankColor(rank)} ribbon style={styles.ribbon}>Rank #{rank}</Label>
+            </Grid.Column>
+
+            <Grid.Column>
+              <Label attached='bottom right'>+ {news_data.articles.length - 1} more articles</Label>
+            </Grid.Column>
+          </Grid.Row>
         </Grid>
       </Segment>
     );
