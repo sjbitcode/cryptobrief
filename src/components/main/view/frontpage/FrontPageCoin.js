@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Image, Label, Segment, Icon, Header } from 'semantic-ui-react';
 
-import { epochToDate, formatISODate } from '../../../../api/helpers';
+// import { epochToDate, formatISODate } from '../../../../api/helpers';
 import RefreshCoin from '../RefreshCoin';
 import './style.css';
 

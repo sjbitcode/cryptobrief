@@ -227,22 +227,6 @@ class App extends Component {
 
   render() {
 
-    const layoutStyles = {
-      sidebar: {
-        position: 'fixed',
-        top: '0px',
-        bottom: '0px',
-        left: '0px',
-        width: '280px',
-        // overflowY: 'scroll',
-        // paddingBottom: '1em'
-      },
-
-      main: {
-        marginLeft: '280px'
-      }
-    }
-
     return (
       <React.Fragment>
         
@@ -259,21 +243,11 @@ class App extends Component {
 
           <Grid container>
           <Grid.Row>
-            <Grid.Column only="tablet" width={3}>
+            <Grid.Column only="tablet computer" width={3}>
               <Sidebar coins={this.state.coins} vertical={true} fixed='left' width={3}/>
             </Grid.Column>
 
-            <Grid.Column only="tablet" width={13}>
-              <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinId={this.getCoinId} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
-            </Grid.Column>
-          </Grid.Row>
-
-          <Grid.Row>
-            <Grid.Column only="computer" width={3}>
-              <Sidebar coins={this.state.coins} vertical={true} fixed='left' width={3}/>
-            </Grid.Column>
-
-            <Grid.Column only="computer" width={13}>
+            <Grid.Column only="tablet computer" width={13}>
               <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinId={this.getCoinId} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
             </Grid.Column>
           </Grid.Row>

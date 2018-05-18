@@ -6,13 +6,11 @@ import { Header, Segment, Container, Grid } from 'semantic-ui-react';
 import News from '../../../svg/News';
 import Initial from './Initial';
 import FrontPageCoin from './FrontPageCoin';
-import RefreshCoin from '../RefreshCoin';
 
 
 class FrontPage extends React.Component {
   static propTypes = {
     coins: PropTypes.object.isRequired,
-    removeCoin: PropTypes.func.isRequired,
     addOrUpdateCoin: PropTypes.func.isRequired
   };
 
@@ -87,7 +85,7 @@ class FrontPage extends React.Component {
                   key={key}
                   coinId={key}
                   coin={coins[key]}
-                  removeCoin={this.props.removeCoin}
+                  removeCoin={removeCoin}
                   addOrUpdateCoin={addOrUpdateCoin}
                 />
             </div>
