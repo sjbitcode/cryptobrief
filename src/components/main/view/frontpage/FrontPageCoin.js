@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Grid, Image, Label, Segment, Icon, Header } from 'semantic-ui-react';
 
@@ -111,26 +112,30 @@ class FrontPageCoin extends React.Component {
 
           {/* Heading and Delete button */}
           <Grid.Row>
-            <Grid.Column only="computer tablet" computer={8} tablet={8}>
-              <Header as='h1' textAlign='left'>
-                {coin.displayName}
-                <Label>{symbol}</Label>
-                <RefreshCoin addOrUpdateCoin={addOrUpdateCoin} coinId={coinId} />
-              </Header>
+            <Grid.Column only="computer tablet" computer={12} tablet={12}>
+              <Link to={`/coin/${coinId}`}>
+                <Header as='h1' textAlign='left'>
+                  {coin.displayName}
+                  <Label>{symbol}</Label>
+                  <RefreshCoin addOrUpdateCoin={addOrUpdateCoin} coinId={coinId} />
+                </Header>
+              </Link>
             </Grid.Column>
 
-            <Grid.Column only="computer tablet" computer={8} tablet={8}>
+            <Grid.Column only="computer tablet" computer={4} tablet={4}>
               <Label color='red' circular onClick={() => removeCoin(coinId)} style={styles.deleteButton.default}>
                 <Icon name='delete' style={styles.icon} />
               </Label>
             </Grid.Column>
 
             <Grid.Column only="mobile" mobile={8} style={styles.mobile.header}>
-              <Header as='h1' textAlign='left'>
-                {coin.displayName}
-                <Label>{symbol}</Label>
-                <RefreshCoin addOrUpdateCoin={addOrUpdateCoin} coinId={coinId} />
-              </Header>
+              <Link to={`/coin/${coinId}`}>
+                <Header as='h1' textAlign='left'>
+                  {coin.displayName}
+                  <Label>{symbol}</Label>
+                  <RefreshCoin addOrUpdateCoin={addOrUpdateCoin} coinId={coinId} />
+                </Header>
+              </Link>
               <Label color='red' circular onClick={() => removeCoin(coinId)}>
                 <Icon name='delete' style={styles.icon} />
               </Label>
@@ -261,20 +266,21 @@ class FrontPageCoin extends React.Component {
             <Grid.Column width={8}>
               {
                 first_article ?
-                  (
+                  (  
+                    <Link to={`/coin/${coinId}`}>
                     <Grid columns={2} container padded style={styles.mobile.flexContainer}>
                     {
                       first_article.urlToImage ? 
                       <React.Fragment>
                       <Grid.Column only="computer" computer={8}>
-                        <Image src={first_article.urlToImage} size='small' floated='left' />
+                        <Image src={first_article.urlToImage} size='medium' floated='left' />
                       </Grid.Column>
 
                       <Grid.Column only="tablet" tablet={16}>
-                        <Image src={first_article.urlToImage} size='small' floated='left' />
+                        <Image src={first_article.urlToImage} size='medium' floated='left' />
                       </Grid.Column>
 
-                              <Grid.Column textAlign="center" only="mobile" mobile={8} style={styles.mobile.flexItem} id="flexItem">
+                      <Grid.Column textAlign="center" only="mobile" mobile={8} style={styles.mobile.flexItem} id="flexItem">
                         <Image src={first_article.urlToImage} size='small' floated='left' />
                       </Grid.Column>
                       </React.Fragment>
@@ -308,6 +314,7 @@ class FrontPageCoin extends React.Component {
                     </Grid.Column>
 
                     </Grid>
+                    </Link>
                   ) :
                   <Header as='h3' textAlign='center' icon color="grey">
                     <Icon name="newspaper" />
@@ -324,6 +331,7 @@ class FrontPageCoin extends React.Component {
             </Grid.Column>
 
             <Grid.Column>
+              <Link to={`/coin/${coinId}`}>
               <Label attached='bottom right'>
                 { 
                   (news_data.articles.length > 0) ?
@@ -335,6 +343,7 @@ class FrontPageCoin extends React.Component {
                   <span>+ 0 more articles</span>
                 }
               </Label>
+              </Link>
             </Grid.Column>
           </Grid.Row>
         </Grid>
