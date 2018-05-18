@@ -74,6 +74,12 @@ class FrontPageCoin extends React.Component {
       },
 
       mobile: {
+        header: {
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start'
+        },
+
         flexContainer: {
           display: 'flex',
           flexWrap: 'wrap',
@@ -103,7 +109,7 @@ class FrontPageCoin extends React.Component {
 
           {/* Heading and Delete button */}
           <Grid.Row>
-            <Grid.Column>
+            <Grid.Column only="computer tablet" computer={8} tablet={8}>
               <Header as='h1' textAlign='left'>
                 {coin.displayName}
                 <Label>{symbol}</Label>
@@ -111,8 +117,19 @@ class FrontPageCoin extends React.Component {
               </Header>
             </Grid.Column>
 
-            <Grid.Column>
+            <Grid.Column only="computer tablet" computer={8} tablet={8}>
               <Label color='red' circular onClick={() => removeCoin(coinId)} style={styles.deleteButton.default}>
+                <Icon name='delete' style={styles.icon} />
+              </Label>
+            </Grid.Column>
+
+            <Grid.Column only="mobile" mobile={8} style={styles.mobile.header}>
+              <Header as='h1' textAlign='left'>
+                {coin.displayName}
+                <Label>{symbol}</Label>
+                <RefreshCoin addOrUpdateCoin={addOrUpdateCoin} coinId={coinId} />
+              </Header>
+              <Label color='red' circular onClick={() => removeCoin(coinId)}>
                 <Icon name='delete' style={styles.icon} />
               </Label>
             </Grid.Column>
