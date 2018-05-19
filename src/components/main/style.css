@@ -45,10 +45,6 @@
     display: flex !important;
 }
 
-.ui.label>.icon {
-    margin: 0 !important;
-}
-
 .ui.header .icon:only-child {
     margin: 0 !important;
 }

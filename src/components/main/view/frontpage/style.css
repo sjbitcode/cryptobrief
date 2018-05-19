@@ -5,3 +5,7 @@
     width: 200px !important;
 }
 }
+
+div.deleteButton > i {
+     margin: 0 !important;
+}

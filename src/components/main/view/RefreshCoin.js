@@ -22,14 +22,10 @@ class RefreshCoin extends React.Component {
 
   render() {
     const styles = {
-      // margin: '0',
       cursor: 'pointer'
     }
 
     return (
-      // <form onSubmit={this.refreshData}>
-      //   <button type="submit">Refresh</button>
-      // </form>
       <Label icon='refresh' color='teal' onClick={this.refreshData} style={styles}/>
     );
   }

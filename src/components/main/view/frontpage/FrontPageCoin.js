@@ -64,7 +64,7 @@ class FrontPageCoin extends React.Component {
       },
 
       icon: {
-        margin: '0'
+        margin: '0 !important'
       },
 
       ribbon: {
@@ -124,7 +124,7 @@ class FrontPageCoin extends React.Component {
             </Grid.Column>
 
             <Grid.Column only="computer tablet" computer={4} tablet={4}>
-              <Label color='red' circular onClick={() => removeCoin(coinId)} style={styles.deleteButton.default}>
+              <Label color='red' circular onClick={() => removeCoin(coinId)} style={styles.deleteButton.default} className="deleteButton">
                 <Icon name='delete' style={styles.icon} />
               </Label>
             </Grid.Column>
