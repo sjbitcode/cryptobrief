@@ -123,7 +123,7 @@ class About extends React.Component {
 
   render() {
     return (
-      <Segment>
+      <Segment raised>
         {this.renderTitle()}
       </Segment>
     );

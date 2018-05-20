@@ -137,7 +137,7 @@ class FrontPageCoin extends React.Component {
                   <RefreshCoin addOrUpdateCoin={addOrUpdateCoin} coinId={coinId} />
                 </Header>
               </Link>
-              <Label color='red' circular onClick={() => removeCoin(coinId)}>
+              <Label color='red' circular onClick={() => removeCoin(coinId)} className="deleteButton">
                 <Icon name='delete' style={styles.icon} />
               </Label>
             </Grid.Column>

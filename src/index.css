@@ -1,0 +1,39 @@
+@font-face {
+    font-family: "AvenirNext";
+    src: url("./fonts/AvenirNextLTPro-BoldIt.ttf");
+    font-weight: bold;
+    font-style: italic, oblique;
+}
+
+@font-face {
+    font-family: "AvenirNext";
+    src: url("./fonts/AvenirNextLTPro-Bold.ttf");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "AvenirNext";
+    src: url("./fonts/AvenirNextLTPro-It.ttf");
+    font-weight: normal;
+    font-style: italic, oblique;
+}
+
+@font-face {
+    font-family: "AvenirNext";
+    src: url("./fonts/AvenirNextLTPro-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: "AvenirNext", sans-serif !important;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "AvenirNext", sans-serif !important;
+}
+
+.ui {
+    font-family: "AvenirNext", sans-serif !important;
+}

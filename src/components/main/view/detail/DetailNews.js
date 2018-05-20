@@ -158,7 +158,7 @@ class DetailNews extends React.Component {
 
     return (
       <React.Fragment>
-        <Segment padded style={styles.mainSegment} loading={tickerDataIsLoading}>
+        <Segment raised padded style={styles.mainSegment} loading={tickerDataIsLoading}>
           <RefreshCoin
             coinId={params.coinId}
             addOrUpdateCoin={addOrUpdateCoin}
@@ -246,7 +246,7 @@ class DetailNews extends React.Component {
           </Grid>
         </Segment>
       
-        <Segment padded style={styles.mainSegment} loading={newsDataIsLoading}>
+        <Segment raised padded style={styles.mainSegment} loading={newsDataIsLoading}>
         {
           (articles) ?
           (
@@ -255,21 +255,49 @@ class DetailNews extends React.Component {
               {
                 Object.keys(articles).length !== 0 ?
                 (
-                  articles.map((article) => 
-                    <Item only="computer tablet">
+                  articles.map((article, index) => 
+                    <Item key={index}>
                       <Item.Image size="medium" src={article.urlToImage || placeholderImage} />
 
                       <Item.Content verticalAlign='middle'>
-                        <Item.Header as='h2'>{article.title}</Item.Header>
+                        {
+                          article.title ? 
+                          <Item.Header as='h2'>{article.title}</Item.Header> :
+                          <Item.Header as='h2'>Article Title N/A</Item.Header>
+                        }
+
                         <Item.Meta>
-                          <Label content={article.source.name}/>
+                          {
+                            article.source.name ?
+                            <Label content={article.source.name} /> :
+                            <Label content="source N/A" />
+                          }
                         </Item.Meta>
-                        <Item.Description style={{ fontStyle: 'italic' }}>{article.description}</Item.Description>
+
+                        <Item.Description style={{ fontStyle: 'italic' }}>
+                          {
+                            article.description ? article.description : 'Article description N/A'
+                          }
+                        </Item.Description>
 
                         <Item.Extra>
-                          <Label basic color="grey" icon='calendar' content={formatISODate(article.publishedAt)} className="articleIcon"/>
-                          <Label basic color="grey" icon='compose' content={article.author} className="articleIcon"/>
-                          <a href={article.url} style={{ float: 'right' }} target='_blank' rel="noopener noreferrer"><Icon name="external" floated='right'/></a>
+                          {
+                            article.publishedAt ?
+                            <Label basic color="grey" icon='calendar' content={formatISODate(article.publishedAt)} className="articleIcon" /> :
+                            <Label basic color="grey" icon='calendar' content="N/A" className="articleIcon" />
+                          }
+
+                          {
+                            article.author ?
+                            <Label basic color="grey" icon='compose' content={article.author} className="articleIcon"/> :
+                            <Label basic color="grey" icon='compose' content="N/A" className="articleIcon"/>
+                          }
+
+                          {
+                            article.url ?
+                            <a href={article.url} style={{ float: 'right' }} target='_blank' rel="noopener noreferrer"><Icon name="external" floated='right'/></a> :
+                            null
+                          }
                         </Item.Extra>
                       </Item.Content>
                     </Item>

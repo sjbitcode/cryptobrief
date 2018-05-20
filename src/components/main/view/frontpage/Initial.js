@@ -38,7 +38,7 @@ class Initial extends React.Component {
     };
 
     return (
-      <Segment style={styles.segmentContainer}>
+      <Segment style={styles.segmentContainer} raised>
 
         {/* First SVG & text */}
         <Container>

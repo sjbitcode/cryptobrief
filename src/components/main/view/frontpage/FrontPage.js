@@ -5,6 +5,7 @@ import { Header, Segment, Container, Grid } from 'semantic-ui-react';
 import News from '../../../svg/News';
 import Initial from './Initial';
 import FrontPageCoin from './FrontPageCoin';
+import GetStarted from '../../GetStarted';
 
 
 class FrontPage extends React.Component {
@@ -76,7 +77,7 @@ class FrontPage extends React.Component {
 
     if (Object.keys(coins).length) {
       return (
-        <Segment>
+        <Segment raised>
           {this.renderTitle()}
           {Object.keys(coins).map(key => (
             <div key={key}>
@@ -97,10 +98,19 @@ class FrontPage extends React.Component {
     }
   };
 
+  renderContentWithButton = () => {
+    return (
+      <React.Fragment>
+        {this.renderFrontPageCoins()}
+        <GetStarted coins={this.props.coins}/>
+      </React.Fragment>
+    )
+  };
+
   render() {
     return (
       <div>
-        {this.renderFrontPageCoins()}
+        {this.renderContentWithButton()}
       </div>
     );
   }

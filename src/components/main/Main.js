@@ -36,7 +36,7 @@ class Main extends React.Component {
     const totalCoins = Object.keys(this.props.coins).length;
 
     return (
-      <Container>
+      <Container className="main">
         <Container>
           {/* Search Bar & Coins Label */}
           <Grid divided='vertically' style={styles.searchGrid}>
@@ -44,7 +44,7 @@ class Main extends React.Component {
 
               {/* Computer & Tablet Screen */}
               <Grid.Column only="computer tablet">
-                <Search coins={this.props.coins} getCoinId={this.props.getCoinId} addOrUpdateCoin={this.props.addOrUpdateCoin} />
+                <Search coins={this.props.coins} getCoinId={this.props.getCoinId} addOrUpdateCoin={this.props.addOrUpdateCoin}/>
               </Grid.Column>
               <Grid.Column only="computer tablet">
                 <Button inverted color='blue' floated='right'>
@@ -54,7 +54,7 @@ class Main extends React.Component {
 
               {/* Mobile Screen */}
               <Grid.Column only="mobile" mobile={16} style={{ paddingTop: '20px' }}>
-                <Search coins={this.props.coins} getCoinId={this.props.getCoinId} addOrUpdateCoin={this.props.addOrUpdateCoin} />
+                <Search coins={this.props.coins} getCoinId={this.props.getCoinId} addOrUpdateCoin={this.props.addOrUpdateCoin}/>
               </Grid.Column>
               <Grid.Column only="mobile" className="mobile hidden">
                 <Button inverted color='blue' floated='right'>
@@ -74,25 +74,6 @@ class Main extends React.Component {
             </Grid.Row>
           </Grid>
         </Container>
-      
-        {/* Prompt Button */}
-        <Grid>
-          <Grid.Row>
-            <Grid.Column>
-            {
-              totalCoins === 0 ?
-
-              <Container style={styles.getStarted}>
-                <Button fluid color='green' size='big' onClick={() => window.scrollTo(0, 0)}>Get started now</Button>
-              </Container> :
-
-              <Container style={styles.getStarted}>
-                <Button fluid color='green' size='big' onClick={() => window.scrollTo(0, 0)}>Search for another coin</Button>
-              </Container>
-            }
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
       </Container>
     );
   }
