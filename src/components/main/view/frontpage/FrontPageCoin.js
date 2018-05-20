@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Grid, Image, Label, Segment, Icon, Header } from 'semantic-ui-react';
 
-// import { epochToDate, formatISODate } from '../../../../api/helpers';
-import placeholderImage from '../../../../images/pattern.png';
 import RefreshCoin from '../RefreshCoin';
+import { getRankColor, getPercentColor, renderLocaleString } from '../../../../utils/helpers';
+import placeholderImage from '../../../../images/pattern.png';
 import './style.css';
 
 
@@ -15,37 +15,6 @@ class FrontPageCoin extends React.Component {
     coinId: PropTypes.string.isRequired,
     removeCoin: PropTypes.func.isRequired,
     addOrUpdateCoin: PropTypes.func.isRequired
-  };
-
-  getRankColor = (rank) => {
-    rank = parseInt(rank, 10);
-    console.log(rank);
-    if (rank > 50) {
-      console.log(`${rank} is getting the color red`);
-      return 'red'
-    }
-    else if (26 <= rank && rank <= 50) {
-      console.log(`${rank} is getting the color yellow`);
-      return 'yellow'
-    }
-    else if (11 <= rank && rank <= 25) {
-      console.log(`${rank} is getting the color blue`);
-      return 'blue'
-    }
-    else if (1 <= rank && rank <= 10) {
-      console.log(`${rank} is getting the color green`);
-      return 'green'
-    }
-  };
-
-  getPercentColor = (percentChange) => {
-    percentChange = parseFloat(percentChange);
-    if (percentChange < 0) {
-      return 'red'
-    }
-    else {
-      return 'green'
-    }
   };
 
   renderFancy = () => {
@@ -144,7 +113,7 @@ class FrontPageCoin extends React.Component {
           </Grid.Row>
 
           {/* Price and News */}
-          <Grid.Row>
+          <Grid.Row style={{ display: 'flex', alignItems: 'center' }}>
             <Grid.Column only="computer tablet" width={8}>
               <Grid padded stackable columns={2} container>
 
@@ -156,12 +125,12 @@ class FrontPageCoin extends React.Component {
                   </Grid.Row>
                   <Grid.Row>
                     <Header as='h3' color='black'>
-                      {price_usd} (USD)
+                      {renderLocaleString(price_usd, true)}
                     </Header>
                   </Grid.Row>
                   <Grid.Row>
                     <Header as='h3' color='black'>
-                      {price_btc} (BTC)
+                      {price_btc} BTC
                     </Header>
                   </Grid.Row>
                 </Grid.Column>
@@ -173,12 +142,12 @@ class FrontPageCoin extends React.Component {
                     </Header>
                   </Grid.Row>
                   <Grid.Row>
-                    <Header as='h3' color={this.getPercentColor(percent_change_1h)}>
+                    <Header as='h3' color={getPercentColor(percent_change_1h)}>
                       {(parseFloat(percent_change_1h) >= 0) ? '+' : null}{percent_change_1h}% (1 hr)
                     </Header>
                   </Grid.Row>
                   <Grid.Row>
-                    <Header as='h3' color={this.getPercentColor(percent_change_24h)}>
+                    <Header as='h3' color={getPercentColor(percent_change_24h)}>
                       {(parseFloat(percent_change_24h) >= 0) ? '+' : null}{percent_change_24h}% (24 hr)
                     </Header>
                   </Grid.Row>
@@ -209,19 +178,18 @@ class FrontPageCoin extends React.Component {
                     </Header>
                   </Grid.Row>
                   <Grid.Row>
-                    <Header as='h3' color={this.getPercentColor(percent_change_1h)}>
+                    <Header as='h3' color={getPercentColor(percent_change_1h)}>
                       {(parseFloat(percent_change_1h) >= 0) ? '+' : null}{percent_change_1h}% (1 hr)
                     </Header>
                   </Grid.Row>
                   <Grid.Row>
-                    <Header as='h3' color={this.getPercentColor(percent_change_24h)}>
+                    <Header as='h3' color={getPercentColor(percent_change_24h)}>
                       {(parseFloat(percent_change_24h) >= 0) ? '+' : null}{percent_change_24h}% (24 hr)
                     </Header>
                   </Grid.Row>
                 </Grid.Column>
 
               </Grid>
-
             </Grid.Column>
 
             <Grid.Column only="mobile" width={8}>
@@ -251,12 +219,12 @@ class FrontPageCoin extends React.Component {
                     </Header>
                   </Grid.Row>
                   <Grid.Row>
-                    <Header as='h3' color={this.getPercentColor(percent_change_1h)}>
+                    <Header as='h3' color={getPercentColor(percent_change_1h)}>
                       {(parseFloat(percent_change_1h) >= 0) ? '+' : null}{percent_change_1h}% (1 hr)
                     </Header>
                   </Grid.Row>
                   <Grid.Row>
-                    <Header as='h3' color={this.getPercentColor(percent_change_24h)}>
+                    <Header as='h3' color={getPercentColor(percent_change_24h)}>
                       {(parseFloat(percent_change_24h) >= 0) ? '+' : null}{percent_change_24h}% (24 hr)
                     </Header>
                   </Grid.Row>
@@ -341,7 +309,7 @@ class FrontPageCoin extends React.Component {
           {/* Rank and more articles */}
           <Grid.Row>
             <Grid.Column>
-              <Label color={this.getRankColor(rank)} ribbon style={styles.ribbon}>Rank #{rank}</Label>
+              <Label color={getRankColor(rank)} ribbon style={styles.ribbon}>Rank #{rank}</Label>
             </Grid.Column>
 
             <Grid.Column>

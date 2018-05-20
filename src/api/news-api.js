@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { encodeURICoinName, generateQueryString, getDate } from './helpers';
+import { encodeURICoinName, generateQueryString, getDate } from '../utils/helpers';
 import { NEWS_API_KEY as apiKey } from './keys/newsApiKey';
 
 

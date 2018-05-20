@@ -45,7 +45,6 @@ class Sidebar extends React.Component {
     };
 
     return (
-      // <Menu inverted vertical fixed='left' style={styles.mainMenu}>
       <Menu fluid={fluid} inverted vertical={vertical} fixed={fixed} width={width} style={styles.mainMenu}>
 
         <Menu.Item as={NavLink} to='/' exact style={styles.logoSection} activeStyle={styles.logoSection} className="mobile hidden">

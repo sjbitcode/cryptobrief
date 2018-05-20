@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header } from 'semantic-ui-react';
+import './style.css'
 
 
 class Brand extends React.Component {
@@ -11,7 +12,7 @@ class Brand extends React.Component {
 
     return (
       <React.Fragment>
-        <Header as='h2' style={logo}>Brand Component</Header>
+        <Header as='h2' style={logo} className="logo">Brand Component</Header>
       </React.Fragment>
     );
   }

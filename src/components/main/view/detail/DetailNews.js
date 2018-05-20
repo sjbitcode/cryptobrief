@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Grid, Image, Label, Segment, Icon, Header, Item, Dimmer, Loader } from 'semantic-ui-react';
 
-import Article from './Article';
 import RefreshCoin from '../RefreshCoin';
-import TickerDetail from './TickerDetail';
 import placeholderImage from '../../../../images/pattern.png';
-import { epochToDate, formatISODate } from '../../../../api/helpers';
+import { epochToDate, formatISODate } from '../../../../utils/helpers';
+import { getRankColor, getPercentColor, renderLocaleString } from '../../../../utils/helpers';
 import './style.css';
 
 
@@ -43,33 +42,6 @@ class DetailNews extends React.Component {
     event.preventDefault();
     this.props.addOrUpdateCoin(coinId, false);
     this.setState({ newCoin: false });
-  };
-
-  getRankColor = (rank) => {
-    rank = parseInt(rank, 10);
-    console.log(rank);
-    if (rank > 50) {
-      return 'red'
-    }
-    else if (26 <= rank && rank <= 50) {
-      return 'yellow'
-    }
-    else if (11 <= rank && rank <= 25) {
-      return 'blue'
-    }
-    else if (1 <= rank && rank <= 10) {
-      return 'green'
-    }
-  };
-
-  getPercentColor = (percentChange) => {
-    percentChange = parseFloat(percentChange);
-    if (percentChange < 0) {
-      return 'red'
-    }
-    else {
-      return 'green'
-    }
   };
 
   renderCoinInfo = (coinId) => {
@@ -135,11 +107,16 @@ class DetailNews extends React.Component {
           width: '200px !important'
         },
 
+        grey: {
+          color: '#767676'
+        },
+
         first: {
           paddingTop: '5rem'
         },
         second: {
-          paddingTop: '2rem'
+          paddingTop: '2rem',
+          paddingBottom: '3rem'
         }
       },
 
@@ -179,7 +156,7 @@ class DetailNews extends React.Component {
             </Grid.Row>
             <Grid.Row style={styles.heading.row}>
               <Grid.Column width={16} style={styles.heading.flexContainer}>
-                <Label color={this.getRankColor(rank)}>Rank #{rank}</Label>
+                <Label color={getRankColor(rank)}>Rank #{rank}</Label>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row style={styles.heading.row}>
@@ -192,7 +169,7 @@ class DetailNews extends React.Component {
                   USD
                 </Header>
               
-                <Header as="h2" color={this.getPercentColor(percent_change_24h)} style={styles.heading.symbol}>
+                <Header as="h2" color={getPercentColor(percent_change_24h)} style={styles.heading.symbol}>
                   ({percent_change_24h}%)
                 </Header>
               </Grid.Column>
@@ -209,41 +186,47 @@ class DetailNews extends React.Component {
           <Grid columns={4} padded centered stackable container style={{...styles.infoGrid.first, ...styles.infoGrid.flexContainer}} className="flexContainer">
             <Grid.Column textAlign="center" style={styles.infoGrid.row} id="flexItem">
               <Grid.Row><Header as="h3" content="Market Cap" textAlign="center" /></Grid.Row>
-              <Grid.Row><Header color="grey">{market_cap_usd}</Header></Grid.Row>
+              <Grid.Row><Header color="grey">{renderLocaleString(market_cap_usd, true)}</Header></Grid.Row>
             </Grid.Column>
 
             <Grid.Column textAlign="center" style={styles.infoGrid.row} id="flexItem">
               <Grid.Row><Header as="h3" content="Volume (24hr)" textAlign="center" /></Grid.Row>
-              <Grid.Row><Header color="grey">{volume_24_hr_usd}</Header></Grid.Row>
+              <Grid.Row><Header color="grey">{renderLocaleString(volume_24_hr_usd, true)}</Header></Grid.Row>
             </Grid.Column>
 
             <Grid.Column textAlign="center" style={styles.infoGrid.row} id="flexItem">
               <Grid.Row><Header as="h3" content="Circulating Supply" textAlign="center" /></Grid.Row>
-              <Grid.Row><Header color="grey">{available_supply}</Header></Grid.Row>
+              <Grid.Row><Header color="grey">{renderLocaleString(available_supply, false)}</Header></Grid.Row>
             </Grid.Column>
 
             <Grid.Column textAlign="center" style={styles.infoGrid.row} id="flexItem">
               <Grid.Row><Header as="h3" content="Max Supply" textAlign="center" /></Grid.Row>
-              <Grid.Row><Header color="grey">{max_supply}</Header></Grid.Row>
+              {
+                max_supply ?
+                <Grid.Row><Header color="grey">{renderLocaleString(max_supply, false)}</Header></Grid.Row> :
+                <Grid.Row><Header color="grey">no maximum</Header></Grid.Row>
+              }
             </Grid.Column>
           </Grid>
 
           <Grid columns={3} padded centered stackable container style={{...styles.infoGrid.second, ...styles.infoGrid.flexContainer}} className="flexContainer">
             <Grid.Column textAlign="center" style={styles.infoGrid.row} id="flexItem">
               <Grid.Row><Header as="h3" content="Percent (1hr)" textAlign="center" /></Grid.Row>
-              <Grid.Row><Header color={this.getPercentColor(percent_change_1h)}>{percent_change_1h}%</Header></Grid.Row>
+              <Grid.Row><Header color={getPercentColor(percent_change_1h)}>{percent_change_1h}%</Header></Grid.Row>
             </Grid.Column>
 
             <Grid.Column textAlign="center" style={styles.infoGrid.row} id="flexItem">
               <Grid.Row><Header as="h3" content="Percent (24hr)" textAlign="center" /></Grid.Row>
-              <Grid.Row><Header color={this.getPercentColor(percent_change_24h)}>{percent_change_24h}%</Header></Grid.Row>
+              <Grid.Row><Header color={getPercentColor(percent_change_24h)}>{percent_change_24h}%</Header></Grid.Row>
             </Grid.Column>
 
             <Grid.Column textAlign="center" style={styles.infoGrid.row} id="flexItem">
               <Grid.Row><Header as="h3" content="Percent (7d)" textAlign="center" /></Grid.Row>
-              <Grid.Row><Header color={this.getPercentColor(percent_change_7d)}>{percent_change_7d}%</Header></Grid.Row>
+              <Grid.Row><Header color={getPercentColor(percent_change_7d)}>{percent_change_7d}%</Header></Grid.Row>
             </Grid.Column>
           </Grid>
+
+          {last_updated ? <Label attached='bottom right'>last updated {formatISODate(epochToDate(last_updated), true)}</Label> : null}
         </Segment>
       
         <Segment raised padded style={styles.mainSegment} loading={newsDataIsLoading}>

@@ -4,7 +4,7 @@ import { Grid } from 'semantic-ui-react';
 import { Main } from './main';
 import { Sidebar } from './sidebar';
 import coinList from '../coinList';
-import { getCoins, setCoins } from '../helpers/localCoins';
+import { getCoins, setCoins } from '../utils/localCoins';
 import { fetchCoinMarketCap } from '../api/coin-market-cap';
 import { fetchNewsApi } from '../api/news-api';
 

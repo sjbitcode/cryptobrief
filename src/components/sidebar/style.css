@@ -9,5 +9,10 @@
 [class*="or lower hidden"] {
 display: none !important;
 }
+
+.logo h2 {
+    font-size: 12px;
+    margin: 0 auto;
+}
 }
 
