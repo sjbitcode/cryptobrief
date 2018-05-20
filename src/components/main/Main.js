@@ -15,6 +15,10 @@ class Main extends React.Component {
     getCoinId: PropTypes.func.isRequired
   };
 
+  componentDidUpdate(prevProps) {
+      window.scrollTo(0, 0);
+  };
+
   render() {
 
     const styles = {
