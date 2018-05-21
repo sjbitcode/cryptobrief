@@ -37,3 +37,24 @@ h1, h2, h3, h4, h5, input {
 .ui {
     font-family: "AvenirNext", sans-serif !important;
 }
+
+.ui.inverted.menu .link.item:active, .ui.inverted.menu a.item:active,
+.ui.inverted.menu a.item:hover,
+.ui.inverted.menu a.item:hover,
+.ui.inverted.menu .active.item {
+    background: inherit !important;
+}
+
+.ui.list .list>.item a, .ui.list>.item a {
+    color: white;
+}
+
+@media only screen and (max-width: 767px) {
+    .mobile-hide {
+        display: none !important;
+    }
+
+    .mobile-padding {
+        padding-bottom: 0 !important;
+    }
+}

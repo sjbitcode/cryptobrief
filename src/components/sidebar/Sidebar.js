@@ -1,10 +1,11 @@
 import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Icon, Menu, Label } from 'semantic-ui-react';
+import { Icon, Menu, Label, Responsive } from 'semantic-ui-react';
 
 import Brand from './Brand';
 import Footer from './Footer';
+import MenuItems from './MenuItems';
 import './style.css';
 
 
@@ -25,69 +26,58 @@ class Sidebar extends React.Component {
         borderRadius: '0'
       },
       frontPageCoins: {
-        marginTop: '15px',
-        active: {
-          background: 'blue'
-        }
-      },
-      logoSection: {
-        background: '#d4d4d5'
+        color: 'pink'
       },
       activeLink: {
-        background: 'red'
+        fontWeight: 'bold'
       },
       footer: {
         position: 'absolute',
         bottom: '0',
-        width: '100%',
-        // height: '60px'
+        width: '100%'
       }
     };
 
     return (
       <Menu fluid={fluid} inverted vertical={vertical} fixed={fixed} width={width} style={styles.mainMenu}>
 
-        <Menu.Item as={NavLink} to='/' exact style={styles.logoSection} activeStyle={styles.logoSection} className="mobile hidden">
-          <Brand />
+        {/* <Menu.Item as={NavLink} to='/' exact id="brand">
+          <Brand mobile={false}/>
         </Menu.Item>
 
-        <Menu.Item>
-          
-          <NavLink to='/' exact>Front Page</NavLink>
-          
+        <Menu.Item as={NavLink} to='/' exact activeStyle={styles.activeLink}>
+          Front Page
           <Label color='blue'>{Object.keys(coins).length}</Label>
-          {
-            coinsLength !== 0 ?
-              <Menu.Menu className="mobile hidden" style={styles.frontPageCoins}>
-                {Object.keys(coins).map(key =>
-                  <Menu.Item
-                    as={ NavLink }
-                    key={key}
-                    to={`/coin/${key}`}
-                    activeStyle={styles.frontPageCoins.active}
-                  >
-                  {coins[key].displayName}
-                  </Menu.Item>
-                )}
-              </Menu.Menu>
-              : null
-          }
         </Menu.Item>
 
         <Menu.Item as={NavLink} to='/coins' activeStyle={styles.activeLink}>
-          <Icon name='bitcoin' />
-          <Menu.Header>Coins</Menu.Header>
+          Coins
         </Menu.Item>
 
         <Menu.Item as={NavLink} to='/about' activeStyle={styles.activeLink}>
-          <Icon name='idea' />
-          <Menu.Header>About</Menu.Header>
+          About
         </Menu.Item>
 
-        <Menu.Item style={styles.footer} className="mobile hidden">
+        {
+          coinsLength !== 0 ?
+            <Menu.Item>
+              <Menu.Menu>
+                {
+                  Object.keys(coins).map(key =>
+                    <Menu.Item as={NavLink} key={key} to={`/coin/${key}`} style={styles.frontPageCoins}>
+                        {coins[key].displayName}
+                    </Menu.Item>
+                  )
+                }
+              </Menu.Menu>
+            </Menu.Item> : null
+        }
+
+        <Menu.Item style={styles.footer}>
           <Footer />
-        </Menu.Item>
-        
+        </Menu.Item> */}
+        <MenuItems coins={coins} mobile={false}/>
+
       </Menu>
     );
   }
