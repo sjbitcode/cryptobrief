@@ -1,10 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Header, Segment, Container, Grid, Button } from 'semantic-ui-react';
 
-import Vault from '../../svg/Vault';
+import FileSearch from '../../../svg/FileSearch';
 
 
-class NotFound extends React.Component {
+class SearchPrompt extends React.Component {
+  static propTypes = {
+    button: PropTypes.element
+  };
+
   render() {
     const styles = {
       svg: {
@@ -41,36 +46,39 @@ class NotFound extends React.Component {
           {/* Computer Screen */}
           <Grid.Column only="computer" computer={8} style={styles.description}>
             <Header as='h1'>
-              Sorry, that pages does not exist!
+              Looks like you haven't searched for this coin yet!
             </Header>
+            {this.props.button}
           </Grid.Column>
           <Grid.Column only="computer" computer={8}>
             <div style={styles.svg.default}>
-              <Vault />
+              <FileSearch />
             </div>
           </Grid.Column>
 
           {/* Tablet Screen */}
           <Grid.Column only="tablet" tablet={8} style={styles.description}>
             <Header as='h2'>
-              Sorry, that pages does not exist!
+              Looks like you haven't searched for this coin yet!
             </Header>
+            {this.props.button}
           </Grid.Column>
           <Grid.Column only="tablet" tablet={8}>
             <div style={styles.svg.default}>
-              <Vault />
+              <FileSearch />
             </div>
           </Grid.Column>
 
           {/* Mobile Screen */}
           <Grid.Column textAlign="center" only="mobile" mobile={16} style={styles.description}>
             <Header as='h1'>
-              Sorry, that pages does not exist!
+              Looks like you haven't searched for this coin yet!
             </Header>
+            {this.props.button}
           </Grid.Column>
           <Grid.Column textAlign="center" only="mobile" mobile={16}>
             <div style={{ ...styles.svg.default, ...styles.svg.mobile }}>
-              <Vault />
+              <FileSearch />
             </div>
           </Grid.Column>
         </Grid>
@@ -79,4 +87,4 @@ class NotFound extends React.Component {
   }
 }
 
-export default NotFound;
+export default SearchPrompt;

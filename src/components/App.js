@@ -268,11 +268,19 @@ class App extends Component {
 
           <Grid container className="mobile-hide">
           <Grid.Row>
-            <Grid.Column only="tablet computer" width={3}>
+            <Grid.Column only="computer" width={3}>
               <Sidebar coins={this.state.coins} vertical={true} fixed='left' width={3}/>
             </Grid.Column>
 
-            <Grid.Column only="tablet computer" width={13}>
+            <Grid.Column only="computer" width={13}>
+              <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinId={this.getCoinId} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
+            </Grid.Column>
+
+            <Grid.Column only="tablet" width={4}>
+              <Sidebar coins={this.state.coins} vertical={true} fixed='left' width={3} />
+            </Grid.Column>
+
+            <Grid.Column only="tablet" width={12}>
               <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinId={this.getCoinId} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
             </Grid.Column>
           </Grid.Row>

@@ -77,7 +77,7 @@ class Coins extends React.Component {
     const styles = {
       svg: {
         default: {
-          padding: '50px'
+          padding: '20px'
         },
 
         mobile: {

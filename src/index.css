@@ -1,3 +1,7 @@
+body {
+    min-height: 100vh;
+}
+
 @font-face {
     font-family: "AvenirNext";
     src: url("./fonts/AvenirNextLTPro-BoldIt.ttf");
@@ -61,4 +65,8 @@ h1, h2, h3, h4, h5, input {
 
 .sidebar-component {
     background: rgb(12, 105, 208) !important;
+}
+
+.main {
+    height: 100vh;
 }

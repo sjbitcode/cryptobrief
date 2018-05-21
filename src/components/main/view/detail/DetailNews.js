@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Grid, Image, Label, Segment, Icon, Header, Item, Dimmer, Loader } from 'semantic-ui-react';
+import { Grid, Image, Label, Segment, Icon, Header, Item, Dimmer, Loader, Button } from 'semantic-ui-react';
 
 import RefreshCoin from '../RefreshCoin';
+import SearchPrompt from './SearchPrompt';
 import placeholderImage from '../../../../images/pattern.png';
 import { epochToDate, formatISODate } from '../../../../utils/helpers';
 import { getRankColor, getPercentColor, renderLocaleString } from '../../../../utils/helpers';
@@ -285,7 +286,11 @@ class DetailNews extends React.Component {
                       </Item.Content>
                     </Item>
                   ) 
-                ): <p>No articles at the moment!</p>
+                ): 
+                <Header as='h3' textAlign='center' icon color="grey">
+                  <Icon name="newspaper" />
+                  No articles at this moment!
+                </Header>
               }
             </Item.Group>
 
@@ -306,12 +311,7 @@ class DetailNews extends React.Component {
     const valueText = `Search for ${coinName}`;
 
     return (
-      <div>
-        Looks like you havent searched for this coin yet.
-        <form onSubmit={(event) => this.handleNewCoinSearch(event, coinId)}>
-          <input type="submit" value={valueText}/>
-        </form>
-      </div>
+      <SearchPrompt button={<Button color="yellow" onClick={(event) => this.handleNewCoinSearch(event, coinId)}>{valueText}</Button>}/>
     );
     
   };

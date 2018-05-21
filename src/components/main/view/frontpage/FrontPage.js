@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Header, Segment, Container, Grid } from 'semantic-ui-react';
 
-import News from '../../../svg/News';
+import Bitcoin from '../../../svg/Bitcoin';
 import Initial from './Initial';
 import FrontPageCoin from './FrontPageCoin';
 import GetStarted from '../../GetStarted';
@@ -18,7 +18,7 @@ class FrontPage extends React.Component {
     const styles = {
       svg: {
         default: {
-          padding: '50px'
+          padding: '20px'
         },
 
         mobile: {
@@ -50,7 +50,7 @@ class FrontPage extends React.Component {
           {/* Computer & Tablet Screen */}
           <Grid.Column only="computer tablet" computer={8} tablet={8}>
             <div style={styles.svg.default}>
-              <News />
+              <Bitcoin />
             </div>
           </Grid.Column>
           <Grid.Column only="computer tablet" computer={8} tablet={8} style={styles.description}>
@@ -60,7 +60,7 @@ class FrontPage extends React.Component {
           {/* Mobile Screen */}
           <Grid.Column textAlign="center" only="mobile" mobile={16} style={{ order: 1 }}>
             <div style={{...styles.svg.default, ...styles.svg.mobile}}>
-              <News />
+              <Bitcoin />
             </div>
           </Grid.Column>
           <Grid.Column textAlign="center" only="mobile" mobile={16} style={styles.description}>

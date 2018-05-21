@@ -22,9 +22,16 @@ class Main extends React.Component {
   render() {
 
     const styles = {
+      container: {
+        minHeight: '100vh'
+      },
 
       mainGrid: {
-        margin: '0 auto'
+        margin: '0 auto',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '75vh'
       },
 
       searchGrid: {
@@ -40,8 +47,8 @@ class Main extends React.Component {
     const totalCoins = Object.keys(this.props.coins).length;
 
     return (
-      <Container className="main">
-        <Container>
+      <Container>
+        <Container style={styles.container}>
           {/* Search Bar & Coins Label */}
           <Grid divided='vertically' style={styles.searchGrid}>
             <Grid.Row columns={2}>
