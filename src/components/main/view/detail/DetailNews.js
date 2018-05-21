@@ -162,7 +162,7 @@ class DetailNews extends React.Component {
             <Grid.Row style={styles.heading.row}>
               <Grid.Column style={styles.heading.flexContainer}>
                 <Header as="h2">
-                  {price_usd}
+                  {renderLocaleString(price_usd, true)}
                 </Header>
               
                 <Header as="h5">
@@ -186,25 +186,25 @@ class DetailNews extends React.Component {
           <Grid columns={4} padded centered stackable container style={{...styles.infoGrid.first, ...styles.infoGrid.flexContainer}} className="flexContainer">
             <Grid.Column textAlign="center" style={styles.infoGrid.row} id="flexItem">
               <Grid.Row><Header as="h3" content="Market Cap" textAlign="center" /></Grid.Row>
-              <Grid.Row><Header color="grey">{renderLocaleString(market_cap_usd, true)}</Header></Grid.Row>
+              <Grid.Row><Header as="h4" color="grey">{renderLocaleString(market_cap_usd, true)}</Header></Grid.Row>
             </Grid.Column>
 
             <Grid.Column textAlign="center" style={styles.infoGrid.row} id="flexItem">
               <Grid.Row><Header as="h3" content="Volume (24hr)" textAlign="center" /></Grid.Row>
-              <Grid.Row><Header color="grey">{renderLocaleString(volume_24_hr_usd, true)}</Header></Grid.Row>
+              <Grid.Row><Header as="h4" color="grey">{renderLocaleString(volume_24_hr_usd, true)}</Header></Grid.Row>
             </Grid.Column>
 
             <Grid.Column textAlign="center" style={styles.infoGrid.row} id="flexItem">
               <Grid.Row><Header as="h3" content="Circulating Supply" textAlign="center" /></Grid.Row>
-              <Grid.Row><Header color="grey">{renderLocaleString(available_supply, false)}</Header></Grid.Row>
+              <Grid.Row><Header as="h4" color="grey">{renderLocaleString(available_supply, false)}</Header></Grid.Row>
             </Grid.Column>
 
             <Grid.Column textAlign="center" style={styles.infoGrid.row} id="flexItem">
               <Grid.Row><Header as="h3" content="Max Supply" textAlign="center" /></Grid.Row>
               {
                 max_supply ?
-                <Grid.Row><Header color="grey">{renderLocaleString(max_supply, false)}</Header></Grid.Row> :
-                <Grid.Row><Header color="grey">no maximum</Header></Grid.Row>
+                <Grid.Row><Header as="h4" color="grey">{renderLocaleString(max_supply, false)}</Header></Grid.Row> :
+                <Grid.Row><Header as="h4" color="grey">no maximum</Header></Grid.Row>
               }
             </Grid.Column>
           </Grid>
@@ -212,17 +212,17 @@ class DetailNews extends React.Component {
           <Grid columns={3} padded centered stackable container style={{...styles.infoGrid.second, ...styles.infoGrid.flexContainer}} className="flexContainer">
             <Grid.Column textAlign="center" style={styles.infoGrid.row} id="flexItem">
               <Grid.Row><Header as="h3" content="Percent (1hr)" textAlign="center" /></Grid.Row>
-              <Grid.Row><Header color={getPercentColor(percent_change_1h)}>{percent_change_1h}%</Header></Grid.Row>
+              <Grid.Row><Header as="h4" color={getPercentColor(percent_change_1h)}>{percent_change_1h}%</Header></Grid.Row>
             </Grid.Column>
 
             <Grid.Column textAlign="center" style={styles.infoGrid.row} id="flexItem">
               <Grid.Row><Header as="h3" content="Percent (24hr)" textAlign="center" /></Grid.Row>
-              <Grid.Row><Header color={getPercentColor(percent_change_24h)}>{percent_change_24h}%</Header></Grid.Row>
+              <Grid.Row><Header as="h4" color={getPercentColor(percent_change_24h)}>{percent_change_24h}%</Header></Grid.Row>
             </Grid.Column>
 
             <Grid.Column textAlign="center" style={styles.infoGrid.row} id="flexItem">
               <Grid.Row><Header as="h3" content="Percent (7d)" textAlign="center" /></Grid.Row>
-              <Grid.Row><Header color={getPercentColor(percent_change_7d)}>{percent_change_7d}%</Header></Grid.Row>
+              <Grid.Row><Header as="h4" color={getPercentColor(percent_change_7d)}>{percent_change_7d}%</Header></Grid.Row>
             </Grid.Column>
           </Grid>
 
