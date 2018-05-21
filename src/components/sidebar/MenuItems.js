@@ -21,7 +21,7 @@ class MenuItems extends React.Component {
         borderRadius: '0'
       },
       frontPageCoins: {
-        color: 'pink'
+        color: '#8ec5ef'
       },
       activeLink: {
         fontWeight: 'bold'
@@ -47,7 +47,7 @@ class MenuItems extends React.Component {
         Front Page
         {
           !mobile ?
-          <Label color='blue'>{Object.keys(coins).length}</Label> : null
+          <Label color='green'>{Object.keys(coins).length}</Label> : null
         }
       </Menu.Item>
 

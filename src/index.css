@@ -58,3 +58,7 @@ h1, h2, h3, h4, h5, input {
         padding-bottom: 0 !important;
     }
 }
+
+.sidebar-component {
+    background: rgb(12, 105, 208) !important;
+}

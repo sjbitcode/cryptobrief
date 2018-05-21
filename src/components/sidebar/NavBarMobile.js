@@ -13,22 +13,6 @@ class NavBarMobile extends React.Component {
   render() {
     const { coins, children, leftItems, onPusherClick, onToggle, rightItems, visible } = this.props;
     const coinsLength = Object.keys(coins).length;
-    // const styles = {
-    //   mainMenu: {
-    //     borderRadius: '0'
-    //   },
-    //   frontPageCoins: {
-    //    color: 'pink'
-    //   },
-    //   activeLink: {
-    //     fontWeight: 'bold'
-    //   },
-    //   footer: {
-    //     position: 'absolute',
-    //     bottom: '0',
-    //     width: '100%'
-    //   }
-    // };
 
     return (
       <Sidebar.Pushable>
@@ -41,6 +25,7 @@ class NavBarMobile extends React.Component {
           inverted
           vertical
           visible={visible}
+          className="sidebar-component"
         >
           <MenuItems coins={coins} mobile={true}/>
         </Sidebar>
@@ -49,7 +34,7 @@ class NavBarMobile extends React.Component {
           onClick={onPusherClick}
           style={{ minHeight: "100vh" }}
         >
-          <Menu fixed="top" inverted>
+          <Menu fixed="top" inverted className="sidebar-component">
             <Menu.Item as={NavLink} to='/' exact>
               <Brand mobile={true} />
             </Menu.Item>
