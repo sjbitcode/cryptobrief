@@ -18,7 +18,13 @@ class FrontPage extends React.Component {
     const styles = {
       svg: {
         default: {
-          padding: '20px'
+          padding: '50px'
+        },
+
+        tablet: {
+          padding: '0 50px',
+          maxWidth: '400px',
+          margin: '0 auto'
         },
 
         mobile: {
@@ -47,14 +53,24 @@ class FrontPage extends React.Component {
       <Container textAlign='center' style={styles.container}>
         <Grid columns={2} stackable style={styles.gridContainer}>
 
-          {/* Computer & Tablet Screen */}
-          <Grid.Column only="computer tablet" computer={8} tablet={8}>
+          {/* Computer Screen */}
+          <Grid.Column only="computer" computer={8}>
             <div style={styles.svg.default}>
               <Bitcoin />
             </div>
           </Grid.Column>
-          <Grid.Column only="computer tablet" computer={8} tablet={8} style={styles.description}>
+          <Grid.Column only="computer" computer={8} style={styles.description}>
             <Header as='h1' content='Your Front Page' subheader='Check the latest below from your curated list of cryptos.'/>
+          </Grid.Column>
+
+          {/* Tablet Screen */}
+          <Grid.Column only="tablet" tablet={16} style={{ order: 1 }}>
+            <div style={styles.svg.tablet}>
+              <Bitcoin />
+            </div>
+          </Grid.Column>
+          <Grid.Column only="tablet" tablet={16} style={styles.description}>
+            <Header as='h1' content='Your Front Page' subheader='Check the latest below from your curated list of cryptos.' />
           </Grid.Column>
 
           {/* Mobile Screen */}

@@ -9,7 +9,13 @@ class NotFound extends React.Component {
     const styles = {
       svg: {
         default: {
-          padding: '20px'
+          padding: '50px'
+        },
+
+        tablet: {
+          padding: '0 50px',
+          maxWidth: '400px',
+          margin: '0 auto'
         },
 
         mobile: {
@@ -51,13 +57,13 @@ class NotFound extends React.Component {
           </Grid.Column>
 
           {/* Tablet Screen */}
-          <Grid.Column only="tablet" tablet={8} style={styles.description}>
+          <Grid.Column only="tablet" tablet={16} style={styles.description}>
             <Header as='h2'>
               Sorry, that pages does not exist!
             </Header>
           </Grid.Column>
-          <Grid.Column only="tablet" tablet={8}>
-            <div style={styles.svg.default}>
+          <Grid.Column only="tablet" tablet={16}>
+            <div style={styles.svg.tablet}>
               <Vault />
             </div>
           </Grid.Column>

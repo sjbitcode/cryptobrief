@@ -11,7 +11,13 @@ class About extends React.Component {
     const styles = {
       svg: {
         default: {
-          padding: '20px'
+          padding: '50px'
+        },
+
+        tablet: {
+          padding: '0 50px',
+          maxWidth: '400px',
+          margin: '0 auto'
         },
 
         mobile: {
@@ -51,11 +57,11 @@ class About extends React.Component {
           </Grid.Column>
 
           {/* Tablet Screen */}
-          <Grid.Column only="tablet" tablet={8} style={styles.description}>
+          <Grid.Column only="tablet" tablet={16} style={styles.description}>
             <Header as='h1' content='About Crypto Brief' subheader="Learn all about what powers Crypto Brief! It's exciting, I promise!" />
           </Grid.Column>
-          <Grid.Column only="tablet" tablet={8}>
-            <div style={styles.svg.default}>
+          <Grid.Column only="tablet" tablet={16}>
+            <div style={styles.svg.tablet}>
               <Hello />
             </div>
           </Grid.Column>
