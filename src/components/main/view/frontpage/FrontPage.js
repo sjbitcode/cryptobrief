@@ -93,20 +93,23 @@ class FrontPage extends React.Component {
 
     if (Object.keys(coins).length) {
       return (
-        <Segment raised>
-          {this.renderTitle()}
+        <React.Fragment>
+          <Segment raised>
+            {this.renderTitle()}
+          </Segment>
+
           {Object.keys(coins).map(key => (
             <div key={key}>
-                <FrontPageCoin
-                  key={key}
-                  coinId={key}
-                  coin={coins[key]}
-                  removeCoin={removeCoin}
-                  addOrUpdateCoin={addOrUpdateCoin}
-                />
+              <FrontPageCoin
+                key={key}
+                coinId={key}
+                coin={coins[key]}
+                removeCoin={removeCoin}
+                addOrUpdateCoin={addOrUpdateCoin}
+              />
             </div>
           ))}
-        </Segment>
+        </React.Fragment>
       );
     }
     else {

@@ -77,7 +77,7 @@ class FrontPageCoin extends React.Component {
     }
 
     return (
-      <Segment style={styles.mainSegment} loading={newsDataIsLoading || tickerDataIsLoading}>
+      <Segment style={styles.mainSegment} loading={newsDataIsLoading || tickerDataIsLoading} raised>
         <Grid stackable columns={2}>
 
           {/* Heading and Delete button */}
@@ -88,7 +88,7 @@ class FrontPageCoin extends React.Component {
                     {coin.displayName}
                     <Label>{symbol}</Label>
                   </Link>
-                  
+
                   <RefreshCoin addOrUpdateCoin={addOrUpdateCoin} coinId={coinId} />
                 </Header>
             </Grid.Column>
@@ -126,14 +126,27 @@ class FrontPageCoin extends React.Component {
                     </Header>
                   </Grid.Row>
                   <Grid.Row>
-                    <Header as='h3' color='black'>
-                      {renderLocaleString(price_usd, true)}
-                    </Header>
+                    {
+                      price_usd ?
+                      <Header as='h3' color='black'>
+                        {renderLocaleString(price_usd, true)}
+                      </Header> :
+                      <Header as='h3' color='black'>
+                        N/A
+                      </Header>
+                    }
                   </Grid.Row>
                   <Grid.Row>
-                    <Header as='h3' color='black'>
-                      {price_btc} BTC
-                    </Header>
+                    {
+                      price_btc ?
+                      <Header as='h3' color='black'>
+                        {price_btc} BTC
+                      </Header> :
+                      <Header as='h3' color='black'>
+                        N/A
+                      </Header>
+                    }
+                    
                   </Grid.Row>
                 </Grid.Column>
 
@@ -144,14 +157,27 @@ class FrontPageCoin extends React.Component {
                     </Header>
                   </Grid.Row>
                   <Grid.Row>
-                    <Header as='h3' color={getPercentColor(percent_change_1h)}>
-                      {(parseFloat(percent_change_1h) >= 0) ? '+' : null}{percent_change_1h}% (1 hr)
-                    </Header>
+                    {
+                      percent_change_1h ?
+                      <Header as='h3' color={getPercentColor(percent_change_1h)}>
+                        {(parseFloat(percent_change_1h) >= 0) ? '+' : null}{percent_change_1h}% (1 hr)
+                      </Header> :
+                      <Header as='h3' color='black'>
+                        N/A (1 hr)
+                      </Header>
+                    }
                   </Grid.Row>
                   <Grid.Row>
-                    <Header as='h3' color={getPercentColor(percent_change_24h)}>
-                      {(parseFloat(percent_change_24h) >= 0) ? '+' : null}{percent_change_24h}% (24 hr)
-                    </Header>
+                    {
+                      percent_change_24h ?
+                      <Header as='h3' color={getPercentColor(percent_change_24h)}>
+                        {(parseFloat(percent_change_24h) >= 0) ? '+' : null}{percent_change_24h}% (24 hr)
+                      </Header> :
+                      <Header as='h3' color='black'>
+                        N/A (24 hr)
+                      </Header>
+                    }
+                    
                   </Grid.Row>
                 </Grid.Column>
 
