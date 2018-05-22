@@ -101,7 +101,7 @@ const Floating = props => (
       transform="translate(-10.88 -19)" fill="url(#f2f4f6e9-6b95-42bc-91e2-935d3f95e99d)"
     />
     <path d="M1001.64,317.87c0,148.91-124.4,269.63-256.86,269.63S476.58,466.79,476.58,317.87,612.33,48.24,744.79,48.24,1001.64,169,1001.64,317.87Z"
-      transform="translate(-10.88 -19)" fill="#38d39f" />
+      transform="translate(-10.88 -19)" fill="#59aae7" />
     <path d="M705.6,687.58c0-9.41-8.47-17-18.92-17s-18.92,7.63-18.92,17c0,7.93,6,14.58,14.19,16.48v13.33h9.46V704.06C699.57,702.16,705.6,695.52,705.6,687.58Z"
       transform="translate(-10.88 -19)" fill="url(#f3ab6348-f00d-4f48-ac7c-85d02bfc6ffb)"
     />
@@ -166,13 +166,13 @@ const Floating = props => (
       transform="translate(-10.88 -19)" fill="#263238" />
     <path d="M742.7,672.22a2.22,2.22,0,0,1,2.2,1.29c1.81-4,6.08-6.38,10.4-6.94s8.68.48,12.8,1.89c5.27,1.8,10.42,4.29,14.39,8.19a20,20,0,0,1,6.15,12.66c.33-5.41-2.28-10.74-6.15-14.55s-9.12-6.39-14.39-8.19c-4.12-1.41-8.49-2.45-12.8-1.89s-8.59,3-10.4,6.94a2.22,2.22,0,0,0-2.2-1.29c0,.81,0,1.6,0,2.36C742.69,672.53,742.69,672.37,742.7,672.22Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
-    <rect x="692.76" y="577.96" width="59.6" height="20.81" fill="#38d39f"
+    <rect x="692.76" y="577.96" width="59.6" height="20.81" fill="#59aae7"
     />
     <path d="M744.79,47.3c-3.16,0-6.31.09-9.47.23,128.86,5.56,247.41,124,247.41,269.4S864.17,580.77,735.32,586.33c3.16.14,6.32.23,9.47.23,132.45,0,256.86-120.72,256.86-269.63S877.24,47.3,744.79,47.3Z"
       transform="translate(-10.88 -19)" opacity="0.2" />
     <path d="M491.71,317.87c0-146.78,131.9-266.17,262.53-269.55-1.89,0-3.78-.08-5.67-.08C616.12,48.24,480.36,169,480.36,317.87S616.12,587.5,748.57,587.5c1.89,0,3.78,0,5.67-.08C623.62,584,491.71,464.66,491.71,317.87Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
-    <rect x="639.78" y="530.66" width="171.24" height="55.82" fill="#38d39f"
+    <rect x="639.78" y="530.66" width="171.24" height="55.82" fill="#59aae7"
     />
     <path d="M650.65,67.88s-203.4,232.49,0,500l67.17-.23s-185.43-221-8.51-516.55L676.2,58.65Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
@@ -182,10 +182,10 @@ const Floating = props => (
       transform="translate(-10.88 -19)" fill="url(#a59f3b9d-1771-4339-a46e-b16d2b7b7a75)"
     />
     <path d="M354.59,71.87c0,15.87-13.61,28.73-28.1,28.73s-29.35-12.86-29.35-28.73S312,43.14,326.49,43.14,354.59,56,354.59,71.87Z"
-      transform="translate(-10.88 -19)" fill="#38d39f" />
+      transform="translate(-10.88 -19)" fill="#59aae7" />
     <rect x="305.42" y="96.95" width="18.43" height="15.5" fill="url(#127b93fc-e9a8-4a28-b3e8-ddf2259882c5)"
     />
-    <rect x="305.97" y="96.95" width="17.46" height="14.7" fill="#38d39f"
+    <rect x="305.97" y="96.95" width="17.46" height="14.7" fill="#59aae7"
     />
     <line x1="323.21" y1="96.95" x2="323.94" y2="83.52" fill="none" stroke="#ad7676"
       strokeMiterlimit="10" strokeWidth="2" />
@@ -199,12 +199,12 @@ const Floating = props => (
       <path d="M323.72,116.52s0-.08,0-.11v-.06C323.72,116.41,323.72,116.46,323.72,116.52Z"
         transform="translate(-10.88 -19)" />
     </g>
-    <rect x="311.1" y="82.62" width="6.52" height="2.22" fill="#38d39f" />
+    <rect x="311.1" y="82.62" width="6.52" height="2.22" fill="#59aae7" />
     <path d="M326.49,43l-1,0c14.1.59,27.07,13.22,27.07,28.71s-13,28.12-27.07,28.71l1,0c14.49,0,28.1-12.86,28.1-28.73S341,43,326.49,43Z"
       transform="translate(-10.88 -19)" opacity="0.2" />
     <path d="M298.8,71.87c0-15.64,14.43-28.36,28.72-28.72h-.62c-14.49,0-29.35,12.86-29.35,28.73s14.85,28.73,29.35,28.73h.62C313.23,100.24,298.8,87.52,298.8,71.87Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
-    <rect x="305.31" y="77.57" width="18.74" height="5.95" fill="#38d39f"
+    <rect x="305.31" y="77.57" width="18.74" height="5.95" fill="#59aae7"
     />
     <path d="M316.19,45.23s-22.26,24.77,0,53.28l7.35,0s-20.29-23.55-.93-55l-3.62.81Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
@@ -217,7 +217,7 @@ const Floating = props => (
       transform="translate(-10.88 -19)" fill="#4d8af0" />
     <rect x="72.61" y="558.64" width="25.76" height="21.68" fill="url(#09a3f343-371f-47c8-af4b-b7896fe83138)"
     />
-    <rect x="73.37" y="558.64" width="24.41" height="20.55" fill="#38d39f"
+    <rect x="73.37" y="558.64" width="24.41" height="20.55" fill="#59aae7"
     />
     <line x1="97.49" y1="558.64" x2="98.51" y2="539.87" fill="none" stroke="#ad7676"
       strokeMiterlimit="10" strokeWidth="2" />
@@ -245,7 +245,7 @@ const Floating = props => (
       transform="translate(-10.88 -19)" fill="url(#91620f7c-415a-4efb-8775-05b0b41b95e1)"
     />
     <path d="M447.7,450.1C447.7,475.43,426,496,402.86,496S356,475.43,356,450.1s23.7-45.85,46.83-45.85S447.7,424.78,447.7,450.1Z"
-      transform="translate(-10.88 -19)" fill="#47e6b1" />
+      transform="translate(-10.88 -19)" fill={props.pinkBalloon} />
     <rect x="375.72" y="501.45" width="29.4" height="24.74" fill="url(#1ac82200-36c7-4144-8a58-4670deda2f7e)"
     />
     <rect x="376.59" y="501.45" width="27.87" height="23.45" fill="#f2f2f2"
@@ -262,13 +262,13 @@ const Floating = props => (
       <path d="M398.44,521.35c0-.06,0-.12,0-.18v-.09C398.44,521.17,398.44,521.26,398.44,521.35Z"
         transform="translate(-10.88 -19)" />
     </g>
-    <rect x="384.79" y="478.57" width="10.41" height="3.54" fill="#47e6b1"
+    <rect x="384.79" y="478.57" width="10.41" height="3.54" fill={props.pinkBalloon}
     />
     <path d="M402.86,404.09c-.55,0-1.1,0-1.65,0,22.5.95,43.2,21.09,43.2,45.81s-20.7,44.87-43.2,45.81c.55,0,1.1,0,1.65,0,23.13,0,44.85-20.53,44.85-45.85S426,404.09,402.86,404.09Z"
       transform="translate(-10.88 -19)" opacity="0.2" />
     <path d="M358.67,450.1c0-25,23-45.26,45.84-45.84h-1c-23.13,0-46.83,20.53-46.83,45.85S380.39,496,403.52,496h1C381.7,495.37,358.67,475.07,358.67,450.1Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
-    <rect x="375.54" y="470.52" width="29.9" height="9.49" fill="#47e6b1"
+    <rect x="375.54" y="470.52" width="29.9" height="9.49" fill={props.pinkBalloon}
     />
     <path d="M386.42,407.59s-35.52,39.54,0,85l11.73,0s-32.38-37.58-1.49-87.84L390.88,406Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
@@ -278,7 +278,7 @@ const Floating = props => (
       transform="translate(-10.88 -19)" fill="url(#be26d75a-0455-4f88-8e02-7405c5fe6a65)"
     />
     <path d="M314.37,116.35c0,18.79-15.69,34-32.41,34s-33.84-15.23-33.84-34,17.13-34,33.84-34S314.37,97.56,314.37,116.35Z"
-      transform="translate(-10.88 -19)" fill="#47e6b1" />
+      transform="translate(-10.88 -19)" fill={props.pinkBalloon} />
     <rect x="259.34" y="149.53" width="21.25" height="18.36" fill="url(#0b2f09ef-1575-4fe8-8a39-bc8009e41251)"
     />
     <rect x="259.97" y="149.53" width="20.13" height="17.4" fill="#e6e6e6"
@@ -295,12 +295,12 @@ const Floating = props => (
       <path d="M278.78,169.2s0-.09,0-.14V169C278.78,169.07,278.78,169.14,278.78,169.2Z"
         transform="translate(-10.88 -19)" />
     </g>
-    <rect x="265.9" y="132.56" width="7.52" height="2.63" fill="#47e6b1" />
+    <rect x="265.9" y="132.56" width="7.52" height="2.63" fill={props.pinkBalloon} />
     <path d="M282,82.21l-1.19,0c16.26.7,31.21,15.65,31.21,34s-15,33.29-31.21,34l1.19,0c16.71,0,32.41-15.23,32.41-34S298.68,82.21,282,82.21Z"
       transform="translate(-10.88 -19)" opacity="0.2" />
     <path d="M250,116.35c0-18.52,16.64-33.58,33.12-34h-.72c-16.71,0-33.84,15.23-33.84,34s17.13,34,33.84,34h.72C266.68,149.93,250,134.87,250,116.35Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
-    <rect x="259.21" y="126.59" width="21.6" height="7.04" fill="#47e6b1"
+    <rect x="259.21" y="126.59" width="21.6" height="7.04" fill={props.pinkBalloon}
     />
     <path d="M270.09,84.81s-25.66,29.33,0,63.08l8.47,0S255.17,120,277.49,82.69l-4.18,1Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
@@ -310,10 +310,10 @@ const Floating = props => (
       transform="translate(-10.88 -19)" fill="url(#e4790bd4-5801-4457-b473-8cffc98e274c)"
     />
     <path d="M58.82,71.82c0,13.27-11.09,24-22.89,24S12,85.09,12,71.82s12.1-24,23.9-24S58.82,58.55,58.82,71.82Z"
-      transform="translate(-10.88 -19)" fill="#38d39f" />
+      transform="translate(-10.88 -19)" fill="#59aae7" />
     <rect x="16.75" y="89.68" width="15.01" height="12.96" fill="url(#3d7619d0-4e5d-43de-b852-961e26921f74)"
     />
-    <rect x="17.2" y="89.68" width="14.22" height="12.29" fill="#38d39f" />
+    <rect x="17.2" y="89.68" width="14.22" height="12.29" fill="#59aae7" />
     <line x1="31.24" y1="89.68" x2="31.84" y2="78.44" fill="none" stroke="#ad7676"
       strokeMiterlimit="10" strokeWidth="2" />
     <line x1="17.55" y1="89.68" x2="16.75" y2="78.44" fill="none" stroke="#ad7676"
@@ -326,12 +326,12 @@ const Floating = props => (
       <path d="M33.67,109.15s0-.06,0-.1v0S33.67,109.1,33.67,109.15Z" transform="translate(-10.88 -19)"
       />
     </g>
-    <rect x="21.38" y="77.69" width="5.31" height="1.85" fill="#38d39f" />
+    <rect x="21.38" y="77.69" width="5.31" height="1.85" fill="#59aae7" />
     <path d="M35.93,47.7l-.84,0c11.48.5,22,11.05,22,24s-10.56,23.51-22,24l.84,0c11.8,0,22.89-10.76,22.89-24S47.73,47.7,35.93,47.7Z"
       transform="translate(-10.88 -19)" opacity="0.2" />
     <path d="M13.38,71.82c0-13.08,11.75-23.72,23.39-24h-.51c-11.8,0-23.9,10.76-23.9,24s12.1,24,23.9,24h.51C25.13,95.53,13.38,84.9,13.38,71.82Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
-    <rect x="16.66" y="73.47" width="15.26" height="4.97" fill="#38d39f" />
+    <rect x="16.66" y="73.47" width="15.26" height="4.97" fill="#59aae7" />
     <path d="M27.54,49.54s-18.13,20.72,0,44.56l6,0S17,74.38,32.77,48l-3,.67Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
     <path d="M43.3,49.22s18.13,21,0,44.87l-6,0s16.52-19.86.76-46.2l3,.59Z"
@@ -340,7 +340,7 @@ const Floating = props => (
       transform="translate(-10.88 -19)" fill="url(#13b49d86-3a6c-4373-8a2b-23927da3a66d)"
     />
     <path d="M475.82,58.82c0,13.27-11.09,24-22.89,24S429,72.09,429,58.82s12.1-24,23.9-24S475.82,45.55,475.82,58.82Z"
-      transform="translate(-10.88 -19)" fill="#f55f44" />
+      transform="translate(-10.88 -19)" fill={props.purpleBalloon} />
     <rect x="433.75" y="76.68" width="15.01" height="12.96" fill="url(#e13d1787-a849-404d-9971-b1babf765573)"
     />
     <rect x="434.2" y="76.68" width="14.22" height="12.29" fill="#e6e6e6"
@@ -357,12 +357,12 @@ const Floating = props => (
       <path d="M450.67,96.15s0-.06,0-.1v0S450.67,96.1,450.67,96.15Z" transform="translate(-10.88 -19)"
       />
     </g>
-    <rect x="438.38" y="64.69" width="5.31" height="1.85" fill="#f55f44" />
+    <rect x="438.38" y="64.69" width="5.31" height="1.85" fill={props.purpleBalloon} />
     <path d="M452.93,34.7l-.84,0c11.48.5,22,11.05,22,24s-10.56,23.51-22,24l.84,0c11.8,0,22.89-10.76,22.89-24S464.73,34.7,452.93,34.7Z"
       transform="translate(-10.88 -19)" opacity="0.2" />
     <path d="M430.38,58.82c0-13.08,11.75-23.72,23.39-24h-.51c-11.8,0-23.9,10.76-23.9,24s12.1,24,23.9,24h.51C442.13,82.53,430.38,71.9,430.38,58.82Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
-    <rect x="433.66" y="60.47" width="15.26" height="4.97" fill="#f55f44"
+    <rect x="433.66" y="60.47" width="15.26" height="4.97" fill={props.purpleBalloon}
     />
     <path d="M444.54,36.54s-18.13,20.72,0,44.56l6,0S434,61.38,449.77,35l-3,.67Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
@@ -372,7 +372,7 @@ const Floating = props => (
       transform="translate(-10.88 -19)" fill="url(#8d0e9b9d-b502-4368-bee2-132b20c20719)"
     />
     <path d="M137.54,250.19c0,19.7-16.45,35.66-34,35.66s-35.47-16-35.47-35.66,18-35.66,35.47-35.66S137.54,230.49,137.54,250.19Z"
-      transform="translate(-10.88 -19)" fill="#f55f44" />
+      transform="translate(-10.88 -19)" fill={props.purpleBalloon} />
     <rect x="80.38" y="285.9" width="22.27" height="19.24" fill="url(#2bbe2ca3-b086-4129-9122-2e4a5aa8bf64)"
     />
     <rect x="81.04" y="285.9" width="21.11" height="18.24" fill="#e6e6e6"
@@ -389,12 +389,12 @@ const Floating = props => (
       <path d="M100.22,305.6s0-.1,0-.14v-.07C100.22,305.46,100.22,305.53,100.22,305.6Z"
         transform="translate(-10.88 -19)" />
     </g>
-    <rect x="87.25" y="268.1" width="7.88" height="2.75" fill="#f55f44" />
+    <rect x="87.25" y="268.1" width="7.88" height="2.75" fill={props.purpleBalloon} />
     <path d="M103.57,214.4l-1.25,0c17,.74,32.72,16.41,32.72,35.63S119.36,285,102.32,285.7l1.25,0c17.52,0,34-16,34-35.66S121.09,214.4,103.57,214.4Z"
       transform="translate(-10.88 -19)" opacity="0.2" />
     <path d="M70.1,250.19c0-19.41,17.45-35.2,34.72-35.65h-.75c-17.52,0-35.47,16-35.47,35.66s18,35.66,35.47,35.66h.75C87.54,285.39,70.1,269.6,70.1,250.19Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
-    <rect x="80.24" y="261.85" width="22.65" height="7.38" fill="#f55f44"
+    <rect x="80.24" y="261.85" width="22.65" height="7.38" fill={props.purpleBalloon}
     />
     <path d="M91.12,217.12s-26.9,30.75,0,66.13l8.88,0S75.48,254,98.88,214.9l-4.38,1Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
@@ -436,10 +436,10 @@ const Floating = props => (
       transform="translate(-10.88 -19)" fill="url(#de1c6a66-0b91-463d-a557-a0141dbc776a)"
     />
     <path d="M1171.54,61.19c0,19.7-16.45,35.66-34,35.66s-35.47-16-35.47-35.66,18-35.66,35.47-35.66S1171.54,41.49,1171.54,61.19Z"
-      transform="translate(-10.88 -19)" fill="#38d39f" />
+      transform="translate(-10.88 -19)" fill="#59aae7" />
     <rect x="1114.38" y="96.9" width="22.27" height="19.24" fill="url(#1fff592f-6693-4eb3-9171-bb32ff9687db)"
     />
-    <rect x="1115.04" y="96.9" width="21.11" height="18.24" fill="#38d39f"
+    <rect x="1115.04" y="96.9" width="21.11" height="18.24" fill="#59aae7"
     />
     <line x1="1135.88" y1="96.9" x2="1136.76" y2="80.23" fill="none" stroke="#ad7676"
       strokeMiterlimit="10" strokeWidth="2" />
@@ -453,12 +453,12 @@ const Floating = props => (
       <path d="M1134.22,116.6s0-.1,0-.14v-.07C1134.22,116.46,1134.22,116.53,1134.22,116.6Z"
         transform="translate(-10.88 -19)" />
     </g>
-    <rect x="1121.25" y="79.1" width="7.88" height="2.75" fill="#38d39f" />
+    <rect x="1121.25" y="79.1" width="7.88" height="2.75" fill="#59aae7" />
     <path d="M1137.57,25.4l-1.25,0c17,.74,32.72,16.41,32.72,35.63S1153.36,96,1136.32,96.7l1.25,0c17.52,0,34-16,34-35.66S1155.09,25.4,1137.57,25.4Z"
       transform="translate(-10.88 -19)" opacity="0.2" />
     <path d="M1104.1,61.19c0-19.41,17.45-35.2,34.72-35.65h-.75c-17.52,0-35.47,16-35.47,35.66s18,35.66,35.47,35.66h.75C1121.54,96.39,1104.1,80.6,1104.1,61.19Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
-    <rect x="1114.24" y="72.85" width="22.65" height="7.38" fill="#38d39f"
+    <rect x="1114.24" y="72.85" width="22.65" height="7.38" fill="#59aae7"
     />
     <path d="M1125.12,28.12s-26.9,30.75,0,66.13l8.88,0S1109.48,65,1132.88,25.9l-4.38,1Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
@@ -468,7 +468,7 @@ const Floating = props => (
       transform="translate(-10.88 -19)" fill="url(#4e6c8e0b-171b-414f-b772-a9b03415ed1d)"
     />
     <path d="M1102.62,252.32c0,17.54-15,31.76-31.07,31.76s-32.44-14.22-32.44-31.76,16.42-31.76,32.44-31.76S1102.62,234.78,1102.62,252.32Z"
-      transform="translate(-10.88 -19)" fill="#f55f44" />
+      transform="translate(-10.88 -19)" fill={props.purpleBalloon} />
     <rect x="1049.41" y="282.05" width="20.37" height="17.14" fill="url(#9eb5e881-07ee-4ce5-baa7-4927dd5ad0d0)"
     />
     <rect x="1050.01" y="282.05" width="19.3" height="16.25" fill="#e6e6e6"
@@ -485,12 +485,12 @@ const Floating = props => (
       <path d="M1068.49,301.68s0-.08,0-.13v-.06C1068.49,301.55,1068.49,301.61,1068.49,301.68Z"
         transform="translate(-10.88 -19)" />
     </g>
-    <rect x="1055.7" y="266.2" width="7.21" height="2.45" fill="#f55f44" />
+    <rect x="1055.7" y="266.2" width="7.21" height="2.45" fill={props.purpleBalloon} />
     <path d="M1071.55,220.45l-1.15,0c15.59.66,29.92,14.61,29.92,31.74s-14.34,31.08-29.92,31.74l1.15,0c16,0,31.07-14.22,31.07-31.76S1087.57,220.45,1071.55,220.45Z"
       transform="translate(-10.88 -19)" opacity="0.2" />
     <path d="M1040.94,252.32c0-17.29,16-31.35,31.75-31.75H1072c-16,0-32.44,14.22-32.44,31.76S1056,284.09,1072,284.09h.69C1056.9,283.68,1040.94,269.61,1040.94,252.32Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
-    <rect x="1049.29" y="260.63" width="20.71" height="6.58" fill="#f55f44"
+    <rect x="1049.29" y="260.63" width="20.71" height="6.58" fill={props.purpleBalloon}
     />
     <path d="M1060.17,222.87s-24.6,27.39,0,58.9l8.12,0s-22.43-26-1-60.85l-4,.89Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
@@ -500,7 +500,7 @@ const Floating = props => (
       transform="translate(-10.88 -19)" fill="url(#b47c5690-0072-4895-bfce-7e12bed9c37f)"
     />
     <path d="M1174.41,455.8c0,19.37-16.19,35.08-33.42,35.08s-34.9-15.71-34.9-35.08,17.66-35.08,34.9-35.08S1174.41,436.43,1174.41,455.8Z"
-      transform="translate(-10.88 -19)" fill="#47e6b1" />
+      transform="translate(-10.88 -19)" fill={props.pinkBalloon} />
     <rect x="1118" y="490.62" width="21.91" height="18.93" fill="url(#9c3c48fe-271f-491e-9bd0-9e0c46ee695c)"
     />
     <rect x="1118.65" y="490.62" width="20.76" height="17.94" fill="#e6e6e6"
@@ -517,13 +517,13 @@ const Floating = props => (
       <path d="M1137.7,510.31s0-.09,0-.14v-.07C1137.7,510.17,1137.7,510.24,1137.7,510.31Z"
         transform="translate(-10.88 -19)" />
     </g>
-    <rect x="1124.76" y="473.12" width="7.75" height="2.71" fill="#47e6b1"
+    <rect x="1124.76" y="473.12" width="7.75" height="2.71" fill={props.pinkBalloon}
     />
     <path d="M1141,420.6l-1.23,0c16.77.72,32.19,16.14,32.19,35.05s-15.42,34.33-32.19,35.05l1.23,0c17.23,0,33.42-15.71,33.42-35.08S1158.22,420.6,1141,420.6Z"
       transform="translate(-10.88 -19)" opacity="0.2" />
     <path d="M1108.06,455.8c0-19.1,17.16-34.63,34.16-35.07h-.74c-17.23,0-34.9,15.71-34.9,35.08s17.66,35.08,34.9,35.08h.74C1125.22,490.44,1108.06,474.9,1108.06,455.8Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
-    <rect x="1117.86" y="466.96" width="22.28" height="7.26" fill="#47e6b1"
+    <rect x="1117.86" y="466.96" width="22.28" height="7.26" fill={props.pinkBalloon}
     />
     <path d="M1128.74,423.28s-26.46,30.25,0,65.05l8.74,0s-24.13-28.75-1.11-67.21l-4.31,1Z"
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
@@ -531,5 +531,15 @@ const Floating = props => (
       transform="translate(-10.88 -19)" fill="#fff" opacity="0.2" />
   </svg>
 );
+
+Floating.propTypes = {
+  purpleBalloon: PropTypes.string,
+  pinkBalloon: PropTypes.string
+};
+
+Floating.defaultProps = {
+  purpleBalloon: '#b55ddd',
+  pinkBalloon: '#dd5cb8'
+};
 
 export default Floating;

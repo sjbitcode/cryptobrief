@@ -56,15 +56,15 @@ const Vault = props => (
     <rect x="560.38" y="673.63" width="50.2" height="59.37" fill="url(#4ca4b65a-1144-4de1-8925-6a62bc294928)"
     />
     <rect x="822.4" y="757.63" width="47.87" height="57.21" transform="rotate(-180 715.91 744.23)"
-      fill="#f5f5f5" />
+      fill={props.vaultLegs} />
     <rect x="68.88" y="673.63" width="50.2" height="59.37" fill="url(#266d8c0d-4533-41a2-a7bc-3c0f98c2c2fa)"
     />
-    <rect x="70.05" y="673.63" width="47.87" height="57.21" fill="#f5f5f5"
+    <rect x="70.05" y="673.63" width="47.87" height="57.21" fill={props.vaultLegs}
     />
     <rect width="678.3" height="681.8" rx="14.86" ry="14.86" fill="url(#deb99f58-9fb9-4a93-aaf8-4b4cb68821c1)"
     />
     <rect x="4.67" y="3.5" width="670.12" height="670.12" rx="14.86" ry="14.86"
-      fill="#fafafa" />
+      fill={props.vaultColor} />
     <rect x="112.66" y="111.49" width="452.98" height="457.65" fill="url(#c4ad51c6-ffe9-4991-94f6-4a02d4a38b0c)"
     />
     <rect x="731.19" y="329.67" width="150.6" height="73.55" transform="rotate(-14.86 353.904 1324.53)"
@@ -94,7 +94,7 @@ const Vault = props => (
     />
     <circle cx="339.15" cy="339.15" r="84.06" fill="url(#3d971d9d-e0fc-4263-8761-c1789934eb12)"
     />
-    <circle cx="339.15" cy="339.15" r="80.56" fill="#fafafa" />
+    <circle cx="339.15" cy="339.15" r="80.56" fill={props.vaultColor} />
     <rect x="277.86" y="499.67" width="24.52" height="25.68" fill="url(#18a30a45-ec9b-4146-ae9c-2a8eabf3bdf2)"
     />
     <rect x="310.55" y="499.67" width="24.52" height="25.68" fill="url(#98f2a4d5-9270-4ece-b23b-fefaca1fb56f)"
@@ -139,10 +139,20 @@ const Vault = props => (
       transform="translate(-260.85 -84)" fill="url(#b424414b-c049-456f-9819-be23a4131db6)"
     />
     <path d="M102.4,200.8h28.69a3.17,3.17,0,0,1,3.17,3.17V294.2a0,0,0,0,1,0,0h-35a0,0,0,0,1,0,0V204A3.17,3.17,0,0,1,102.4,200.8Z"
-      fill="#fafafa" />
+      fill={props.vaultColor} />
     <path d="M99.23,384.1h35a0,0,0,0,1,0,0v92.33a1.06,1.06,0,0,1-1.06,1.06H100.3a1.06,1.06,0,0,1-1.06-1.06V384.1A0,0,0,0,1,99.23,384.1Z"
-      fill="#fafafa" />
+      fill={props.vaultColor} />
   </svg>
 );
+
+Vault.propTypes = {
+  vaultColor: PropTypes.string,
+  vaultLegs: PropTypes.string
+};
+
+Vault.defaultProps = {
+  vaultColor: '#a4bcd6',
+  vaultLegs: '#c6dcf4'
+};
 
 export default Vault;
