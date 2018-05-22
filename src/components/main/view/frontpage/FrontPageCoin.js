@@ -83,13 +83,14 @@ class FrontPageCoin extends React.Component {
           {/* Heading and Delete button */}
           <Grid.Row>
             <Grid.Column only="computer tablet" computer={12} tablet={12}>
-              <Link to={`/coin/${coinId}`}>
                 <Header as='h1' textAlign='left'>
-                  {coin.displayName}
-                  <Label>{symbol}</Label>
+                  <Link to={`/coin/${coinId}`}>
+                    {coin.displayName}
+                    <Label>{symbol}</Label>
+                  </Link>
+                  
                   <RefreshCoin addOrUpdateCoin={addOrUpdateCoin} coinId={coinId} />
                 </Header>
-              </Link>
             </Grid.Column>
 
             <Grid.Column only="computer tablet" computer={4} tablet={4}>
@@ -99,13 +100,14 @@ class FrontPageCoin extends React.Component {
             </Grid.Column>
 
             <Grid.Column only="mobile" mobile={8} style={styles.mobile.header}>
-              <Link to={`/coin/${coinId}`}>
                 <Header as='h1' textAlign='left'>
-                  {coin.displayName}
-                  <Label>{symbol}</Label>
+                  <Link to={`/coin/${coinId}`}>
+                    {coin.displayName}
+                    <Label>{symbol}</Label>
+                  </Link>
+
                   <RefreshCoin addOrUpdateCoin={addOrUpdateCoin} coinId={coinId} />
                 </Header>
-              </Link>
               <Label color='red' circular onClick={() => removeCoin(coinId)} className="deleteButton">
                 <Icon name='delete' style={styles.icon} />
               </Label>
