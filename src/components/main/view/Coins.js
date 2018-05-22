@@ -10,6 +10,8 @@ import Floating from '../../svg/Floating';
 class Coins extends React.Component {
   state = {
     coinsPerPage: 50,
+
+    // Semantic UI Pagination props
     activePage: 1,
     boundaryRange: 1,
     siblingRange: 1,
@@ -90,7 +92,7 @@ class Coins extends React.Component {
       totalPages,
     } = this.state
 
-    // Logic for displaying todos
+    // Logic for displaying coins
     const indexOfLastCoin = activePage * coinsPerPage;
     const indexOfFirstCoin = indexOfLastCoin - coinsPerPage;
     const currentCoins = coinList.slice(indexOfFirstCoin, indexOfLastCoin);
@@ -101,13 +103,12 @@ class Coins extends React.Component {
           <Grid.Column only="computer tablet" computer={16} tablet={16}>
             {currentCoins.map(obj => this.renderCoinElement(obj))}
 
-            <Container textAlign="center" style={{ paddingTop: '5rem' }}>
+            <Container textAlign="center" style={{ paddingTop: '3rem' }}>
               <Pagination
                 activePage={activePage}
                 totalPages={totalPages}
                 boundaryRange={boundaryRange}
                 onPageChange={this.handlePaginationChange}
-                size='mini'
                 siblingRange={siblingRange}
                 ellipsisItem={showEllipsis ? undefined : null}
                 firstItem={showFirstAndLastNav ? undefined : null}
@@ -121,7 +122,7 @@ class Coins extends React.Component {
           <Grid.Column only="mobile" mobile={16}>
             {currentCoins.map(obj => this.renderCoinElement(obj, 'mini'))}
 
-            <Container textAlign="center" style={{ paddingTop: '5rem' }}>
+            <Container textAlign="center" style={{ paddingTop: '3rem' }}>
               <Pagination
                 activePage={activePage}
                 totalPages={totalPages}
@@ -138,23 +139,6 @@ class Coins extends React.Component {
             </Container>
           </Grid.Column>
         </Grid>
-
-        {/* <Container textAlign="center" style={{ paddingTop: '5rem' }}>
-          <Pagination
-            activePage={activePage}
-            totalPages={totalPages}
-            boundaryRange={boundaryRange}
-            onPageChange={this.handlePaginationChange}
-            size='mini'
-            siblingRange={siblingRange}
-            ellipsisItem={showEllipsis ? undefined : null}
-            firstItem={showFirstAndLastNav ? undefined : null}
-            lastItem={showFirstAndLastNav ? undefined : null}
-            prevItem={showPreviousAndNextNav ? undefined : null}
-            nextItem={showPreviousAndNextNav ? undefined : null}
-          />
-        </Container> */}
-        
       </Container>
     );
   };
