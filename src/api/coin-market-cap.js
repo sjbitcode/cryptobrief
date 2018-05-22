@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const COIN_MARKET_CAP_URL = 'https://api.coinmarketcap.com/v1/ticker/';
+const COIN_MARKET_CAP_URL = 'https://api.coinmarketcap.com/v1/ticker';
 
 export const fetchCoinMarketCap = (coinId) => {
   /*
