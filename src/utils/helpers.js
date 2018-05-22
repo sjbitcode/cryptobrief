@@ -111,7 +111,9 @@ export const renderLocaleString = (number, currency = false) => {
   const locale = 'en-US';
   const options = {
     style: 'currency',
-    currency: 'USD'
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 20
   };
 
   if (currency) {
