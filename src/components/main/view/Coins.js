@@ -1,10 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Header, Segment, Container, Grid, Button, Pagination } from 'semantic-ui-react';
+import { Header, Segment, Container, Grid, Button, Pagination, Icon, Label } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import coinList from '../../../coinList';
 import Floating from '../../svg/Floating';
+import { getRankColor, renderLocaleString } from '../../../utils/helpers';
 
 
 class Coins extends React.Component {
@@ -66,15 +67,27 @@ class Coins extends React.Component {
 
     if (obj.id in this.props.coins) {
       return (
-        <Button onClick={(event) => this.handleClick(obj.id, true, event)} key={obj.id} size={size} color='orange' style={button}>
-          <div>{obj.name} ({obj.symbol})</div>
+        <Button as='div' labelPosition='right' onClick={(event) => this.handleClick(obj.id, true, event)} key={obj.id} style={button}>
+          <Button icon color='orange' size='mini'>
+            {obj.name} ({obj.symbol})
+          </Button>
+
+          <Label as='a' basic color={getRankColor(obj.rank)}>
+            <Icon name='flag checkered'/> {obj.rank}
+          </Label>
         </Button>
       );
     }
     else {
       return (
-        <Button onClick={(event) => this.handleClick(obj.id, false, event)} size={size} color='green' inverted key={obj.id} style={button}>
-          <div>{obj.name} ({obj.symbol})</div>
+        <Button as='div' labelPosition='right' onClick={(event) => this.handleClick(obj.id, false, event)} inverted key={obj.id} style={button}>
+          <Button icon basic color='grey' size='mini'>
+            {obj.name} ({obj.symbol})
+          </Button>
+
+          <Label as='a' basic color={getRankColor(obj.rank)}>
+            <Icon name='flag checkered' /> {obj.rank}
+          </Label>
         </Button>
       );
     }
@@ -184,7 +197,7 @@ class Coins extends React.Component {
 
           {/* Computer Screen */}
           <Grid.Column only="computer" computer={8} style={styles.description}>
-            <Header as='h1' content='Coin List' subheader={`We support ${coinList.length} coins through the Coin Market Cap API.`}/>
+            <Header as='h1' content='Coin List' subheader={`We support ${renderLocaleString(coinList.length)} coins through the Coin Market Cap API.`}/>
           </Grid.Column>
           <Grid.Column only="computer" computer={8}>
             <div style={styles.svg.default}>
@@ -194,7 +207,7 @@ class Coins extends React.Component {
 
           {/* Tablet Screen */}
           <Grid.Column only="tablet" tablet={16} style={styles.description}>
-            <Header as='h1' content='Coin List' subheader={`We support ${coinList.length} coins through the Coin Market Cap API.`} />
+            <Header as='h1' content='Coin List' subheader={`We support ${renderLocaleString(coinList.length)} coins through the Coin Market Cap API.`} />
           </Grid.Column>
           <Grid.Column only="tablet" tablet={16}>
             <div style={styles.svg.tablet}>
@@ -204,7 +217,7 @@ class Coins extends React.Component {
 
           {/* Mobile Screen */}
           <Grid.Column textAlign="center" only="mobile" mobile={16} style={styles.description}>
-            <Header as='h1' content='Coin List' subheader={`We support ${coinList.length} coins through the Coin Market Cap API.`} />
+            <Header as='h1' content='Coin List' subheader={`We support ${renderLocaleString(coinList.length)} coins through the Coin Market Cap API.`} />
           </Grid.Column>
           <Grid.Column textAlign="center" only="mobile" mobile={16}>
             <div style={{...styles.svg.default, ...styles.svg.mobile}}>
