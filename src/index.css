@@ -128,19 +128,25 @@ h1, h2, h3, h4, h5, input {
 
 /* Mobile */
 @media only screen and (max-width: 767px) {
-[class*="mobile hidden"],
-[class*="tablet only"]:not(.mobile),
-[class*="computer only"]:not(.mobile),
-[class*="large monitor only"]:not(.mobile),
-[class*="widescreen monitor only"]:not(.mobile),
-[class*="or lower hidden"] {
-display: none !important;
-}
+    [class*="mobile hidden"],
+    [class*="tablet only"]:not(.mobile),
+    [class*="computer only"]:not(.mobile),
+    [class*="large monitor only"]:not(.mobile),
+    [class*="widescreen monitor only"]:not(.mobile),
+    [class*="or lower hidden"] {
+    display: none !important;
+    }
 
-.logo h2 {
-    font-size: 12px;
-    margin: 0 auto;
-}
+    .logo h2 {
+        font-size: 12px;
+        margin: 0 auto;
+    }
+
+    #mobileContainer, #mobileContainer > .ui.container {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
 }
 
 /* components/sidebar/style.css */
