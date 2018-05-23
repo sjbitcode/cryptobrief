@@ -12,7 +12,7 @@ class NavBarMobile extends React.Component {
     children: PropTypes.element,
     coins: PropTypes.object,
     onPusherClick: PropTypes.func,
-    onToggle: PropTypes.onToggle,
+    onToggle: PropTypes.func,
     visible: PropTypes.bool
   };
 
