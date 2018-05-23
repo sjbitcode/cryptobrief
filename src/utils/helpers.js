@@ -29,7 +29,7 @@ export const getDate = (daysOffset = 0) => {
   return date;
 };
 
-export const formatISODate = (ISOdate, time=false) => {
+export const formatISODate = (ISOdate, time = false) => {
   /*
     Format ISO date to YYYY-MM-DD
   */
@@ -52,8 +52,8 @@ export const formatISODate = (ISOdate, time=false) => {
   }
   else {
     let hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
-    const am_pm = date.getHours >= 12 ? 'AM' : 'PM';
-    hours = hours < 10 ? '0' + hours : hours; 
+    const am_pm = date.getHours >= 12 ? 'PM' : 'AM';
+    hours = hours < 10 ? '0' + hours : hours;
     let minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
     let seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
 
@@ -72,4 +72,53 @@ export const epochToDate = (epoch) => {
   const localTime = date.getTime();
 
   return new Date(localTime + localOffset);
+};
+
+export const getRankColor = (rank) => {
+  /* Determine a color for rank label based on coin's rank. */
+
+  rank = parseInt(rank, 10);
+  if (rank > 50) {
+    return 'red'
+  }
+  else if (26 <= rank && rank <= 50) {
+    return 'yellow'
+  }
+  else if (11 <= rank && rank <= 25) {
+    return 'blue'
+  }
+  else if (1 <= rank && rank <= 10) {
+    return 'green'
+  }
+};
+
+export const getPercentColor = (percentChange) => {
+  /* Determine percent change color */
+
+  percentChange = parseFloat(percentChange);
+  if (percentChange < 0) {
+    return 'red'
+  }
+  else {
+    return 'green'
+  }
+};
+
+export const renderLocaleString = (number, currency = false) => {
+  /* Return a formatted float number, converted from a string. */
+  number = parseFloat(number);
+  const locale = 'en-US';
+  const options = {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 20
+  };
+
+  if (currency) {
+    return number.toLocaleString(locale, options);
+  }
+  else {
+    return number.toLocaleString(locale);
+  }
 };

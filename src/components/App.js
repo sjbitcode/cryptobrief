@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Grid } from 'semantic-ui-react';
 
-import Header from './Header';
-import Main from './Main';
-
+import { Main } from './main';
+import { Sidebar, NavBarMobile, NavBarChildren } from './sidebar';
 import coinList from '../coinList';
-import { getCoins, setCoins } from '../helpers/localCoins';
+import { getCoins, setCoins } from '../utils/localCoins';
 import { fetchCoinMarketCap } from '../api/coin-market-cap';
 import { fetchNewsApi } from '../api/news-api';
+import '../index.css';
 
 
-class App extends Component {
+class App extends React.Component {
   state = {
-   coins: {}
+   coins: {},
+    visible: false
   };
 
   coinTemplate = {
@@ -224,12 +226,58 @@ class App extends Component {
     this.setState({ coins });
   };
 
+  handlePusher = () => {
+    const { visible } = this.state;
+
+    if (visible) this.setState({ visible: false });
+  };
+
+  handleToggle = () => this.setState({ visible: !this.state.visible });
+
   render() {
+    const { visible } = this.state;
+
     return (
-      <div>
-        <Header coins={this.state.coins} getCoinId={this.getCoinId} addOrUpdateCoin={this.addOrUpdateCoin}/>
-        <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
-      </div>
+      <React.Fragment>
+        
+        <Grid>
+          <Grid.Row className="mobile-padding">
+            <Grid.Column only="mobile" width={16}>
+              <NavBarMobile
+                onPusherClick={this.handlePusher}
+                onToggle={this.handleToggle}
+                visible={visible}
+                coins={this.state.coins}
+              >
+                <NavBarChildren>
+                  <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinId={this.getCoinId} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
+                </NavBarChildren>
+              </NavBarMobile>
+            </Grid.Column>
+          </Grid.Row>
+
+          <Grid container className="mobile-hide">
+          <Grid.Row>
+            <Grid.Column only="computer" width={3}>
+              <Sidebar coins={this.state.coins} vertical={true} fixed='left' width={3}/>
+            </Grid.Column>
+
+            <Grid.Column only="computer" width={13}>
+              <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinId={this.getCoinId} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
+            </Grid.Column>
+
+            <Grid.Column only="tablet" width={4}>
+              <Sidebar coins={this.state.coins} vertical={true} fixed='left' width={3} />
+            </Grid.Column>
+
+            <Grid.Column only="tablet" width={12}>
+              <Main coins={this.state.coins} removeCoin={this.removeCoin} getCoinId={this.getCoinId} getCoinName={this.getCoinName} addOrUpdateCoin={this.addOrUpdateCoin} />
+            </Grid.Column>
+          </Grid.Row>
+          </Grid>
+        </Grid>
+        
+      </React.Fragment>
     );
   }
 }

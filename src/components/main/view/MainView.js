@@ -2,13 +2,14 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import About from './About';
 import Coins from './Coins';
-import DetailNews from './DetailNews';
-import FrontPage from './FrontPage';
+import DetailNews from './detail/DetailNews';
+import FrontPage from './frontpage/FrontPage';
 import NotFound from './NotFound';
 
 
-const Main = ({ 
+const MainView = ({ 
   coins,
   addOrUpdateCoin,
   removeCoin,
@@ -51,15 +52,18 @@ const Main = ({
       }
     />
 
+
+    <Route path="/about" component={About}></Route>
+
     <Route component={NotFound} />
   </Switch>
 );
 
-Main.propTypes = {
+MainView.propTypes = {
   coins: PropTypes.object.isRequired,
   addOrUpdateCoin: PropTypes.func.isRequired,
   removeCoin: PropTypes.func.isRequired,
   getCoinName: PropTypes.func.isRequired
 };
 
-export default Main;
+export default MainView;

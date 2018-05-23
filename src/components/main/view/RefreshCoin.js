@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Label } from 'semantic-ui-react';
 
 
 class RefreshCoin extends React.Component {
@@ -18,10 +19,12 @@ class RefreshCoin extends React.Component {
   };
 
   render() {
+    const styles = {
+      cursor: 'pointer'
+    }
+
     return (
-      <form onSubmit={this.refreshData}>
-        <button type="submit">Refresh</button>
-      </form>
+      <Label icon='refresh' color='teal' onClick={this.refreshData} style={styles}/>
     );
   }
 }
