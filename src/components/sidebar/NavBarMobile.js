@@ -1,18 +1,23 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
 import PropTypes from "prop-types";
-import { Container, Icon, Image, Menu, Sidebar, Label } from "semantic-ui-react";
-import _ from "lodash";
+import { Icon, Menu, Sidebar } from "semantic-ui-react";
 
 import Brand from './Brand';
-import Footer from './Footer';
 import MenuItems from './MenuItems';
 
 
 class NavBarMobile extends React.Component {
+  static propTypes = {
+    children: PropTypes.element,
+    coins: PropTypes.object,
+    onPusherClick: PropTypes.func,
+    onToggle: PropTypes.onToggle,
+    visible: PropTypes.bool
+  };
+
   render() {
-    const { coins, children, leftItems, onPusherClick, onToggle, rightItems, visible } = this.props;
-    const coinsLength = Object.keys(coins).length;
+    const { children, coins, onPusherClick, onToggle, visible } = this.props;
 
     return (
       <Sidebar.Pushable>

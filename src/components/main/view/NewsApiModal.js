@@ -1,7 +1,5 @@
 import React from 'react'
-import { Button, Header, Modal, Label } from 'semantic-ui-react'
-
-import '../style.css';
+import { Button, Header, Modal, Label } from 'semantic-ui-react';
 
 
 class NewsApiModal extends React.Component {

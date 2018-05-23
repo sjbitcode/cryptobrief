@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 
 const Hello = props => (
   <svg id="98fdd3a5-2c74-40f5-a4f2-41d93d22b358" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"

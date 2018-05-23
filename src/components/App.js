@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Grid } from 'semantic-ui-react';
 
 import { Main } from './main';
@@ -10,7 +10,7 @@ import { fetchNewsApi } from '../api/news-api';
 import '../index.css';
 
 
-class App extends Component {
+class App extends React.Component {
   state = {
    coins: {},
     visible: false
@@ -235,14 +235,6 @@ class App extends Component {
   handleToggle = () => this.setState({ visible: !this.state.visible });
 
   render() {
-    const leftItems = [
-      { as: "a", content: "Home", key: "home" },
-      { as: "a", content: "Users", key: "users" }
-    ];
-    const rightItems = [
-      { as: "a", content: "Login", key: "login" },
-      { as: "a", content: "Register", key: "register" }
-    ];
     const { visible } = this.state;
 
     return (
@@ -252,10 +244,8 @@ class App extends Component {
           <Grid.Row className="mobile-padding">
             <Grid.Column only="mobile" width={16}>
               <NavBarMobile
-                leftItems={leftItems}
                 onPusherClick={this.handlePusher}
                 onToggle={this.handleToggle}
-                rightItems={rightItems}
                 visible={visible}
                 coins={this.state.coins}
               >

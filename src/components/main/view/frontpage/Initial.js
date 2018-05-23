@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Container, Header, Segment } from 'semantic-ui-react';
+import { Container, Grid, Header, Segment } from 'semantic-ui-react';
 
-import Finance from '../../../svg/Finance';
 import Ethereum from '../../../svg/Ethereum';
+import Finance from '../../../svg/Finance';
 
 
 class Initial extends React.Component {

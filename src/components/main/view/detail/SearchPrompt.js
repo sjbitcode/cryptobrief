@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Header, Segment, Container, Grid, Button } from 'semantic-ui-react';
+import { Container, Grid, Header } from 'semantic-ui-react';
 
 import FileSearch from '../../../svg/FileSearch';
 

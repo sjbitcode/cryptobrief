@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Header, Segment, Container, Grid } from 'semantic-ui-react';
+import { Container, Grid, Header, Segment } from 'semantic-ui-react';
 
 import Bitcoin from '../../../svg/Bitcoin';
-import Initial from './Initial';
 import FrontPageCoin from './FrontPageCoin';
+import Initial from './Initial';
 import GetStarted from '../../GetStarted';
 
 

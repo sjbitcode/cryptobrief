@@ -1,9 +1,9 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
+import { Button, Header, Input, Label, Modal } from 'semantic-ui-react';
 import _ from 'lodash';
-import { Input, Header, Label, Button, Modal } from 'semantic-ui-react';
 
 import coinList from '../../coinList';
 import '../../index.css';
@@ -143,7 +143,6 @@ class Search extends React.Component {
 
   renderNotFoundModal = () => {
     const { modalOpen } = this.state;
-    console.log('Modal func');
 
     const inlineStyle = {
       modal: {

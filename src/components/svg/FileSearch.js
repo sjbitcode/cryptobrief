@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 
 const FileSearch = props => (
   <svg id="9a5c15f4-7944-40bc-b8da-d63b7d478a28" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"

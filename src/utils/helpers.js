@@ -78,7 +78,6 @@ export const getRankColor = (rank) => {
   /* Determine a color for rank label based on coin's rank. */
 
   rank = parseInt(rank, 10);
-  console.log(rank);
   if (rank > 50) {
     return 'red'
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Segment, Container, Grid, Button } from 'semantic-ui-react';
+import { Header, Container, Grid } from 'semantic-ui-react';
 
 import Vault from '../../svg/Vault';
 

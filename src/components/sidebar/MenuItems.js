@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import { Menu, Label } from 'semantic-ui-react';
+import { Label, Menu } from 'semantic-ui-react';
 
 import Brand from './Brand';
 import Footer from './Footer';

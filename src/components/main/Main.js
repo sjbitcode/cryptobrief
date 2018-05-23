@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Button, Container } from 'semantic-ui-react';
+import { Button, Container, Grid } from 'semantic-ui-react';
 
 import Search from './Search';
 import MainView from './view/MainView';

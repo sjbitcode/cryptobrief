@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Grid, Image, Label, Segment, Icon, Header, Item, Dimmer, Loader, Button } from 'semantic-ui-react';
+import { Button, Grid, Header, Icon, Item, Label, Segment } from 'semantic-ui-react';
 
 import RefreshCoin from '../RefreshCoin';
 import SearchPrompt from './SearchPrompt';
@@ -69,7 +68,6 @@ class DetailNews extends React.Component {
       percent_change_24h,
       percent_change_7d,
       market_cap_usd,
-      total_supply,
       available_supply,
       max_supply,
       last_updated

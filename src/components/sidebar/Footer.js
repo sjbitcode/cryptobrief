@@ -9,7 +9,6 @@ class Footer extends React.Component {
       color: '#8ec5ef'
     };
 
-
     return (
       <Container textAlign='center'>
         <List>
