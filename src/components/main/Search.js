@@ -6,7 +6,6 @@ import _ from 'lodash';
 import { Input, Header, Label, Button, Modal } from 'semantic-ui-react';
 
 import coinList from '../../coinList';
-import './style.css';
 import '../../index.css';
 
 

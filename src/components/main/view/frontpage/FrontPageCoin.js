@@ -6,7 +6,6 @@ import { Grid, Image, Label, Segment, Icon, Header } from 'semantic-ui-react';
 import RefreshCoin from '../RefreshCoin';
 import { getRankColor, getPercentColor, renderLocaleString } from '../../../../utils/helpers';
 import placeholderImage from '../../../../images/pattern.png';
-import './style.css';
 import '../../../../index.css';
 
 

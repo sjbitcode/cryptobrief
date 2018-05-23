@@ -8,7 +8,6 @@ import SearchPrompt from './SearchPrompt';
 import placeholderImage from '../../../../images/pattern.png';
 import { epochToDate, formatISODate } from '../../../../utils/helpers';
 import { getRankColor, getPercentColor, renderLocaleString } from '../../../../utils/helpers';
-import './style.css';
 import '../../../../index.css';
 
 
