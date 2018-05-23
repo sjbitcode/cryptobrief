@@ -84,6 +84,7 @@ class DetailNews extends React.Component {
           flexDirection: 'row',
           justifyContent: 'center',
           alignItems: 'baseline',
+          flexWrap: 'wrap'
         },
 
         row: {
@@ -101,7 +102,8 @@ class DetailNews extends React.Component {
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'space-around',
-          alignItems: 'center'
+          alignItems: 'center',
+          flexWrap: 'wrap'
         },
 
         row: {
@@ -137,10 +139,9 @@ class DetailNews extends React.Component {
     return (
       <React.Fragment>
         <Segment raised padded style={styles.mainSegment} loading={tickerDataIsLoading}>
-          <RefreshCoin
-            coinId={params.coinId}
-            addOrUpdateCoin={addOrUpdateCoin}
-          />
+          <Label attached='top left'>
+            <RefreshCoin coinId={params.coinId} addOrUpdateCoin={addOrUpdateCoin} />
+          </Label>
 
           <Grid columns={1} centered textAlign="center">
             <Grid.Row style={styles.heading.row}>
@@ -161,16 +162,16 @@ class DetailNews extends React.Component {
               </Grid.Column>
             </Grid.Row>
             <Grid.Row style={styles.heading.row}>
-              <Grid.Column style={styles.heading.flexContainer}>
+              <Grid.Column style={{ ...styles.heading.flexContainer, padding: '1rem 0'}}>
 
                 {
                   price_usd ?
                   <React.Fragment>
-                    <Header as="h2">
+                    <Header as="h2" style={{ margin: '0' }}>
                       {renderLocaleString(price_usd, true)}
                     </Header>
 
-                    <Header as="h5">
+                    <Header as="h5" style={{ margin: '0' }}>
                       USD
                     </Header>
                   </React.Fragment> :
@@ -182,7 +183,7 @@ class DetailNews extends React.Component {
                 
                 {
                   percent_change_24h ?
-                  <Header as="h2" color={getPercentColor(percent_change_24h)} style={styles.heading.symbol}>
+                    <Header as="h2" color={getPercentColor(percent_change_24h)} style={{...styles.heading.symbol, margin: '0'}}>
                     ({percent_change_24h}%)
                   </Header> : null
                 }
