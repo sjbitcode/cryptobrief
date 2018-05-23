@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Header } from 'semantic-ui-react';
-import './style.css'
+
+import './style.css';
+import '../../index.css';
 
 
 class Brand extends React.Component {

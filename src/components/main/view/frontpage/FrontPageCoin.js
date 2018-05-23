@@ -7,6 +7,7 @@ import RefreshCoin from '../RefreshCoin';
 import { getRankColor, getPercentColor, renderLocaleString } from '../../../../utils/helpers';
 import placeholderImage from '../../../../images/pattern.png';
 import './style.css';
+import '../../../../index.css';
 
 
 class FrontPageCoin extends React.Component {

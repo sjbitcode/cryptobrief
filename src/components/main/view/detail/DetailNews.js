@@ -9,6 +9,7 @@ import placeholderImage from '../../../../images/pattern.png';
 import { epochToDate, formatISODate } from '../../../../utils/helpers';
 import { getRankColor, getPercentColor, renderLocaleString } from '../../../../utils/helpers';
 import './style.css';
+import '../../../../index.css';
 
 
 class DetailNews extends React.Component {
@@ -102,8 +103,7 @@ class DetailNews extends React.Component {
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'space-around',
-          alignItems: 'center',
-          flexWrap: 'wrap'
+          alignItems: 'center'
         },
 
         row: {
@@ -139,7 +139,7 @@ class DetailNews extends React.Component {
     return (
       <React.Fragment>
         <Segment raised padded style={styles.mainSegment} loading={tickerDataIsLoading}>
-          <Label attached='top left'>
+          <Label attached='top right' style={{ background: 'white' }}>
             <RefreshCoin coinId={params.coinId} addOrUpdateCoin={addOrUpdateCoin} />
           </Label>
 
@@ -171,7 +171,7 @@ class DetailNews extends React.Component {
                       {renderLocaleString(price_usd, true)}
                     </Header>
 
-                    <Header as="h5" style={{ margin: '0' }}>
+                    <Header as="h5" style={{ margin: '0', paddingLeft: '5px' }}>
                       USD
                     </Header>
                   </React.Fragment> :

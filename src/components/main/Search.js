@@ -7,6 +7,7 @@ import { Input, Header, Label, Button, Modal } from 'semantic-ui-react';
 
 import coinList from '../../coinList';
 import './style.css';
+import '../../index.css';
 
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters

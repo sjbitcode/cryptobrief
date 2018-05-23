@@ -7,6 +7,7 @@ import Brand from './Brand';
 import Footer from './Footer';
 import MenuItems from './MenuItems';
 import './style.css';
+import '../../index.css';
 
 
 class Sidebar extends React.Component {
